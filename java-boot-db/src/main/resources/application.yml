@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: java-boot-db
+  profiles:
+    active: dev
+    include: devdb
+
+logging:
+  config: classpath:logback.xml
+  level:
+    root: info
+    cn.sxgan.db.mapper: debug

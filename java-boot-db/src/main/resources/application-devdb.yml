@@ -1,0 +1,53 @@
+spring:
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    driverClassName: com.mysql.cj.jdbc.Driver
+    druid:
+      # 主库数据源
+      mock-db:
+        url: jdbc:mysql://192.168.0.200:3306/zoey_mock_db?serverTimezone=UTC&useUnicode=true&characterEncoding=UTF8&useSSL=false
+        username: daniel
+        password: Daniel2118
+      # 从库数据源
+      mock-db-backup:
+        # 从数据源开关/默认关闭
+        url: jdbc:mysql://192.168.0.200:3306/zoey_mock_db_backup?serverTimezone=UTC&useUnicode=true&characterEncoding=UTF8&useSSL=false
+        username: daniel
+        password: Daniel2118
+      # 初始连接数
+      initialSize: 5
+      # 最小连接池数量
+      minIdle: 10
+      # 最大连接池数量
+      maxActive: 20
+      # 配置获取连接等待超时的时间
+      maxWait: 60000
+      # 配置连接超时时间
+      connectTimeout: 30000
+      # 配置网络超时时间
+      socketTimeout: 60000
+      # 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒
+      timeBetweenEvictionRunsMillis: 60000
+      # 配置一个连接在池中最小生存的时间，单位是毫秒
+      minEvictableIdleTimeMillis: 300000
+      # 配置一个连接在池中最大生存的时间，单位是毫秒
+      maxEvictableIdleTimeMillis: 900000
+      # 配置检测连接是否有效
+      validationQuery: SELECT 1 FROM DUAL
+      testWhileIdle: true
+      testOnBorrow: false
+      testOnReturn: false
+
+# spring集成Mybatis环境
+mybatis-plus:
+  # pojo别名扫描包
+  type-aliases-package: cn.sxgan.common.entity
+  # 加载Mybatis映射文件
+  mapper-locations: classpath:mappers/*Mapper.xml
+  global-config:
+    banner: false
+  configuration:
+    map-underscore-to-camel-case: true
+    #    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    # 只打印sql不打印结果集
+    log-impl: org.apache.ibatis.logging.slf4j.Slf4jImpl

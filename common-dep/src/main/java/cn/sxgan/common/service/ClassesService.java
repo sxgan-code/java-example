@@ -17,4 +17,7 @@ import java.util.List;
 public interface ClassesService{
     
     List<ClassesPO> selectClassesList();
+    
+    List<ClassesPO> findAllByMockDB();
+    List<ClassesPO> findAllByMockBackupDB();
 }

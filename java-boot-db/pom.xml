@@ -19,13 +19,16 @@
     </properties>
 
     <dependencies>
-
-
         <!-- 公共依赖 -->
         <dependency>
             <groupId>cn.sxgan.common</groupId>
             <artifactId>common-dep</artifactId>
             <version>1.0.0</version>
+        </dependency>
+        <!-- 切面依赖 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-aop</artifactId>
         </dependency>
     </dependencies>
 </project>

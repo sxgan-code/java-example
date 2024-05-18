@@ -1,4 +1,4 @@
-package cn.sxgan.db.enums;
+package cn.sxgan.common.enums;
 
 /**
  * @Description: 数据源枚举类

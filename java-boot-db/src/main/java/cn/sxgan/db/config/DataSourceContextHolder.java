@@ -1,8 +1,7 @@
 package cn.sxgan.db.config;
 
-import cn.sxgan.db.enums.DataSourceEnum;
+import cn.sxgan.common.enums.DataSourceEnum;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.lang3.RandomUtils;
 
 /**
  * @Description: 存储数据源上下文
@@ -37,6 +36,7 @@ public class DataSourceContextHolder {
      * @param value 需要设置的数据源ID
      */
     public static void set(DataSourceEnum value) {
+        log.info("切换到数据源-->{}", value);
         currentDatesource.set(value);
     }
     
@@ -45,7 +45,7 @@ public class DataSourceContextHolder {
      * 采用简单生成随机数的方式切换不同的从库
      */
     public static void setSlave() {
-        if (RandomUtils.nextInt(0, 2) > 0) {
+        if (Math.random() > 0.5) {
             DataSourceContextHolder.set(DataSourceEnum.MOCK_DB);
         } else {
             DataSourceContextHolder.set(DataSourceEnum.MOCK_DB_BACKUP);

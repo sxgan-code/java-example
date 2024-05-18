@@ -2,8 +2,9 @@ package cn.sxgan.db.controller;
 
 import cn.sxgan.common.entity.ClassesPO;
 import cn.sxgan.common.mappers.BdExpClassesMapper;
+import cn.sxgan.common.service.ClassesService;
 import cn.sxgan.db.config.DataSourceContextHolder;
-import cn.sxgan.db.enums.DataSourceEnum;
+import cn.sxgan.common.enums.DataSourceEnum;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,7 +24,14 @@ public class DynamicDbTestController {
     @Autowired
     BdExpClassesMapper bdExpClassesMapper;
     
-    // 测试web
+    @Autowired
+    ClassesService classesServiceImpl;
+    
+    /**
+     * 手动测试
+     *
+     * @return
+     */
     @RequestMapping("/test")
     public String testWeb() {
         List<ClassesPO> classesPOS1 = bdExpClassesMapper.queryAa();
@@ -35,5 +43,19 @@ public class DynamicDbTestController {
         List<ClassesPO> classesPOS3 = bdExpClassesMapper.queryAa();
         log.info("changed classesPOS3: {}", classesPOS3.toString());
         return "test web";
+    }
+    
+    /**
+     * 测试切面
+     */
+    @RequestMapping("/test/aspect")
+    public String testAspectChangeData() {
+        List<ClassesPO> classesPOS1 = classesServiceImpl.selectClassesList();
+        log.info("random change DB classesPOS: {}", classesPOS1.toString());
+        List<ClassesPO> classesPOS2 = classesServiceImpl.findAllByMockDB();
+        log.info("findAllByMockDB classesPOS: {}", classesPOS2.toString());
+        List<ClassesPO> classesPOS3 = classesServiceImpl.findAllByMockBackupDB();
+        log.info("findAllByMockBackupDB classesPOS: {}", classesPOS3.toString());
+        return "test aspect";
     }
 }

@@ -1,6 +1,6 @@
 package cn.sxgan.db.config;
 
-import cn.sxgan.db.enums.DataSourceEnum;
+import cn.sxgan.common.enums.DataSourceEnum;
 import com.alibaba.druid.spring.boot.autoconfigure.DruidDataSourceBuilder;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;

@@ -8,6 +8,10 @@ import java.util.List;
 
 
 @Mapper
-public interface BdExpClassesMapper extends IBaseMapper<ClassesPO>{
+public interface BdExpClassesMapper extends IBaseMapper<ClassesPO> {
     List<ClassesPO> queryAa();
+    
+    void batchUpdateCourse(List<ClassesPO> list);
+    
+    void batchInsertCourse(List<ClassesPO> list);
 }

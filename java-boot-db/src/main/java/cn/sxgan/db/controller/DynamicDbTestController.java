@@ -1,10 +1,10 @@
 package cn.sxgan.db.controller;
 
 import cn.sxgan.common.entity.ClassesPO;
+import cn.sxgan.common.enums.DataSourceEnum;
 import cn.sxgan.common.mappers.BdExpClassesMapper;
 import cn.sxgan.common.service.ClassesService;
 import cn.sxgan.db.config.DataSourceContextHolder;
-import cn.sxgan.common.enums.DataSourceEnum;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -34,6 +34,7 @@ public class DynamicDbTestController {
      */
     @RequestMapping("/test")
     public String testWeb() {
+        log.info("当前数据库为: {}", DataSourceContextHolder.get());
         List<ClassesPO> classesPOS1 = bdExpClassesMapper.queryAa();
         log.info("no changed classesPOS1: {}", classesPOS1.toString());
         DataSourceContextHolder.set(DataSourceEnum.MOCK_DB_BACKUP);

@@ -19,6 +19,7 @@
     </properties>
 
     <dependencies>
+        <!-- 案例1：手动，切面，注解方式动态切换数据源 -->
         <!-- 公共依赖 -->
         <dependency>
             <groupId>cn.sxgan.common</groupId>
@@ -30,5 +31,13 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-aop</artifactId>
         </dependency>
+
+        <!-- 案例2：定时任务同步主从数据库表 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-quartz</artifactId>
+        </dependency>
+
+
     </dependencies>
 </project>

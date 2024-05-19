@@ -55,6 +55,12 @@ public class DateSourceConfig {
         return dataSource;
     }
     
+    /**
+     * 配置sqlSessionFactory
+     *
+     * @return
+     * @throws Exception
+     */
     @Bean
     public SqlSessionFactory sqlSessionFactory() throws Exception {
         SqlSessionFactoryBean sqlSessionFactoryBean = new SqlSessionFactoryBean();

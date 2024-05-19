@@ -5,13 +5,13 @@ spring:
     druid:
       # 主库数据源
       mock-db:
-        url: jdbc:mysql://192.168.0.200:3306/zoey_mock_db?serverTimezone=UTC&useUnicode=true&characterEncoding=UTF8&useSSL=false
+        url: jdbc:mysql://192.168.0.200:3306/zoey_mock_db?serverTimezone=UTC&allowMultiQueries=true&useUnicode=true&characterEncoding=UTF8&useSSL=false
         username: daniel
         password: Daniel2118
       # 从库数据源
       mock-db-backup:
         # 从数据源开关/默认关闭
-        url: jdbc:mysql://192.168.0.200:3306/zoey_mock_db_backup?serverTimezone=UTC&useUnicode=true&characterEncoding=UTF8&useSSL=false
+        url: jdbc:mysql://192.168.0.200:3306/zoey_mock_db_backup?serverTimezone=UTC&allowMultiQueries=true&useUnicode=true&characterEncoding=UTF8&useSSL=false
         username: daniel
         password: Daniel2118
       # 初始连接数

@@ -1,8 +1,8 @@
 package cn.sxgan.db.aspect;
 
 import cn.sxgan.common.anno.UseDataSource;
-import cn.sxgan.db.config.DataSourceContextHolder;
 import cn.sxgan.common.enums.DataSourceEnum;
+import cn.sxgan.db.config.DataSourceContextHolder;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.After;
@@ -12,7 +12,6 @@ import org.aspectj.lang.annotation.Pointcut;
 import org.aspectj.lang.reflect.MethodSignature;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
-
 
 import java.lang.reflect.Method;
 
@@ -28,33 +27,9 @@ import java.lang.reflect.Method;
 @Component
 public class DynamicDataSourceAspect {
     
-    // 切入点为Service下的所有方法
+    // 切入点为Service下的所有以List结尾方法
     @Pointcut("execution(* cn.sxgan.common.service.impl.*.*List(..))")
     public void pointCut() {
-    }
-    
-    /**
-     * 执行方法前更换数据源
-     *
-     * @param joinPoint     切点
-     * @param useDataSource 动态数据源
-     */
-    @Before("@annotation(useDataSource)")
-    public void doBefore(JoinPoint joinPoint, UseDataSource useDataSource) {
-        DataSourceEnum dataSourceKey = useDataSource.dataSourceKey();
-        DataSourceContextHolder.set(dataSourceKey);
-    }
-    
-    /**
-     * 执行方法后清除数据源设置
-     *
-     * @param joinPoint     切点
-     * @param useDataSource 动态数据源
-     */
-    @After("@annotation(useDataSource)")
-    public void doAfter(JoinPoint joinPoint, UseDataSource useDataSource) {
-        log.info(String.format("当前数据源  %s  执行清理方法", useDataSource.dataSourceKey()));
-        DataSourceContextHolder.clear();
     }
     
     /**
@@ -80,4 +55,30 @@ public class DynamicDataSourceAspect {
             DataSourceContextHolder.setSlave();
         }
     }
+    
+    /**
+     * 利用UseDataSource注解的方法，在执行方法前更换数据源
+     *
+     * @param joinPoint     切点
+     * @param useDataSource 动态数据源
+     */
+    @Before("@annotation(useDataSource)")
+    public void doBefore(JoinPoint joinPoint, UseDataSource useDataSource) {
+        DataSourceEnum dataSourceKey = useDataSource.dataSourceKey();
+        DataSourceContextHolder.set(dataSourceKey);
+    }
+    
+    /**
+     * 利用UseDataSource注解的方法，在执行方法后清除数据源设置
+     *
+     * @param joinPoint     切点
+     * @param useDataSource 动态数据源
+     */
+    @After("@annotation(useDataSource)")
+    public void doAfter(JoinPoint joinPoint, UseDataSource useDataSource) {
+        log.info(String.format("当前数据源  %s  执行清理方法", useDataSource.dataSourceKey()));
+        DataSourceContextHolder.clear();
+    }
+    
+    
 }

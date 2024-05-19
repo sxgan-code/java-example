@@ -12,22 +12,22 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class DataSourceContextHolder {
     
-    private static final ThreadLocal<DataSourceEnum> currentDatesource = new ThreadLocal<>();
+    private static final ThreadLocal<DataSourceEnum> currentDataSource = new ThreadLocal<>();
     
     /**
      * 清除当前数据源
      */
     public static void clear() {
-        currentDatesource.remove();
+        currentDataSource.remove();
     }
     
     /**
      * 获取当前使用的数据源
      *
-     * @return 当前使用数据源的ID
+     * @return 当前使用数据源
      */
     public static DataSourceEnum get() {
-        return currentDatesource.get();
+        return currentDataSource.get();
     }
     
     /**
@@ -37,18 +37,17 @@ public class DataSourceContextHolder {
      */
     public static void set(DataSourceEnum value) {
         log.info("切换到数据源-->{}", value);
-        currentDatesource.set(value);
+        currentDataSource.set(value);
     }
     
     /**
-     * 设置从从库读取数据
-     * 采用简单生成随机数的方式切换不同的从库
+     * 设置从从库读取数据,采用简单生成随机数的方式切换不同的从库
      */
     public static void setSlave() {
         if (Math.random() > 0.5) {
-            DataSourceContextHolder.set(DataSourceEnum.MOCK_DB);
+            currentDataSource.set(DataSourceEnum.MOCK_DB);
         } else {
-            DataSourceContextHolder.set(DataSourceEnum.MOCK_DB_BACKUP);
+            currentDataSource.set(DataSourceEnum.MOCK_DB_BACKUP);
         }
     }
     

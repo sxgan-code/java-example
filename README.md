@@ -10,4 +10,6 @@ Java案例持续更新中。。。@sxgan
 
 ## 数据库相关系列
 
-- [01-多数据源动态切换](java-boot-db)
+- [01-多数据源动态切换-手动方式切换](java-boot-db%2Fsrc%2Fmain%2Fjava%2Fcn%2Fsxgan%2Fdb%2Fconfig)
+- [02-多数据源动态切换-AOP或注解方式切换](java-boot-db%2Fsrc%2Fmain%2Fjava%2Fcn%2Fsxgan%2Fdb%2Faspect)
+- [03-定时任务批量同步主从数据库](java-boot-db%2Fsrc%2Fmain%2Fjava%2Fcn%2Fsxgan%2Fdb%2Fquartz)

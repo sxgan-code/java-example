@@ -18,5 +18,20 @@
     <select id="queryAa" resultMap="BaseResultMap">
         select * from school_course
     </select>
+    <!-- 批量更新 -->
+    <update id="batchUpdateCourse" parameterType="java.util.List">
+        <foreach collection="list" item="course" separator=";">
+            update school_course set name = #{course.name}, teacher = #{course.teacher} where id = #{course.id};
+        </foreach>
+    </update>
 
+    <!-- 批量插入 -->
+    <insert id="batchInsertCourse" parameterType="java.util.List">
+        INSERT INTO school_course
+        VALUES
+        <foreach collection="list" item="course" separator=",">
+            (#{course.id}, #{course.name}, #{course.teacher}, #{course.startDate}, #{course.endDate})
+        </foreach>
+        ON DUPLICATE KEY UPDATE name = VALUES(name), teacher = VALUES(teacher);
+    </insert>
 </mapper>

@@ -22,8 +22,9 @@ github仓库地址: [java-example](https://github.com/sxgan-code/java-example)
 - [02-全局异常拦截处理](common-dep%2Fsrc%2Fmain%2Fjava%2Fcn%2Fsxgan%2Fcommon%2Fexception)
 - [03-全局请求拦截处理](common-dep%2Fsrc%2Fmain%2Fjava%2Fcn%2Fsxgan%2Fcommon%2Finterceptor)
 - [04-跨域处理](common-dep%2Fsrc%2Fmain%2Fjava%2Fcn%2Fsxgan%2Fcommon%2Fconfig%2FCorsConfig.java)
+- [05-实时监听文件改动工具类](common-dep%2Fsrc%2Fmain%2Fjava%2Fcn%2Fsxgan%2Fcommon%2Futils%2FWatchFileUtils.java)
 
-## springboot整合
+## SpringBoot整合
 
 - [01-springboot整合-rabbitmq](java-boot-base%2Fsrc%2Fmain%2Fjava%2Fcn%2Fsxgan%2Fbase%2Fmq%2Frabbit)
 - [02-springboot整合-SpringDoc](common-dep%2Fsrc%2Fmain%2Fjava%2Fcn%2Fsxgan%2Fcommon%2Fconfig%2FSpringDocConfig.java)

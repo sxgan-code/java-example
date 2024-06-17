@@ -55,7 +55,6 @@ public class EmailSendTestController {
         try {
             // 对方看到的发送人（发件人的邮箱，根据实际业务进行修改，一般填写的是企业邮箱）
             log.info("发送人邮箱：{}", sendEmail);
-            int i = 1 / 0;
             message.setFrom(new InternetAddress(sendEmail).toString());
             // 发送邮件
             javaMailSender.send(message);
@@ -66,6 +65,12 @@ public class EmailSendTestController {
                     ExceptionStatus.EXCEPTION_STATUS_712.getExceptionMsg());
         }
         return ResponseResult.success("发送成功");
+    }
+    
+    @Operation(summary = "测试全局请求拦截", description = "测试全局请求拦截")
+    @PostMapping("/auth")
+    public ResponseResult<String> testAuth() {
+        return ResponseResult.success("认证成功");
     }
     
 }

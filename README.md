@@ -19,6 +19,7 @@ github仓库地址: [java-example](https://github.com/sxgan-code/java-example)
 ## 公共工具类
 
 - [01-全局响应结果对象](common-dep%2Fsrc%2Fmain%2Fjava%2Fcn%2Fsxgan%2Fcommon%2Fresponse)
+- [02-全局异常拦截处理](common-dep%2Fsrc%2Fmain%2Fjava%2Fcn%2Fsxgan%2Fcommon%2Fexception)
 
 ## springboot整合
 

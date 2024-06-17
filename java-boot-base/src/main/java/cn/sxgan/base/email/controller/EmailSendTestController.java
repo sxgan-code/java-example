@@ -1,5 +1,7 @@
 package cn.sxgan.base.email.controller;
 
+import cn.sxgan.common.exception.AuthorityException;
+import cn.sxgan.common.exception.ExceptionStatus;
 import cn.sxgan.common.response.ResponseResult;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
@@ -53,12 +55,15 @@ public class EmailSendTestController {
         try {
             // 对方看到的发送人（发件人的邮箱，根据实际业务进行修改，一般填写的是企业邮箱）
             log.info("发送人邮箱：{}", sendEmail);
+            int i = 1 / 0;
             message.setFrom(new InternetAddress(sendEmail).toString());
             // 发送邮件
             javaMailSender.send(message);
         } catch (Exception e) {
             log.error("邮件发送失败", e);
-            return ResponseResult.fail("发送失败");
+            throw new AuthorityException(
+                    ExceptionStatus.EXCEPTION_STATUS_712.getExceptionCode(),
+                    ExceptionStatus.EXCEPTION_STATUS_712.getExceptionMsg());
         }
         return ResponseResult.success("发送成功");
     }

@@ -1,5 +1,6 @@
 package cn.sxgan.base.email.controller;
 
+import cn.sxgan.common.cache.redis.RedisUtil;
 import cn.sxgan.common.exception.AuthorityException;
 import cn.sxgan.common.exception.ExceptionStatus;
 import cn.sxgan.common.response.ResponseResult;
@@ -10,6 +11,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.annotation.Resource;
 import jakarta.mail.internet.InternetAddress;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
@@ -34,6 +36,9 @@ public class EmailSendTestController {
     private String sendEmail;
     @Resource
     private JavaMailSender javaMailSender;
+    
+    @Autowired
+    RedisUtil redisUtil;
     
     @Operation(
             summary = "模拟验证码",
@@ -70,6 +75,7 @@ public class EmailSendTestController {
     @Operation(summary = "测试全局请求拦截", description = "测试全局请求拦截")
     @PostMapping("/auth")
     public ResponseResult<String> testAuth() {
+        redisUtil.set("java-example", "test");
         return ResponseResult.success("认证成功");
     }
     

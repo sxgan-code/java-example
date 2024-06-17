@@ -14,7 +14,9 @@
     <packaging>pom</packaging>
     <modules>
         <module>common-dep</module>
+        <module>java-boot-base</module>
         <module>java-boot-db</module>
+
     </modules>
 
     <properties>
@@ -26,7 +28,7 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <!-- Project version -->
         <!--版本说明：https://github.com/alibaba/spring-cloud-alibaba/wiki/-->
-        <spring.boot.version>3.2.5</spring.boot.version>
+        <spring.boot.version>3.3.0</spring.boot.version>
         <!--        <spring-cloud.version>2022.0.0</spring-cloud.version>-->
         <!--        <spring-cloud-alibaba.version>2022.0.0.0</spring-cloud-alibaba.version>-->
 

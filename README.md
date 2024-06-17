@@ -29,7 +29,7 @@ github仓库地址: [java-example](https://github.com/sxgan-code/java-example)
 - [02-springboot整合-SpringDoc](common-dep%2Fsrc%2Fmain%2Fjava%2Fcn%2Fsxgan%2Fcommon%2Fconfig%2FSpringDocConfig.java)
 - [03-springboot整合-quartz定时任务](java-boot-db%2Fsrc%2Fmain%2Fjava%2Fcn%2Fsxgan%2Fdb%2Fquartz)
 - [04-springboot整合-Email邮件发送](java-boot-base%2Fsrc%2Fmain%2Fjava%2Fcn%2Fsxgan%2Fbase%2Femail)
--
+- [05-springboot整合-Redis](common-dep%2Fsrc%2Fmain%2Fjava%2Fcn%2Fsxgan%2Fcommon%2Fcache%2Fredis)
 
 ## AOP相关
 

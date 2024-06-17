@@ -5,9 +5,11 @@ import cn.sxgan.common.enums.DataSourceEnum;
 import cn.sxgan.common.mappers.BdExpClassesMapper;
 import cn.sxgan.common.service.ClassesService;
 import cn.sxgan.db.config.DataSourceContextHolder;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -20,6 +22,7 @@ import java.util.List;
  **/
 @Slf4j
 @RestController
+@Tag(name = "数据库相关系列/多数据源动态切换", description = "测试数据库动态切换")
 public class DynamicDbTestController {
     @Autowired
     BdExpClassesMapper bdExpClassesMapper;
@@ -32,7 +35,8 @@ public class DynamicDbTestController {
      *
      * @return
      */
-    @RequestMapping("/test")
+    @Operation(summary = "测试数据库切换-手动方式切换", description = "测试数据库切换-手动方式切换")
+    @GetMapping("/test")
     public String testWeb() {
         log.info("当前数据库为: {}", DataSourceContextHolder.get());
         List<ClassesPO> classesPOS1 = bdExpClassesMapper.queryAa();
@@ -49,7 +53,8 @@ public class DynamicDbTestController {
     /**
      * 测试切面
      */
-    @RequestMapping("/test/aspect")
+    @Operation(summary = "测试数据库切换-切面注解方式切换", description = "测试数据库切换-切面注解方式切换")
+    @GetMapping("/test/aspect")
     public String testAspectChangeData() {
         List<ClassesPO> classesPOS1 = classesServiceImpl.selectClassesList();
         log.info("random change DB classesPOS: {}", classesPOS1.toString());

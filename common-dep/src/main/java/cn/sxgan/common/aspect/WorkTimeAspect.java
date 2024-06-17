@@ -9,6 +9,8 @@ import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StopWatch;
 
+import java.util.concurrent.TimeUnit;
+
 /**
  * @Description: 执行时间切面
  * @Author: sxgan
@@ -24,11 +26,11 @@ public class WorkTimeAspect {
     @Around(value = "@annotation(workTime)", argNames = "joinPoint,workTime")
     public Object jobRun(ProceedingJoinPoint joinPoint, WorkTime workTime) throws Throwable {
         StopWatch stopWatch = new StopWatch();
-        log.info("开始执行-->{}", workTime.value());
+        log.info("开始执行----->[{}]", workTime.value());
         stopWatch.start(workTime.value());
         Object result = joinPoint.proceed();
         stopWatch.stop();
-        log.info("执行结束-->{},耗时情况： \n{}", workTime.value(), stopWatch.prettyPrint());
+        log.info("执行结束----->[{}],总耗时{}秒", workTime.value(), stopWatch.getTotalTime(TimeUnit.SECONDS));
         return result;
     }
 }

@@ -11,6 +11,7 @@ Java案例持续更新中。。。@sxgan
 ## springboot整合
 
 - [01-springboot整合-rabbitmq](java-boot-base%2Fsrc%2Fmain%2Fjava%2Fcn%2Fsxgan%2Fbase%2Fmq%2Frabbit)
+- [02-springboot整合-SpringDoc](common-dep%2Fsrc%2Fmain%2Fjava%2Fcn%2Fsxgan%2Fcommon%2Fconfig%2FSpringDocConfig.java)
 
 ## AOP相关
 

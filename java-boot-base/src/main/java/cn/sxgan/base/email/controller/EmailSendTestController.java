@@ -1,5 +1,6 @@
 package cn.sxgan.base.email.controller;
 
+import cn.sxgan.common.response.ResponseResult;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -43,7 +44,7 @@ public class EmailSendTestController {
             }
     )
     @PostMapping("/send")
-    public String testSend(@RequestParam String captcha, @RequestParam String email) {
+    public ResponseResult<String> testSend(@RequestParam String captcha, @RequestParam String email) {
         SimpleMailMessage message = new SimpleMailMessage();
         message.setSubject("Zoey注册邮箱验证码");
         message.setText("尊敬的用户 " + email + "\n\n您好! 感谢您注册Zoey。\n\n您的校验验证码为: "
@@ -57,9 +58,9 @@ public class EmailSendTestController {
             javaMailSender.send(message);
         } catch (Exception e) {
             log.error("邮件发送失败", e);
-            return "发送失败";
+            return ResponseResult.fail("发送失败");
         }
-        return "发送成功";
+        return ResponseResult.success("发送成功");
     }
     
 }

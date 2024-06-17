@@ -3,6 +3,7 @@ package cn.sxgan.base.mq.rabbit.controller;
 import cn.sxgan.base.mq.rabbit.direct.DirectProductService;
 import cn.sxgan.base.mq.rabbit.fanout.FanoutProductService;
 import cn.sxgan.base.mq.rabbit.topic.TopicProductService;
+import cn.sxgan.common.response.ResponseResult;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -48,9 +49,9 @@ public class TestRabbitMqController {
             }
     )
     @PostMapping("/fanout")
-    public String testFanout(@RequestParam String userId, @RequestParam Integer num) {
+    public ResponseResult<String> testFanout(@RequestParam String userId, @RequestParam Integer num) {
         fanoutProductService.product(userId, num);
-        return "发送成功";
+        return ResponseResult.success("发送成功");
     }
     
     /**
@@ -73,9 +74,9 @@ public class TestRabbitMqController {
             }
     )
     @PostMapping("/direct")
-    public String testDirect(@RequestParam String userId, @RequestParam Integer num, @RequestParam String key) {
+    public ResponseResult<String> testDirect(@RequestParam String userId, @RequestParam Integer num, @RequestParam String key) {
         directProductService.product(userId, num, key);
-        return "发送成功";
+        return ResponseResult.success("发送成功");
     }
     
     /**
@@ -98,8 +99,8 @@ public class TestRabbitMqController {
             }
     )
     @PostMapping("/topic")
-    public String testTopic(@RequestParam String userId, @RequestParam Integer num, @RequestParam String key) {
+    public ResponseResult<String> testTopic(@RequestParam String userId, @RequestParam Integer num, @RequestParam String key) {
         topicProductService.productTopic(userId, num, key);
-        return "发送成功";
+        return ResponseResult.success("发送成功");
     }
 }

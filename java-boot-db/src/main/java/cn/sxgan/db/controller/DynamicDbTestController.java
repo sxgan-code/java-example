@@ -3,6 +3,7 @@ package cn.sxgan.db.controller;
 import cn.sxgan.common.entity.ClassesPO;
 import cn.sxgan.common.enums.DataSourceEnum;
 import cn.sxgan.common.mappers.BdExpClassesMapper;
+import cn.sxgan.common.response.ResponseResult;
 import cn.sxgan.common.service.ClassesService;
 import cn.sxgan.db.config.DataSourceContextHolder;
 import io.swagger.v3.oas.annotations.Operation;
@@ -37,7 +38,7 @@ public class DynamicDbTestController {
      */
     @Operation(summary = "测试数据库切换-手动方式切换", description = "测试数据库切换-手动方式切换")
     @GetMapping("/test")
-    public String testWeb() {
+    public ResponseResult<String> testWeb() {
         log.info("当前数据库为: {}", DataSourceContextHolder.get());
         List<ClassesPO> classesPOS1 = bdExpClassesMapper.queryAa();
         log.info("no changed classesPOS1: {}", classesPOS1.toString());
@@ -47,7 +48,7 @@ public class DynamicDbTestController {
         DataSourceContextHolder.set(DataSourceEnum.MOCK_DB);
         List<ClassesPO> classesPOS3 = bdExpClassesMapper.queryAa();
         log.info("changed classesPOS3: {}", classesPOS3.toString());
-        return "test web";
+        return ResponseResult.success("test web");
     }
     
     /**
@@ -55,13 +56,13 @@ public class DynamicDbTestController {
      */
     @Operation(summary = "测试数据库切换-切面注解方式切换", description = "测试数据库切换-切面注解方式切换")
     @GetMapping("/test/aspect")
-    public String testAspectChangeData() {
+    public ResponseResult<String> testAspectChangeData() {
         List<ClassesPO> classesPOS1 = classesServiceImpl.selectClassesList();
         log.info("random change DB classesPOS: {}", classesPOS1.toString());
         List<ClassesPO> classesPOS2 = classesServiceImpl.findAllByMockDB();
         log.info("findAllByMockDB classesPOS: {}", classesPOS2.toString());
         List<ClassesPO> classesPOS3 = classesServiceImpl.findAllByMockBackupDB();
         log.info("findAllByMockBackupDB classesPOS: {}", classesPOS3.toString());
-        return "test aspect";
+        return ResponseResult.fail("test aspect");
     }
 }

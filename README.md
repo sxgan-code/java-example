@@ -16,6 +16,10 @@ github仓库地址: [java-example](https://github.com/sxgan-code/java-example)
 
 # 目录
 
+## 公共工具类
+
+- [01-全局响应结果对象](common-dep%2Fsrc%2Fmain%2Fjava%2Fcn%2Fsxgan%2Fcommon%2Fresponse)
+
 ## springboot整合
 
 - [01-springboot整合-rabbitmq](java-boot-base%2Fsrc%2Fmain%2Fjava%2Fcn%2Fsxgan%2Fbase%2Fmq%2Frabbit)

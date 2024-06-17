@@ -1,0 +1,7 @@
+spring:
+  application:
+    name: java-boot-base
+  profiles:
+    active: dev
+    include: devdb
+

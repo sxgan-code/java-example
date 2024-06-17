@@ -1,4 +1,4 @@
-package cn.sxgan.db.aspect;
+package cn.sxgan.common.aspect;
 
 import cn.sxgan.common.anno.WorkTime;
 import lombok.extern.slf4j.Slf4j;

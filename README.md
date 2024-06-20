@@ -16,13 +16,9 @@ github仓库地址: [java-example](https://github.com/sxgan-code/java-example)
 
 # 目录
 
-## 公共工具类
+## 基础
 
-- [01-全局响应结果对象](common-dep%2Fsrc%2Fmain%2Fjava%2Fcn%2Fsxgan%2Fcommon%2Fresponse)
-- [02-全局异常拦截处理](common-dep%2Fsrc%2Fmain%2Fjava%2Fcn%2Fsxgan%2Fcommon%2Fexception)
-- [03-全局请求拦截处理](common-dep%2Fsrc%2Fmain%2Fjava%2Fcn%2Fsxgan%2Fcommon%2Finterceptor)
-- [04-跨域处理](common-dep%2Fsrc%2Fmain%2Fjava%2Fcn%2Fsxgan%2Fcommon%2Fconfig%2FCorsConfig.java)
-- [05-实时监听文件改动工具类](common-dep%2Fsrc%2Fmain%2Fjava%2Fcn%2Fsxgan%2Fcommon%2Futils%2FWatchFileUtils.java)
+- [01-Java基础-集合中的Stream详解](java-boot-base%2Fsrc%2Fmain%2Fjava%2Fcn%2Fsxgan%2Fbase%2Fstream)
 
 ## SpringBoot整合
 
@@ -41,3 +37,11 @@ github仓库地址: [java-example](https://github.com/sxgan-code/java-example)
 - [01-多数据源动态切换-手动方式切换](java-boot-db%2Fsrc%2Fmain%2Fjava%2Fcn%2Fsxgan%2Fdb%2Fconfig)
 - [02-多数据源动态切换-AOP或注解方式切换](java-boot-db%2Fsrc%2Fmain%2Fjava%2Fcn%2Fsxgan%2Fdb%2Faspect)
 - [03-定时任务批量同步主从数据库](java-boot-db%2Fsrc%2Fmain%2Fjava%2Fcn%2Fsxgan%2Fdb%2Fquartz%2FDataTableSyncJob.java)
+
+## 公共工具类
+
+- [01-全局响应结果对象](common-dep%2Fsrc%2Fmain%2Fjava%2Fcn%2Fsxgan%2Fcommon%2Fresponse)
+- [02-全局异常拦截处理](common-dep%2Fsrc%2Fmain%2Fjava%2Fcn%2Fsxgan%2Fcommon%2Fexception)
+- [03-全局请求拦截处理](common-dep%2Fsrc%2Fmain%2Fjava%2Fcn%2Fsxgan%2Fcommon%2Finterceptor)
+- [04-跨域处理](common-dep%2Fsrc%2Fmain%2Fjava%2Fcn%2Fsxgan%2Fcommon%2Fconfig%2FCorsConfig.java)
+- [05-实时监听文件改动工具类](common-dep%2Fsrc%2Fmain%2Fjava%2Fcn%2Fsxgan%2Fcommon%2Futils%2FWatchFileUtils.java)

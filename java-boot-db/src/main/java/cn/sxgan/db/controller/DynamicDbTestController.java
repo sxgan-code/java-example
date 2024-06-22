@@ -1,5 +1,6 @@
 package cn.sxgan.db.controller;
 
+import cn.sxgan.common.anno.RequestAroundLog;
 import cn.sxgan.common.entity.ClassesPO;
 import cn.sxgan.common.enums.DataSourceEnum;
 import cn.sxgan.common.mappers.BdExpClassesMapper;
@@ -38,6 +39,7 @@ public class DynamicDbTestController {
      */
     @Operation(summary = "测试数据库切换-手动方式切换", description = "测试数据库切换-手动方式切换")
     @GetMapping("/test")
+    @RequestAroundLog
     public ResponseResult<String> testWeb() {
         log.info("当前数据库为: {}", DataSourceContextHolder.get());
         List<ClassesPO> classesPOS1 = bdExpClassesMapper.queryAa();
@@ -56,6 +58,7 @@ public class DynamicDbTestController {
      */
     @Operation(summary = "测试数据库切换-切面注解方式切换", description = "测试数据库切换-切面注解方式切换")
     @GetMapping("/test/aspect")
+    @RequestAroundLog
     public ResponseResult<String> testAspectChangeData() {
         List<ClassesPO> classesPOS1 = classesServiceImpl.selectClassesList();
         log.info("random change DB classesPOS: {}", classesPOS1.toString());

@@ -31,6 +31,7 @@ github仓库地址: [java-example](https://github.com/sxgan-code/java-example)
 ## AOP相关
 
 - [01-AOP之切面注解实现方法耗时日志监控](common-dep%2Fsrc%2Fmain%2Fjava%2Fcn%2Fsxgan%2Fcommon%2Faspect%2FWorkTimeAspect.java)
+- [02-AOP之切面注解实现请求参数日志打印](common-dep%2Fsrc%2Fmain%2Fjava%2Fcn%2Fsxgan%2Fcommon%2Faspect%2FRequestLogAspect.java)
 
 ## 数据库相关系列
 

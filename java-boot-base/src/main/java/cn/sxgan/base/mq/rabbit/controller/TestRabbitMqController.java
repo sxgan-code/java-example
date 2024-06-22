@@ -3,6 +3,7 @@ package cn.sxgan.base.mq.rabbit.controller;
 import cn.sxgan.base.mq.rabbit.direct.DirectProductService;
 import cn.sxgan.base.mq.rabbit.fanout.FanoutProductService;
 import cn.sxgan.base.mq.rabbit.topic.TopicProductService;
+import cn.sxgan.common.anno.RequestAroundLog;
 import cn.sxgan.common.response.ResponseResult;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
@@ -49,6 +50,7 @@ public class TestRabbitMqController {
             }
     )
     @PostMapping("/fanout")
+    @RequestAroundLog
     public ResponseResult<String> testFanout(@RequestParam String userId, @RequestParam Integer num) {
         fanoutProductService.product(userId, num);
         return ResponseResult.success("发送成功");
@@ -74,6 +76,7 @@ public class TestRabbitMqController {
             }
     )
     @PostMapping("/direct")
+    @RequestAroundLog
     public ResponseResult<String> testDirect(@RequestParam String userId, @RequestParam Integer num, @RequestParam String key) {
         directProductService.product(userId, num, key);
         return ResponseResult.success("发送成功");
@@ -99,6 +102,7 @@ public class TestRabbitMqController {
             }
     )
     @PostMapping("/topic")
+    @RequestAroundLog
     public ResponseResult<String> testTopic(@RequestParam String userId, @RequestParam Integer num, @RequestParam String key) {
         topicProductService.productTopic(userId, num, key);
         return ResponseResult.success("发送成功");

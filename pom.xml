@@ -50,6 +50,7 @@
         <swagger.version>3.0.0</swagger.version>
         <springdoc.version>2.5.0</springdoc.version>
         <jakarta.version>6.0.0</jakarta.version>
+        <easyexcel.version>4.0.1</easyexcel.version>
 
         <!-- 阿里云存储服务 -->
         <aliyun.sdk.oss.version>3.17.4</aliyun.sdk.oss.version>
@@ -218,6 +219,14 @@
                 <artifactId>spring-boot-starter-amqp</artifactId>
                 <version>${spring.boot.version}</version>
             </dependency>
+
+            <!-- https://mvnrepository.com/artifact/com.alibaba/easyexcel -->
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>easyexcel</artifactId>
+                <version>${easyexcel.version}</version>
+            </dependency>
+
         </dependencies>
     </dependencyManagement>
 

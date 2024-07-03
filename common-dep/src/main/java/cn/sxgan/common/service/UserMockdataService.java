@@ -2,7 +2,7 @@ package cn.sxgan.common.service;
 
 /**
  * <p>
- *  服务类
+ * 服务类
  * </p>
  *
  * @author GSX

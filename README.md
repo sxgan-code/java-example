@@ -27,9 +27,9 @@ github仓库地址: [java-example](https://github.com/sxgan-code/java-example)
 - [03-springboot整合-quartz定时任务](java-boot-db%2Fsrc%2Fmain%2Fjava%2Fcn%2Fsxgan%2Fdb%2Fquartz)
 - [04-springboot整合-Email邮件发送](java-boot-base%2Fsrc%2Fmain%2Fjava%2Fcn%2Fsxgan%2Fbase%2Femail)
 - [05-springboot整合-Redis](common-dep%2Fsrc%2Fmain%2Fjava%2Fcn%2Fsxgan%2Fcommon%2Fcache%2Fredis)
+- [06-springboot整合-整合EasyExcel](java-boot-base%2Fsrc%2Fmain%2Fjava%2Fcn%2Fsxgan%2Fbase%2Fexcel)
 
 ## AOP相关
-
 - [01-AOP之切面注解实现方法耗时日志监控](common-dep%2Fsrc%2Fmain%2Fjava%2Fcn%2Fsxgan%2Fcommon%2Faspect%2FWorkTimeAspect.java)
 - [02-AOP之切面注解实现请求参数日志打印](common-dep%2Fsrc%2Fmain%2Fjava%2Fcn%2Fsxgan%2Fcommon%2Faspect%2FRequestLogAspect.java)
 

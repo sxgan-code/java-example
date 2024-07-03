@@ -5,6 +5,7 @@ import cn.sxgan.common.anno.WorkTime;
 import cn.sxgan.common.entity.UserMockdataPO;
 import cn.sxgan.common.mappers.BdExpUserMockdataMapper;
 import com.alibaba.excel.EasyExcel;
+import com.alibaba.excel.write.builder.ExcelWriterBuilder;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -44,16 +45,13 @@ public class TestExportController {
         response.setContentType("application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
         response.setCharacterEncoding("utf-8");
         // 这里URLEncoder.encode可以防止中文乱码 当然和easyexcel没有关系
-        String fileName = URLEncoder.encode("测试", "UTF-8").replaceAll("\\+", "%20");
+        String fileName = URLEncoder.encode("动态生成表头", "UTF-8").replaceAll("\\+", "%20");
         response.setHeader("Content-disposition", "attachment;filename*=utf-8''" + fileName + ".xlsx");
         
-        // EasyExcel.write(fileName)
-        
-        //         // 这里放入动态头
-        //         .head(head()).sheet("模板")
-        //         // 当然这里数据也可以用 List<List<String>> 去传入
-        //         .doWrite(data());
-        EasyExcel.write(response.getOutputStream(), DownloadData.class).sheet("模板").doWrite(data());
+        // EasyExcel.write(response.getOutputStream(), DownloadData.class).sheet("模板").doWrite(data());
+        // 动态表头
+        ExcelWriterBuilder write = EasyExcel.write(response.getOutputStream());
+        write.head(head()).sheet("模板").doWrite(this::data);
     }
     
     private List<List<String>> data() {
@@ -78,42 +76,36 @@ public class TestExportController {
     
     private List<List<String>> head() {
         List<List<String>> list = new ArrayList<List<String>>();
-        // List<String> headuserId = new ArrayList<String>();
-        // List<String> headuserName = new ArrayList<String>();
-        // List<String> headage = new ArrayList<String>();
-        // List<String> heademail = new ArrayList<String>();
-        // List<String> headgender = new ArrayList<String>();
-        // List<String> headethnicity = new ArrayList<String>();
-        // List<String> headjobTitle = new ArrayList<String>();
-        // List<String> headaddress = new ArrayList<String>();
-        // List<String> headcreateDate = new ArrayList<String>();
-        // List<String> headcity = new ArrayList<String>();
-        // headuserId.add("userId");
-        // headuserName.add("userName");
-        // headage.add("age");
-        // heademail.add("email");
-        // headgender.add("gender");
-        // headethnicity.add("ethnicity");
-        // headjobTitle.add("jobTitle");
-        // headaddress.add("address");
-        // headcreateDate.add("createDate");
-        // headcity.add("city");
-        // list.add(headuserId);
-        // list.add(headuserName);
-        // list.add(headage);
-        // list.add(heademail);
-        // list.add(headgender);
-        // list.add(headethnicity);
-        // list.add(headjobTitle);
-        // list.add(headaddress);
-        // list.add(headcreateDate);
-        // list.add(headcity);
-        List<String> username = new ArrayList<String>();
-        username.add("名字");
-        List<String> age = new ArrayList<String>();
-        age.add("年龄");
-        list.add(username);
-        list.add(age);
+        List<String> headuserId = new ArrayList<String>();
+        List<String> headuserName = new ArrayList<String>();
+        List<String> headage = new ArrayList<String>();
+        List<String> heademail = new ArrayList<String>();
+        List<String> headgender = new ArrayList<String>();
+        List<String> headethnicity = new ArrayList<String>();
+        List<String> headjobTitle = new ArrayList<String>();
+        List<String> headaddress = new ArrayList<String>();
+        List<String> headcreateDate = new ArrayList<String>();
+        List<String> headcity = new ArrayList<String>();
+        headuserId.add("用户id");
+        headuserName.add("用户名");
+        headage.add("年龄");
+        heademail.add("邮箱");
+        headgender.add("性别");
+        headethnicity.add("民族");
+        headjobTitle.add("工作");
+        headaddress.add("地址");
+        headcreateDate.add("创建时间");
+        headcity.add("城市");
+        list.add(headuserId);
+        list.add(headuserName);
+        list.add(headage);
+        list.add(heademail);
+        list.add(headgender);
+        list.add(headethnicity);
+        list.add(headjobTitle);
+        list.add(headaddress);
+        list.add(headcreateDate);
+        list.add(headcity);
         return list;
     }
     

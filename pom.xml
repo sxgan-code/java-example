@@ -51,6 +51,7 @@
         <springdoc.version>2.5.0</springdoc.version>
         <jakarta.version>6.0.0</jakarta.version>
         <easyexcel.version>4.0.1</easyexcel.version>
+        <jasypt.version>3.0.5</jasypt.version>
 
         <!-- 阿里云存储服务 -->
         <aliyun.sdk.oss.version>3.17.4</aliyun.sdk.oss.version>
@@ -226,7 +227,11 @@
                 <artifactId>easyexcel</artifactId>
                 <version>${easyexcel.version}</version>
             </dependency>
-
+            <dependency>
+                <groupId>com.github.ulisesbocchio</groupId>
+                <artifactId>jasypt-spring-boot-starter</artifactId>
+                <version>${jasypt.version}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 

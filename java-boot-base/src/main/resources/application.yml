@@ -6,4 +6,12 @@ spring:
     #    include: prodb
     active: dev
     include: devdb
-
+jasypt:
+  encryptor:
+    # 加密算法
+    algorithm: PBEWithMD5AndDES
+    iv-generator-classname: org.jasypt.iv.NoIvGenerator
+    property:
+      # 算法识别的前后缀，默认ENC()，包含在前后缀的加密信息，会使用指定算法解密
+      prefix: ZOEY_ENC(
+      suffix: )

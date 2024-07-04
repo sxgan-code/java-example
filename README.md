@@ -28,6 +28,7 @@ github仓库地址: [java-example](https://github.com/sxgan-code/java-example)
 - [04-springboot整合-Email邮件发送](java-boot-base%2Fsrc%2Fmain%2Fjava%2Fcn%2Fsxgan%2Fbase%2Femail)
 - [05-springboot整合-Redis](common-dep%2Fsrc%2Fmain%2Fjava%2Fcn%2Fsxgan%2Fcommon%2Fcache%2Fredis)
 - [06-springboot整合-整合EasyExcel](java-boot-base%2Fsrc%2Fmain%2Fjava%2Fcn%2Fsxgan%2Fbase%2Fexcel)
+- [07-springboot整合-整合Jasypt加密配置](common-dep%2Fsrc%2Fmain%2Fjava%2Fcn%2Fsxgan%2Fcommon%2Futils%2FJasyptUtils.java)
 
 ## AOP相关
 - [01-AOP之切面注解实现方法耗时日志监控](common-dep%2Fsrc%2Fmain%2Fjava%2Fcn%2Fsxgan%2Fcommon%2Faspect%2FWorkTimeAspect.java)

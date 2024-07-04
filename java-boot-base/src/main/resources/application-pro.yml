@@ -1,0 +1,56 @@
+server:
+  port: 9090
+spring:
+  rabbitmq:
+    username: daniel
+    password: daniel
+    virtual-host: /
+    host: 192.168.0.200
+    port: 5672
+    #监听
+    listener:
+      simple:
+        retry:
+          enabled: true #开启重试，默认不开启
+          max-attempts: 3 #最大重试次数
+          initial-interval: 1000ms #重试间隔时间（单位毫秒）
+          max-interval: 1200000ms #重试最大时间间隔（单位毫秒）
+          # 乘子。间隔时间*乘子=下一次的间隔时间，不能超过 max-interval
+          # 以本处为例：第一次间隔 5 秒，第二次间隔 10 秒，以此类推
+          multiplier: 2
+    #发送
+    publisher-confirm-type: correlated
+    publisher-returns: true
+  # mail邮箱
+  mail:
+    # SMTP服务器（我用的是QQ邮箱的SMTP服务器地址，如果用的其它邮箱请另行百度搜索）
+    host: smtp.qq.com
+    # 发送验证码的邮箱（发件人的邮箱）
+    username: zoey.code@foxmail.com
+    # 授权码
+    password: xxxxxxxx
+    # 编码
+    default-encoding: utf-8
+    # 端口
+    protocol: smtp
+    # 其它参数
+    properties:
+      mail:
+        smtp:
+          # 如果是用SSL方式，需要配置如下属性,使用qq邮箱的话需要开启
+          ssl:
+            enable: true
+            required: true
+          # 邮件接收时间的限制，单位毫秒
+          timeout: 10000
+          # 连接时间的限制，单位毫秒
+          connection-timeout: 10000
+          # 邮件发送时间的限制，单位毫秒
+          write-timeout: 10000
+
+
+logging:
+  config: classpath:logback.xml
+  level:
+    root: info
+    cn.sxgan.db.mapper: debug

@@ -2,6 +2,7 @@ package cn.sxgan.base.excel.controller;
 
 import cn.sxgan.base.excel.easyexcel.ExportFileService;
 import cn.sxgan.common.anno.WorkTime;
+import cn.sxgan.common.consts.FilePath;
 import cn.sxgan.common.entity.UserMockdataPO;
 import cn.sxgan.common.mappers.BdExpUserMockdataMapper;
 import com.alibaba.excel.EasyExcel;
@@ -19,7 +20,9 @@ import org.springframework.web.bind.annotation.RestController;
 import java.io.IOException;
 import java.net.URLEncoder;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @Description: 测试导出功能
@@ -54,21 +57,36 @@ public class TestExportController {
         write.head(head()).sheet("模板").doWrite(this::data);
     }
     
-    private List<List<String>> data() {
+    @Operation(summary = "获取全部用户excel通过模版的方式", description = "获取全部用户excel")
+    @GetMapping("/getUserExcelFileByTemp")
+    @WorkTime(value = "获取全部用户excel通过模版的方式")
+    public void exportUserByTemp(HttpServletResponse response) throws IOException {
+        String tempFile = FilePath.USER_EXCEL_TEMP_FILE_DIR + "用户清单模版.xlsx";
+        response.setContentType("application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
+        response.setCharacterEncoding("utf-8");
+        // 这里URLEncoder.encode可以防止中文乱码 当然和easyexcel没有关系
+        String fileName = URLEncoder.encode("通过固定模版生成", "UTF-8").replaceAll("\\+", "%20");
+        response.setHeader("Content-disposition", "attachment;filename*=utf-8''" + fileName + ".xlsx");
+        
+        // 模版表头导出
+        EasyExcel.write(response.getOutputStream()).withTemplate(tempFile).sheet("用户列表").doFill(this::data);
+    }
+    
+    private List<Map<String, Object>> data() {
         List<UserMockdataPO> userMockdataPOS = bdExpUserMockdataMapper.selectList(new QueryWrapper<>());
-        List<List<String>> data = new ArrayList<>();
+        List<Map<String, Object>> data = new ArrayList<>();
         for (UserMockdataPO userMockdataPO : userMockdataPOS) {
-            List<String> col = new ArrayList<>();
-            col.add(userMockdataPO.getUserId().toString());
-            col.add(userMockdataPO.getUserName().toString());
-            col.add(userMockdataPO.getAge().toString());
-            col.add(userMockdataPO.getEmail().toString());
-            col.add(userMockdataPO.getGender().toString());
-            col.add(userMockdataPO.getEthnicity().toString());
-            col.add(userMockdataPO.getJobTitle().toString());
-            col.add(userMockdataPO.getAddress().toString());
-            col.add(userMockdataPO.getCreateDate().toString());
-            col.add(userMockdataPO.getCity().toString());
+            Map<String, Object> col = new HashMap<>();
+            col.put("userId", userMockdataPO.getUserId().toString());
+            col.put("userName", userMockdataPO.getUserName().toString());
+            col.put("age", userMockdataPO.getAge().toString());
+            col.put("email", userMockdataPO.getEmail().toString());
+            col.put("gender", userMockdataPO.getGender().toString());
+            col.put("ethnicity", userMockdataPO.getEthnicity().toString());
+            col.put("jobTitle", userMockdataPO.getJobTitle().toString());
+            col.put("address", userMockdataPO.getAddress().toString());
+            col.put("createDate", userMockdataPO.getCreateDate().toString());
+            col.put("city", userMockdataPO.getCity().toString());
             data.add(col);
         }
         return data;
@@ -108,6 +126,5 @@ public class TestExportController {
         list.add(headcity);
         return list;
     }
-    
     
 }

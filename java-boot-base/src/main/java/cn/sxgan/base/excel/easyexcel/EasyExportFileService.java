@@ -18,7 +18,7 @@ import java.util.List;
  **/
 @Service
 
-public class ExportFileService {
+public class EasyExportFileService {
     
     @Resource
     BdExpUserMockdataMapper bdExpUserMockdataMapper;

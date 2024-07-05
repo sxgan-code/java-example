@@ -1,6 +1,7 @@
 package cn.sxgan.base.excel.controller;
 
-import cn.sxgan.base.excel.easyexcel.ExportFileService;
+import cn.sxgan.base.excel.easyexcel.EasyExportFileService;
+import cn.sxgan.base.excel.poi.PoiExportExcelService;
 import cn.sxgan.common.anno.WorkTime;
 import cn.sxgan.common.consts.FilePath;
 import cn.sxgan.common.entity.UserMockdataPO;
@@ -36,10 +37,14 @@ import java.util.Map;
 public class TestExportController {
     
     @Autowired
-    ExportFileService exportFileService;
+    EasyExportFileService exportFileService;
+    
+    @Autowired
+    PoiExportExcelService poiExportExcelService;
     
     @Resource
     BdExpUserMockdataMapper bdExpUserMockdataMapper;
+    
     
     @Operation(summary = "获取全部用户excel", description = "获取全部用户excel")
     @GetMapping("/getUserExcelFile")
@@ -70,6 +75,14 @@ public class TestExportController {
         
         // 模版表头导出
         EasyExcel.write(response.getOutputStream()).withTemplate(tempFile).sheet("用户列表").doFill(this::data);
+    }
+    
+    @Operation(summary = "获取全部用户excel通过POI导出", description = "获取全部用户excel")
+    @GetMapping("/getUserExcelFileByTempAndPoi")
+    @WorkTime(value = "获取全部用户excel通过模版的方式")
+    public void getUserExcelFileByTempAndPoi(HttpServletResponse response) throws IOException {
+        poiExportExcelService.exportExcel(response);
+        
     }
     
     private List<Map<String, Object>> data() {

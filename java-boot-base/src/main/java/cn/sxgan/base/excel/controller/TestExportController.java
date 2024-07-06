@@ -49,7 +49,7 @@ public class TestExportController {
     @Operation(summary = "获取全部用户excel", description = "获取全部用户excel")
     @GetMapping("/getUserExcelFile")
     @WorkTime(value = "导出用户Excel")
-    public void exportUser(HttpServletResponse response) throws IOException {
+    public void exportUserByFixed(HttpServletResponse response) throws IOException {
         response.setContentType("application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
         response.setCharacterEncoding("utf-8");
         // 这里URLEncoder.encode可以防止中文乱码 当然和easyexcel没有关系
@@ -79,7 +79,7 @@ public class TestExportController {
     
     @Operation(summary = "获取全部用户excel通过POI导出", description = "获取全部用户excel")
     @GetMapping("/getUserExcelFileByTempAndPoi")
-    @WorkTime(value = "获取全部用户excel通过模版的方式")
+    @WorkTime(value = "获取全部用户excel通过POI导出")
     public void getUserExcelFileByTempAndPoi(HttpServletResponse response) throws IOException {
         poiExportExcelService.exportExcel(response);
         

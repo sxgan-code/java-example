@@ -43,7 +43,7 @@ public class PoiExportExcelService {
             response.setContentType("application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
             response.setCharacterEncoding("utf-8");
             // 这里URLEncoder.encode可以防止中文乱码 当然和easyexcel没有关系
-            String fileName = URLEncoder.encode("通过POI和固定模版生成", "UTF-8").replaceAll("\\+", "%20");
+            String fileName = URLEncoder.encode("POI-获取全部用户excel通过模版", "UTF-8").replaceAll("\\+", "%20");
             response.setHeader("Content-disposition", "attachment;filename*=utf-8''" + fileName + ".xlsx");
             wb.write(response.getOutputStream());
             response.getOutputStream().flush();

@@ -2,10 +2,10 @@ server:
   port: 9090
 spring:
   rabbitmq:
-    username: daniel
-    password: daniel
+    username: guest
+    password: guest
     virtual-host: /
-    host: 192.168.0.200
+    host: 114.116.88.252
     port: 5672
     #监听
     listener:

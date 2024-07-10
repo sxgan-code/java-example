@@ -16,7 +16,6 @@
         <module>common-dep</module>
         <module>java-boot-base</module>
         <module>java-boot-db</module>
-
     </modules>
 
     <properties>

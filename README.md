@@ -12,6 +12,10 @@ Java案例持续更新中。。。@sxgan
 
 本项目资源文档：[资源文档](a-doc)
 
+本项目涉及的公共依赖：[common-dep](common-dep)
+
+本项目案例涉及的前端统一写在公共模块：[公共前端模块](common-front-pc)
+
 github仓库地址: [java-example](https://github.com/sxgan-code/java-example)
 
 # 目录

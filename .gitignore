@@ -28,3 +28,7 @@ hs_err_pid*
 **/target
 **/logs
 **/release
+
+**/dist
+**/node_modules
+

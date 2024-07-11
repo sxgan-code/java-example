@@ -1,0 +1,56 @@
+@import "@/assets/fonts/fonts.scss";
+
+/* 页面元素整体设置*/
+* {
+  user-select: none;
+  margin: 0;
+  padding: 0;
+
+  a {
+    text-decoration: none;
+  }
+
+  ul, ol {
+    list-style: none;
+  }
+
+  :focus {
+    outline: none;
+  }
+}
+
+/*
+  此处为根元素 fontsize大小
+  当前设置为 10px，表示 1rem=10px
+  注意：本身带有fontsize属性的标签可能会有不同，例如 h1、h2...等标签可能并非期望值，所以建议这类标签自己写样式
+*/
+html, body {
+  overflow-y: hidden;
+  overflow-x: hidden;
+  font-size: 10px;
+}
+
+/*滚动条整体样式*/
+::-webkit-scrollbar {
+  width: 0.5rem; /*高宽分别对应横竖滚动条的尺寸*/
+  height: 0.5rem; /*表示水平方向的滚动条高度*/
+
+}
+
+::-webkit-scrollbar-thumb { /*滚动条里面小方块*/
+  border-radius: 0.5rem;
+  -webkit-box-shadow: inset 0 0 0.25rem rgba(#ccc, 0.25);
+  background: rgba(#ccc, 0.25);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  border-radius: 0.5rem;
+  -webkit-box-shadow: inset 0 0 0.25rem rgba(#ccc, 0.9);
+  background: rgba(#ccc, 0.9);
+}
+
+::-webkit-scrollbar-track { /*滚动条里面轨道*/
+  border-radius: 0.5rem;
+  background: rgba(#ccc, 0.2);
+  opacity: 0;
+}

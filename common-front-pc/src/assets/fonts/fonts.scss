@@ -1,0 +1,16 @@
+$fontsDir: "@/assets/fonts/";
+
+
+/* 配置HarmonyOS*/
+@font-face {
+  font-family: 'HarmonyOS Sans';
+  src: url('#{$fontsDir}/HarmonyOS_Sans_Bold.ttf'), /* IE9*/
+  url('#{$fontsDir}/HarmonyOS_Sans_Bold.ttf') format('truetype'), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
+}
+
+/*  配置JetBrainsMono*/
+@font-face {
+  font-family: 'JetBrainsMono Bold';
+  src: url('#{$fontsDir}/JetBrainsMono-Bold.ttf'), /* IE9*/
+  url('#{$fontsDir}/JetBrainsMono-Bold.ttf') format('truetype'), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
+}

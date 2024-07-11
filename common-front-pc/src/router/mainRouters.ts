@@ -3,7 +3,7 @@ import type {RouteRecordRaw} from "vue-router";
 const mainRouters: RouteRecordRaw[] = [
     {
         path: '/',
-        name: 'signin',
+        name: 'root',
         redirect: '/signin',
     },
     {

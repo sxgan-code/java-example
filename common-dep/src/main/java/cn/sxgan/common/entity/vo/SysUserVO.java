@@ -3,6 +3,9 @@ package cn.sxgan.common.entity.vo;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 
+import java.io.Serial;
+import java.io.Serializable;
+
 /**
  * @Description: 用户视图对象
  * @Author: sxgan
@@ -11,7 +14,11 @@ import lombok.Data;
  **/
 @Data
 @Schema(name = "SysUserVO", description = "用户信息视图对象")
-public class SysUserVO {
+public class SysUserVO implements Serializable {
+    
+    @Serial
+    private static final long serialVersionUID = 1L;
+    
     @Schema(description = "用户ID", type = "Long")
     private Long userId;
     @Schema(description = "用户昵称", type = "String")

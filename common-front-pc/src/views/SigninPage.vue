@@ -1,7 +1,7 @@
 <script setup>
 import {Lock, User} from '@element-plus/icons-vue'
 import {ref} from 'vue'
-import {sendMailVerifyCode, signinApi} from "@/api/auth/index.ts"
+import {sendMailVerifyCode, signinApi, signupApi} from "@/api/auth/index.ts"
 //控制注册与登录表单的显示， 默认显示注册
 const isRegister = ref(false)
 const loading = ref(false)
@@ -92,7 +92,7 @@ const signupSys = async () => {
     if (isValid) {
       // 表单所有元素验证通过，可以提交了
       loading.value = true
-      signup(registerData.value).then(res => {
+      signupApi(registerData.value).then(res => {
         console.log(res)
         loading.value = false
       }).catch(err => {
@@ -201,7 +201,7 @@ const cleanCacheData = () => {
   background-color: #fff;
   
   .bg {
-    background: url('@/assets/images/logo2.png') no-repeat 40% 10% / 240px auto,
+    background: //url('@/assets/images/logo2.png') no-repeat 40% 10% / 240px auto,
     url('@/assets/images/sys/bg.jpg') no-repeat 10% / cover;
     border-radius: 0 20px 20px 0;
   }

@@ -8,7 +8,7 @@ import axios, {type AxiosResponse, type InternalAxiosRequestConfig} from 'axios'
 const service = axios.create({
     // baseURL: import.meta.env.VITE_APP_BASE_API,
     // 这里使用在线mock数据,根据实际情况配置
-    baseURL: import.meta.env.VITE_BASE_URL,
+    baseURL: import.meta.env.VITE_ENV_URL,
     timeout: 50000,
     // headers: {'Content-Type': 'application/json;charset=utf-8'}
 });

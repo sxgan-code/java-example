@@ -3,7 +3,7 @@ server:
 spring:
   rabbitmq:
     username: daniel
-    password: daniel
+    password: ZOEY_ENC(ASQJELJzUbczcSw/FCnR7g==)
     virtual-host: /
     host: 192.168.0.200
     port: 5672

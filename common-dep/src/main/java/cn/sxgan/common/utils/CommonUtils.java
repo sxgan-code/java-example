@@ -1,6 +1,7 @@
 package cn.sxgan.common.utils;
 
 import java.lang.reflect.Field;
+import java.security.SecureRandom;
 
 /**
  * @Description: 公共方法工具类
@@ -8,8 +9,28 @@ import java.lang.reflect.Field;
  * @Date: 2024-05-19 11:43
  * @Version: 1.0
  **/
-
 public class CommonUtils {
+    
+    private static final String CHAR_SET = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    private static final SecureRandom RANDOM = new SecureRandom();
+    
+    /**
+     * 生成0-9，A-Z之间的随机字符串
+     *
+     * @param length 指定字符串长度
+     * @return 返回生成字符串
+     */
+    public static String generateRandomCode(int length) {
+        if (length <= 0) {
+            throw new IllegalArgumentException("Length must be positive");
+        }
+        
+        StringBuilder code = new StringBuilder(length);
+        for (int i = 0; i < length; i++) {
+            code.append(CHAR_SET.charAt(RANDOM.nextInt(CHAR_SET.length())));
+        }
+        return code.toString();
+    }
     
     /**
      * 比较两个对象指定属性值是否完全相等

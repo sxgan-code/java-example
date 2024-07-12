@@ -2,8 +2,8 @@ server:
   port: 9090
 spring:
   rabbitmq:
-    username: guest
-    password: guest
+    username: daniel
+    password: ZOEY_ENC(ASQJELJzUbczcSw/FCnR7g==)
     virtual-host: /
     host: 114.116.88.252
     port: 5672

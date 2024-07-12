@@ -1,5 +1,6 @@
 package cn.sxgan.common.response;
 
+import cn.sxgan.common.enums.ResponseStatus;
 import lombok.Builder;
 import lombok.Data;
 
@@ -56,7 +57,7 @@ public class ResponseResult<T> implements Serializable {
         return ResponseResult.<T>builder().data(null)
                 .message(message)
                 .total(0)
-                .status(ResponseStatus.SUCCESS.getResponseCode())
+                .status(ResponseStatus.SUCCESS.getCode())
                 .timestamp(System.currentTimeMillis())
                 .build();
     }
@@ -70,9 +71,9 @@ public class ResponseResult<T> implements Serializable {
      */
     public static <T> ResponseResult<T> success(T data) {
         return ResponseResult.<T>builder().data(data)
-                .message(ResponseStatus.SUCCESS.getDescription())
+                .message(ResponseStatus.SUCCESS.getMsg())
                 .total(1)
-                .status(ResponseStatus.SUCCESS.getResponseCode())
+                .status(ResponseStatus.SUCCESS.getCode())
                 .timestamp(System.currentTimeMillis())
                 .build();
     }
@@ -86,9 +87,9 @@ public class ResponseResult<T> implements Serializable {
      */
     public static <T> ResponseResult<T> success(T data, int total) {
         return ResponseResult.<T>builder().data(data)
-                .message(ResponseStatus.SUCCESS.getDescription())
+                .message(ResponseStatus.SUCCESS.getMsg())
                 .total(total)
-                .status(ResponseStatus.SUCCESS.getResponseCode())
+                .status(ResponseStatus.SUCCESS.getCode())
                 .timestamp(System.currentTimeMillis())
                 .build();
     }
@@ -117,7 +118,7 @@ public class ResponseResult<T> implements Serializable {
         return ResponseResult.<T>builder().data(data)
                 .message(message)
                 .total(0)
-                .status(ResponseStatus.FAIL.getResponseCode())
+                .status(ResponseStatus.FAIL.getCode())
                 .timestamp(System.currentTimeMillis())
                 .build();
     }

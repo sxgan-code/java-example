@@ -1,8 +1,8 @@
 package cn.sxgan.common.exception;
 
 import cn.hutool.core.exceptions.ExceptionUtil;
+import cn.sxgan.common.enums.ResponseStatus;
 import cn.sxgan.common.response.ResponseResult;
-import cn.sxgan.common.response.ResponseStatus;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.converter.HttpMessageNotWritableException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -26,7 +26,7 @@ public class GlobalExceptionHandler {
     public ResponseResult<String> error(Exception e) {
         e.printStackTrace();
         log.error("GlobalExceptionHandler Exception e {}", ExceptionUtil.getMessage(e));
-        return ResponseResult.fail(ResponseStatus.HTTP_STATUS_500.getDescription());
+        return ResponseResult.fail(ResponseStatus.HTTP_STATUS_500.getMsg());
     }
     
     // 自定义异常

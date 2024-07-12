@@ -1,8 +1,8 @@
 package cn.sxgan.base.email.controller;
 
 import cn.sxgan.common.cache.redis.RedisUtil;
+import cn.sxgan.common.enums.ResponseStatus;
 import cn.sxgan.common.exception.AuthorityException;
-import cn.sxgan.common.exception.ExceptionStatus;
 import cn.sxgan.common.response.ResponseResult;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
@@ -38,7 +38,7 @@ public class EmailSendTestController {
     private JavaMailSender javaMailSender;
     
     @Autowired
-    RedisUtil redisUtil;
+    private RedisUtil redisUtil;
     
     @Operation(
             summary = "模拟验证码",
@@ -66,8 +66,7 @@ public class EmailSendTestController {
         } catch (Exception e) {
             log.error("邮件发送失败", e);
             throw new AuthorityException(
-                    ExceptionStatus.EXCEPTION_STATUS_712.getExceptionCode(),
-                    ExceptionStatus.EXCEPTION_STATUS_712.getExceptionMsg());
+                    ResponseStatus.EXCEPTION_STATUS_712.getCode(), ResponseStatus.EXCEPTION_STATUS_712.getMsg());
         }
         return ResponseResult.success("发送成功");
     }

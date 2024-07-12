@@ -48,7 +48,7 @@ const rules = {
 // 获取form表单引用
 const form = ref(null)
 const verifyCode = ref(null)
-const verifyImg = ref(null)
+const verifyImg = ref('http://localhost:9090/auth/verifyCodeImg')
 // 当点击登录按钮时的函数
 const getVerifyCodeImg = () => {
   verifyImg.value.src = 'http://localhost:9090/auth/verifyCodeImg?time=' + new Date().getTime()
@@ -170,7 +170,8 @@ const cleanCacheData = () => {
         <el-form-item prop="verifyCode">
           <el-input style="width: 250px; margin-right: 10px;" v-model="registerData.verifyCode"
                     placeholder="请输入验证码"/>
-          <img width="100" style="margin-left: 2.5rem;" height="30" ref="verifyImg" src="" @click="getVerifyCodeImg"
+          <img width="100" style="margin-left: 2.5rem;" height="30" ref="verifyImg"
+               src="http://localhost:9090/auth/verifyCodeImg" @click="getVerifyCodeImg"
                alt="">
         </el-form-item>
         <el-form-item class="flex">

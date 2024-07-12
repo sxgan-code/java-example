@@ -6,6 +6,9 @@ spring:
     include: prodb
 #    active: dev
 #    include: devdb
+# tokenKey
+token:
+  key: zoey2024
 jasypt:
   encryptor:
     # 加密算法

@@ -1,9 +1,9 @@
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://114.116.88.252:3306/zoey_mock_db?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
+    url: jdbc:mysql://bj-cynosdbmysql-grp-b4cfxl4m.sql.tencentcdb.com:29476/zoey_mock_db?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
     username: daniel
-    password: ZOEY_ENC(QySWSq23aHbKZZYJnT13FzCtyAWKMHxa)
+    password: ZOEY_ENC(EHjke5ZBZOqPByFxqiQUrKiPnv3VdBIp)
     type: com.alibaba.druid.pool.DruidDataSource
     # 数据源其他配置
     druid:

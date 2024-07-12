@@ -3,7 +3,7 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://192.168.0.200:3306/zoey_mock_db?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
     username: daniel
-    password: ZOEY_ENC(QySWSq23aHbKZZYJnT13FzCtyAWKMHxa)
+    password: ZOEY_ENC(EHjke5ZBZOqPByFxqiQUrKiPnv3VdBIp)
     type: com.alibaba.druid.pool.DruidDataSource
     # 数据源其他配置
     druid:
@@ -38,7 +38,7 @@ spring:
       host: 192.168.0.200
       database: 1
       port: 6379
-      password: daniel
+      password: ZOEY_ENC(ASQJELJzUbczcSw/FCnR7g==)
       jedis:
         pool:
           min-idle: 0

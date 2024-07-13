@@ -47,6 +47,10 @@ public class AuthServiceImpl implements IAuthService {
     
     @Override
     public ResponseResult<Map<String, String>> userAuthByEmail(UserSessionInfo userSessionInfo) {
+        String checkStr = checkImgVerifyCode(userSessionInfo);
+        if (checkStr != null) {
+            return ResponseResult.fail(Maps.newHashMap(), ResponseStatus.EXCEPTION_STATUS_999.getCode(), checkStr);
+        }
         HashMap<String, String> map = Maps.newHashMap();
         SysUserQuery userQuery = new SysUserQuery();
         userQuery.setEmail(userSessionInfo.getEmail());
@@ -75,6 +79,20 @@ public class AuthServiceImpl implements IAuthService {
             return ResponseResult.fail(Maps.newHashMap(), ResponseStatus.EXCEPTION_STATUS_701.getCode(),
                     ResponseStatus.EXCEPTION_STATUS_701.getMsg());
         }
+    }
+    
+    
+    private String checkImgVerifyCode(UserSessionInfo userSessionInfo) {
+        if (userSessionInfo != null && StringUtils.isBlank(userSessionInfo.getImgVerifyCode())) {
+            return ResponseStatus.EXCEPTION_STATUS_900.getMsg();
+        }
+        String imgCode = redisUtil.get(RedisConst.IMG_CAPTCHA_PREFIX + userSessionInfo.getVerToken(), String.class);
+        if (imgCode == null) {
+            return ResponseStatus.EXCEPTION_STATUS_708.getMsg();
+        } else if (!imgCode.equalsIgnoreCase(userSessionInfo.getImgVerifyCode())) {
+            return ResponseStatus.EXCEPTION_STATUS_705.getMsg();
+        }
+        return null;
     }
     
     @Override

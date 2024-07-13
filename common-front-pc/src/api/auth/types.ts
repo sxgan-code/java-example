@@ -13,12 +13,26 @@ export interface LoginData {
     /**
      * 确认密码
      */
-    rePassword: string;
+    rePassword?: string;
 
     /**
      * 验证码
      */
-    verifyCode: string;
+    verifyCode?: string;
+    /**
+     * 图片验证码文本
+     */
+    imgVerifyCode?: string;
+    /**
+     * 图片验证码token
+     */
+    vToken?: string;
+
+    /**
+     * 记住我
+     */
+    rememberMe?: boolean;
+
 
 }
 
@@ -30,6 +44,12 @@ export interface LoginResult {
      * 访问token
      */
     token?: string;
+
+    /* 图片验证vToken */
+    verToken: string;
+
+    /*图片*/
+    base64Img: string;
 }
 
 /**

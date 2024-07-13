@@ -36,7 +36,7 @@ spring:
     redis:
       #  host: 127.0.0.1
       host: 192.168.0.200
-      database: 1
+      database: 9
       port: 6379
       password: ZOEY_ENC(ASQJELJzUbczcSw/FCnR7g==)
       jedis:

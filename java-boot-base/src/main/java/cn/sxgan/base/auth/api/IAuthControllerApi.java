@@ -11,7 +11,6 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.servlet.http.HttpServletResponse;
 
-import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -48,7 +47,7 @@ public interface IAuthControllerApi {
                     @ApiResponse(description = "返回数据及Base64图片", content = @Content(mediaType = "application/json", schema = @Schema(implementation = String.class))),
                     @ApiResponse(responseCode = "700~800", description = "系统权限校验业务错误")
             })
-    ResponseResult<HashMap> getVerifyCodeImg(HttpServletResponse response);
+    ResponseResult<Map<String, String>> getVerifyCodeImg(HttpServletResponse response);
     
     @Operation(summary = "登陆", description = "登陆接口",
             parameters = {

@@ -8,15 +8,22 @@ import cn.sxgan.common.exception.AuthorityException;
 import cn.sxgan.common.response.ResponseResult;
 import cn.sxgan.common.utils.CommonUtils;
 import cn.sxgan.common.utils.DateUtils;
+import cn.sxgan.common.utils.SnowflakeIdGenerator;
+import cn.sxgan.common.utils.VerifyCodeUtils;
+import com.google.common.collect.Maps;
 import jakarta.annotation.Resource;
 import jakarta.mail.internet.InternetAddress;
+import jakarta.servlet.http.HttpServletResponse;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 
+import java.io.IOException;
+import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -37,6 +44,9 @@ public class MailSendServiceImpl implements IMailSendService {
     
     @Resource
     private RedisUtil redisUtil;
+    
+    @Autowired
+    SnowflakeIdGenerator snowflakeIdGenerator;
     
     @Override
     public ResponseResult<String> sendVerifyCodeToSpecifiedEmail(String email) {
@@ -82,5 +92,23 @@ public class MailSendServiceImpl implements IMailSendService {
                     ResponseStatus.EXCEPTION_STATUS_712.getCode(), ResponseStatus.EXCEPTION_STATUS_712.getMsg());
         }
         
+    }
+    
+    @Override
+    public ResponseResult<Map<String, String>> getVerifyCodeImg(HttpServletResponse response) {
+        System.out.println(snowflakeIdGenerator.nextIds(10));
+        Map<String, String> result = Maps.newHashMap();
+        VerifyCodeUtils verifyCodeUtils = null;
+        try {
+            verifyCodeUtils = new VerifyCodeUtils();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        String vToken = verifyCodeUtils.getVToken();
+        result.put("base64Img", verifyCodeUtils.getBase64ImageStr());
+        result.put("verToken", vToken);
+        redisUtil.set(RedisConst.IMG_CAPTCHA_PREFIX + vToken, verifyCodeUtils.getText(), 60, TimeUnit.SECONDS);
+        log.info("MailSendServiceImpl.getVerifyCodeImg当前生成数据为：{}", result);
+        return ResponseResult.success(result);
     }
 }

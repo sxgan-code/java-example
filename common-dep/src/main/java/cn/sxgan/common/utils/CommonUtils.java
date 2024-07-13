@@ -24,7 +24,6 @@ public class CommonUtils {
         if (length <= 0) {
             throw new IllegalArgumentException("Length must be positive");
         }
-        
         StringBuilder code = new StringBuilder(length);
         for (int i = 0; i < length; i++) {
             code.append(CHAR_SET.charAt(RANDOM.nextInt(CHAR_SET.length())));

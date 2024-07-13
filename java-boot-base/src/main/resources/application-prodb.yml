@@ -36,7 +36,7 @@ spring:
     redis:
       #  host: 127.0.0.1
       host: 114.116.88.252
-      database: 1
+      database: 9
       port: 6379
       password: daniel
       jedis:

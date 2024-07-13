@@ -17,4 +17,5 @@ public class RedisConst {
     public static Long LOGIN_TIME_5 = 5L;
     public static Long LOGIN_TIME_30 = 30L;
     public static Long LOGIN_TIME_60 = 60L;
+    
 }

@@ -1,6 +1,9 @@
 package cn.sxgan.base.auth.services;
 
 import cn.sxgan.common.response.ResponseResult;
+import jakarta.servlet.http.HttpServletResponse;
+
+import java.util.Map;
 
 /**
  * @Description: 邮箱服务接口
@@ -18,4 +21,11 @@ public interface IMailSendService {
      * @return
      */
     ResponseResult<String> sendVerifyCodeToSpecifiedEmail(String email);
+    
+    /**
+     * 获取验证码图片
+     *
+     * @return vToken, Base64 img
+     */
+    ResponseResult<Map<String, String>> getVerifyCodeImg(HttpServletResponse response);
 }

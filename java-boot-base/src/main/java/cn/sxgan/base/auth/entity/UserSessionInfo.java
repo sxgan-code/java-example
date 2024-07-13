@@ -39,4 +39,13 @@ public class UserSessionInfo implements Serializable {
             ".eyJpZCI6IjE3NzY5MTQzMzYxMjY4ODU4ODkiLCJlbWFpbCI6InN4Z2FuQGZveG1haWwuY29tIn0" +
             ".MeOvzfpSdaHyk2ldSFUSoOz_te5Uibx4v4fT89XSkXE")
     private String token;
+    
+    @Schema(description = "vToken", type = "String", example = "SLODINDK")
+    private String verToken;
+    
+    @Schema(description = "是否记住我", type = "Boolean", example = "true")
+    private String rememberMe;
+    
+    @Schema(description = "图片验证码", type = "String", example = "6666")
+    private String imgVerifyCode;
 }

@@ -40,6 +40,23 @@ export function signupApi(data: LoginData): Promise<ResponseResult<LoginResult>>
 }
 
 /**
+ * 获取图片验证码
+ *
+ * @param data {LoginData}
+ * @returns 校验图片
+ */
+export function verifyCodeImgApi(): Promise<ResponseResult<LoginResult>> {
+    return request({
+        url: "/auth/verifyCodeImg",
+        method: "get",
+        headers: {
+            "Content-Type": "application/json;charset=utf-8",
+            "Use-Timestamp": true,
+        },
+    });
+}
+
+/**
  * 登录API
  *
  * @param data {LoginData}

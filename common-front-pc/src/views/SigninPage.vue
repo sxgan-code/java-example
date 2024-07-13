@@ -1,7 +1,7 @@
 <script setup>
 import {Lock, User} from '@element-plus/icons-vue'
-import {ref} from 'vue'
-import {sendMailVerifyCode, signinApi, signupApi} from "@/api/auth/index.ts"
+import {onMounted, ref} from 'vue'
+import {sendMailVerifyCode, signinApi, signupApi, verifyCodeImgApi} from "@/api/auth/index.ts"
 //控制注册与登录表单的显示， 默认显示注册
 const isRegister = ref(false)
 const loading = ref(false)
@@ -11,7 +11,10 @@ const registerData = ref({
   email: '',
   password: '',
   rePassword: '',
-  verifyCode: ''
+  verifyCode: '',
+  imgVerifyCode: '',
+  verToken: '',
+  rememberMe: ''
 })
 // 校验注册数据
 const checkRePassword = (rule, value, callback) => {
@@ -41,6 +44,10 @@ const rules = {
   verifyCode: [
     {required: true, message: '请输入验证码', trigger: 'blur'},
     {min: 8, max: 8, type: 'string', message: '长度为8位非空字符', trigger: 'blur'}
+  ],
+  imgVerifyCode: [
+    {required: true, message: '请输入图片验证码', trigger: 'blur'},
+    {min: 4, max: 4, type: 'string', message: '长度为4位非空字符', trigger: 'blur'}
   ]
 }
 // 登录注册相关逻辑
@@ -48,23 +55,25 @@ const rules = {
 // 获取form表单引用
 const form = ref(null)
 const verifyCode = ref(null)
-const verifyImg = ref('http://localhost:9090/auth/verifyCodeImg')
+const verifyImg = ref(null)
 // 当点击登录按钮时的函数
 const getVerifyCodeImg = () => {
-  verifyImg.value.src = 'http://localhost:9090/auth/verifyCodeImg?time=' + new Date().getTime()
+  verifyCodeImgApi().then(res => {
+    verifyImg.value.src = res.data.base64Img
+    registerData.value.verToken = res.data.verToken;
+  })
 }
 const signinSys = () => {
   form.value.validate((isValid, invalidFields) => {
     if (isValid) {
       // 表单所有元素验证通过，可以提交了
-      console.log('登录')
+      console.log('登录', registerData.value)
       loading.value = true
       signinApi(registerData.value).then(res => {
         console.log(res)
         loading.value = false
       }).catch(err => {
         console.log(err)
-        
       })
     }
     
@@ -109,10 +118,16 @@ const cleanCacheData = () => {
     email: '',
     password: '',
     rePassword: '',
-    verifyCode: ''
+    verifyCode: '',
+    imgVerifyCode: '',
+    vToken: '',
+    rememberMe: ''
   }
 }
-
+onMounted(() => {
+  console.log('挂载')
+  getVerifyCodeImg()
+})
 </script>
 
 <template>
@@ -167,16 +182,16 @@ const cleanCacheData = () => {
           <el-input name="password" v-model="registerData.password" :prefix-icon="Lock" type="password"
                     placeholder="请输入密码"></el-input>
         </el-form-item>
-        <el-form-item prop="verifyCode">
-          <el-input style="width: 250px; margin-right: 10px;" v-model="registerData.verifyCode"
-                    placeholder="请输入验证码"/>
+        <el-form-item prop="imgVerifyCode">
+          <el-input style="width: 250px; margin-right: 10px;" v-model="registerData.imgVerifyCode"
+                    placeholder="请输入图片验证码"/>
           <img width="100" style="margin-left: 2.5rem;" height="30" ref="verifyImg"
-               src="http://localhost:9090/auth/verifyCodeImg" @click="getVerifyCodeImg"
+               src="" @click="getVerifyCodeImg"
                alt="">
         </el-form-item>
         <el-form-item class="flex">
           <div class="flex">
-            <el-checkbox>记住我</el-checkbox>
+            <el-checkbox v-model="registerData.rememberMe">记住我</el-checkbox>
             <el-link type="primary" :underline="false">忘记密码？</el-link>
           </div>
         </el-form-item>
@@ -202,7 +217,7 @@ const cleanCacheData = () => {
   
   .bg {
     background: //url('@/assets/images/logo2.png') no-repeat 40% 10% / 240px auto,
-    url('@/assets/images/sys/bg.jpg') no-repeat 10% / cover;
+        url('@/assets/images/sys/bg.jpg') no-repeat 10% / cover;
     border-radius: 0 20px 20px 0;
   }
   

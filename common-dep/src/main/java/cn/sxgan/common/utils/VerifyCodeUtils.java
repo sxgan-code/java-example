@@ -1,21 +1,47 @@
 package cn.sxgan.common.utils;
 
+import cn.sxgan.common.consts.CommonConst;
+import lombok.Getter;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Component;
+
+import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
-import java.util.Random;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.security.SecureRandom;
+import java.util.Base64;
 
+@Slf4j
+@Component
 public class VerifyCodeUtils {
     private int w = 100;
     private int h = 30;
-    private Random r = new Random();
+    private final SecureRandom r = new SecureRandom();
     // {"宋体", "华文楷体", "黑体", "华文新魏", "华文隶书", "微软雅黑", "楷体_GB2312"}
-    private String[] fontNames = {"宋体", "华文楷体", "黑体", "微软雅黑", "楷体_GB2312"};
-    // 可选字符
-    private String codes = "1234567890abcdefghjkmnopqrstuvwxyzABCDEFGHJKMNPQRSTUVWXYZ";
+    private final String[] fontNames = {"宋体", "华文楷体", "黑体", "微软雅黑", "楷体_GB2312"};
     // 背景色
-    private Color bgColor = new Color(183, 201, 187);
+    private final Color bgColor = new Color(183, 201, 187);
+    /*  返回验证码图片上的文本 */
     // 验证码上的文本
+    @Getter
     private String text;
+    
+    @Getter
+    private String Base64ImageStr;
+    
+    @Getter
+    private String vToken;
+    
+    
+    public VerifyCodeUtils() throws IOException {
+        BufferedImage imageBI = this.getImage();
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        ImageIO.write(imageBI, "png", baos);
+        this.vToken = CommonUtils.generateRandomCode(10);
+        this.Base64ImageStr = CommonConst.BASE64_HEAD_STR + Base64.getEncoder().encodeToString(baos.toByteArray());
+    }
     
     // 生成随机的颜色
     private Color randomColor() {
@@ -51,6 +77,8 @@ public class VerifyCodeUtils {
     
     // 随机生成一个字符
     private char randomChar() {
+        // 可选字符
+        String codes = "1234567890abcdefghjkmnopqrstuvwxyzABCDEFGHJKMNPQRSTUVWXYZ";
         int index = r.nextInt(codes.length());
         return codes.charAt(index);
     }
@@ -85,8 +113,4 @@ public class VerifyCodeUtils {
         return image;
     }
     
-    // 返回验证码图片上的文本
-    public String getText() {
-        return this.text;
-    }
 }

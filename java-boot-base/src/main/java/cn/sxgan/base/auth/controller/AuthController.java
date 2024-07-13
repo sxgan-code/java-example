@@ -7,24 +7,20 @@ import cn.sxgan.base.auth.entity.UserSessionInfo;
 import cn.sxgan.base.auth.services.impl.AuthServiceImpl;
 import cn.sxgan.base.auth.services.impl.MailSendServiceImpl;
 import cn.sxgan.base.auth.services.impl.UserServiceImpl;
+import cn.sxgan.common.anno.RequestBeforeLog;
+import cn.sxgan.common.anno.WorkTime;
 import cn.sxgan.common.entity.vo.SysUserVO;
 import cn.sxgan.common.enums.ResponseStatus;
 import cn.sxgan.common.response.ResponseResult;
-import cn.sxgan.common.utils.VerifyCodeUtils;
 import jakarta.annotation.Resource;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.imageio.ImageIO;
-import java.awt.image.BufferedImage;
-import java.io.IOException;
-import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -62,21 +58,14 @@ public class AuthController implements IAuthControllerApi {
     }
     
     @GetMapping("/verifyCodeImg")
-    public ResponseResult<HashMap> getVerifyCodeImg(HttpServletResponse response) {
-        VerifyCodeUtils verifyCodeUtils = new VerifyCodeUtils();
-        BufferedImage bi = verifyCodeUtils.getImage();// 获取验证码BufferedImage对象
-        log.info("获取图片验证码--->{}", verifyCodeUtils.getText());// 获取验证码文本
-        try {
-            ImageIO.write(bi, "jpg", response.getOutputStream());
-        } catch (IOException e) {
-            log.error("获取验证码图片失败", e);
-            throw new RuntimeException(e);
-        }
-        return ResponseResult.success();
+    public ResponseResult<Map<String, String>> getVerifyCodeImg(HttpServletResponse response) {
+        return mailSendService.getVerifyCodeImg(response);
     }
     
+    @WorkTime("登录")
+    @RequestBeforeLog
     @PostMapping("/signin")
-    public ResponseResult<Map<String, String>> signin(@RequestBody @Validated UserSessionInfo userSessionInfo) {
+    public ResponseResult<Map<String, String>> signin(@RequestBody UserSessionInfo userSessionInfo) {
         return authService.userAuthByEmail(userSessionInfo);
     }
     

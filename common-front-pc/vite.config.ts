@@ -16,7 +16,7 @@ export default defineConfig(({command, mode}) => {
     const isBuild = command === "build";
     // 启动时打印 key 的内容
     console.log("当前环境变量VITE_APP_NAME:" + env.VITE_APP_NAME)
-    console.log("当前环境变量VITE_BASE_URL:" + env.VITE_BASE_URL)
+    console.log("当前环境变量VITE_ENV_URL:" + env.VITE_ENV_URL)
     console.log("当前环境变量VUE_APP_PROXY_URL:" + env.VUE_APP_PROXY_URL)
     return {
         envDir: ENV_DIR,

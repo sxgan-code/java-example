@@ -18,3 +18,24 @@ jasypt:
       # 算法识别的前后缀，默认ENC()，包含在前后缀的加密信息，会使用指定算法解密
       prefix: ZOEY_ENC(
       suffix: )
+snowflake:
+  # 数据中心id
+  datacenterId: 1
+  # 数据中心id位数
+  datacenterBits: 1
+  # 机器id
+  workerId: 1
+  # 机器id位数
+  workerBits: 1
+  # 序列id所占位数
+  sequenceBits: 12
+  # 时间戳起始点
+  twepoch: 1609430400000 # 2021-01-01 00:00:00
+  # 单次批量生成id的最大数量
+  maxBatchCount: 1000
+
+
+
+
+
+

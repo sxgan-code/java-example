@@ -21,6 +21,10 @@ service.interceptors.request.use(
         if (token != null && token != '') {
             config.headers.Authorization = token;
         }
+        if (config.headers.get('Use-Timestamp')) {
+            config.url = config.url + '?timestamp=' + new Date().getTime();
+        }
+        console.log("当前请求路径", config.url);
         // console.log(import.meta.env.VITE_BASE_URL)
         return config;
     },

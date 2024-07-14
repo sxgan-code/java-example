@@ -1,36 +1,38 @@
-# common-front-pc
+前端案例持续更新中。。。@sxgan
 
-This template should help get you started developing with Vue 3 in Vite.
+---
 
-## Recommended IDE Setup
+> ✨ 勇敢是，当你还未开始就已知道自己会输，可你依然要去做，
+> 而且无论如何都要把它坚持到底。你很少能赢，但有时也会！ ——《杀死一只知更鸟》
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and
-disable Vetur).
+--- 
 
-## Type Support for `.vue` Imports in TS
+# 前言
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for
-type checking. In editors, we need [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) to make the
-TypeScript language service aware of `.vue` types.
+本仓库主要记录前端相关的案例，包括但不限于Vite、Vue3、TypeScript、Sass、Vue-Router、Axios、Pinia、Echarts、Element Plus等技术实现
 
-## Customize configuration
+本项目资源文档：[a-doc](..%2Fa-doc)
 
-See [Vite Configuration Reference](https://vitejs.dev/config/).
+github仓库地址: [java-example](https://github.com/sxgan-code/java-example)
 
-## Project Setup
+# 目录
 
-```sh
-npm install
-```
+## 自定义组件相关
 
-### Compile and Hot-Reload for Development
+### Basic 基础组件
 
-```sh
-npm run dev
-```
+### Form 表单组件
 
-### Type-Check, Compile and Minify for Production
+### Data 数据展示
 
-```sh
-npm run build
-```
+### Navigation 导航
+
+### Feedback 反馈组件
+
+- [01.反馈组件-鼠标悬浮提示指令](src%2Fcomponents%2Ftips)
+
+### Others 其他
+
+## 前端小案例
+
+- [01.认证模块-登录注册功能页](src%2Fviews%2FSigninPage.vue)

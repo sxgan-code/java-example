@@ -3,7 +3,8 @@ import type {LoginData, LoginResult, SysUserVO, VerifyCodeResult} from "./types"
 import type {ResponseResult} from "@/api/common-types.ts";
 
 /**
- * 获取验证码
+ * @description 获取邮箱验证码
+ * @param data
  */
 export function sendMailVerifyCode(data: LoginData): Promise<ResponseResult<VerifyCodeResult>> {
     const requestJsonData = JSON.stringify(data)
@@ -42,7 +43,6 @@ export function signupApi(data: LoginData): Promise<ResponseResult<LoginResult>>
 /**
  * 获取图片验证码
  *
- * @param data {LoginData}
  * @returns 校验图片
  */
 export function verifyCodeImgApi(): Promise<ResponseResult<LoginResult>> {
@@ -79,7 +79,7 @@ export function signinApi(data: LoginData): Promise<ResponseResult<LoginResult>>
 }
 
 /**
- * 根据token获取用户信息
+ * @Description: 获取用户信息
  */
 export function getUserInfoApi(): Promise<ResponseResult<SysUserVO>> {
     return request({
@@ -93,7 +93,8 @@ export function getUserInfoApi(): Promise<ResponseResult<SysUserVO>> {
 }
 
 /**
- * 根据token更新用户信息
+ * @Description: 更新用户信息
+ * @param data
  */
 export function updateUserInfoApi(data: SysUserVO): Promise<ResponseResult<string>> {
     const requestJsonData = JSON.stringify(data)

@@ -14,7 +14,9 @@ Java案例持续更新中。。。@sxgan
 
 本项目涉及的公共依赖：[common-dep](common-dep)
 
-本项目案例涉及的前端统一写在公共模块：[公共前端模块](common-front-pc)
+本项目案例涉及的前端统一写在公共模块：[公共前端模块](common-front-pc)‘
+
+前端案例请查看公共前端模块，请点击此处跳转：[README.md](common-front-pc%2FREADME.md)
 
 github仓库地址: [java-example](https://github.com/sxgan-code/java-example)
 

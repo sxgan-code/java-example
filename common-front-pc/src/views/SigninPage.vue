@@ -1,7 +1,8 @@
 <script setup>
 import {Lock, User} from '@element-plus/icons-vue'
 import {onMounted, ref} from 'vue'
-import {sendMailVerifyCode, signinApi, signupApi, verifyCodeImgApi} from "@/api/auth/index.ts"
+import {signinApi, signupApi, verifyCodeImgApi} from "@/api/auth/index.ts"
+import {BackgroundType} from "@/components/tips/tooltip";
 //控制注册与登录表单的显示， 默认显示注册
 const isRegister = ref(false)
 const loading = ref(false)
@@ -76,24 +77,44 @@ const signinSys = () => {
         console.log(err)
       })
     }
-    
+
   })
 }
 
+const isDisabled = ref(false)
+const verMsg = ref('获取验证码')
 const sendVerify = async () => {
   form.value.validateField(['email'], isValid => {
     if (isValid) {
-      sendMailVerifyCode(registerData.value).then(res => {
-        console.log(res)
-      }).catch(err => {
-        console.log(err)
-      })
+      // 设置倒计时
+      isDisabled.value = true
+      // 生成一个时间
+      let time = 60;
+      // 生成一个自动计时的函数
+      let t = setInterval(() => {
+        // time 自减
+        if (time > 0) {
+          // 先减少，在做其他的事情，不然，等待一秒，加上网络延迟，效果不好
+          --time;
+          verMsg.value = `${time}秒后再获取`;
+        } else {
+          // 清除函数
+          clearInterval(t);
+          isDisabled.value = false
+          verMsg.value = '获取验证码';
+        }
+      }, 1000)
+      // sendMailVerifyCode(registerData.value).then(res => {
+      //   console.log(res)
+      // }).catch(err => {
+      //   console.log(err)
+      // })
     } else {
       console.log('formError表单填写有误，请核对！')
       return false
     }
   })
-  
+
 }
 
 const signupSys = async () => {
@@ -108,7 +129,7 @@ const signupSys = async () => {
         console.log(err)
       })
     } else {
-    
+
     }
   })
 }
@@ -155,7 +176,7 @@ onMounted(() => {
         <el-form-item prop="verifyCode">
           <el-input style="width: 250px; margin-right: 10px;" v-model="registerData.verifyCode"
                     placeholder="请输入验证码"/>
-          <el-button type="primary" @click="sendVerify">获取验证码</el-button>
+          <el-button :disabled="isDisabled" type="primary" @click="sendVerify">{{ verMsg }}</el-button>
         </el-form-item>
         <!-- 注册按钮 -->
         <el-form-item>
@@ -185,7 +206,8 @@ onMounted(() => {
         <el-form-item prop="imgVerifyCode">
           <el-input style="width: 250px; margin-right: 10px;" v-model="registerData.imgVerifyCode"
                     placeholder="请输入图片验证码"/>
-          <img width="100" style="margin-left: 2.5rem;" height="30" ref="verifyImg"
+          <img v-tip="{text:'点击刷新',bg:BackgroundType.black}" width="100" style="margin-left: 2.5rem;" height="30"
+               ref="verifyImg"
                src="" @click="getVerifyCodeImg"
                alt="">
         </el-form-item>
@@ -214,32 +236,32 @@ onMounted(() => {
 .login-page {
   height: 100vh;
   background-color: #fff;
-  
+
   .bg {
     background: //url('@/assets/images/logo2.png') no-repeat 40% 10% / 240px auto,
         url('@/assets/images/sys/bg.jpg') no-repeat 10% / cover;
     border-radius: 0 20px 20px 0;
   }
-  
+
   .verify {
     display: flex;
     flex-direction: row;
   }
-  
+
   .form {
     display: flex;
     flex-direction: column;
     justify-content: center;
     user-select: none;
-    
+
     .title {
       margin: 0 auto;
     }
-    
+
     .button {
       width: 100%;
     }
-    
+
     .flex {
       width: 100%;
       display: flex;

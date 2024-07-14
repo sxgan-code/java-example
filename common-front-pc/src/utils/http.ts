@@ -1,11 +1,11 @@
 // src\utils\http.ts 参考于https://gitee.com/youlaiorg/vue3-element-admin/blob/master/src/utils/request.ts
-import axios, {type AxiosResponse, type InternalAxiosRequestConfig} from 'axios';
+import axios, {type AxiosInstance, type AxiosResponse, type InternalAxiosRequestConfig} from 'axios';
 // useUserStore用于用户权限验证的全局token状态管理
 // import {useUserStore} from "@/store/user-store.ts";
 
 // const userStore = useUserStore();
 // 创建 axios 实例
-const service = axios.create({
+const service: AxiosInstance = axios.create({
     // baseURL: import.meta.env.VITE_APP_BASE_API,
     // 这里使用在线mock数据,根据实际情况配置
     baseURL: import.meta.env.VITE_ENV_URL,

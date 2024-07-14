@@ -1,0 +1,71 @@
+.global-msg-right_bottom {
+  //width: 50%;
+  height: 8rem;
+  //margin: 0 auto;
+  position: fixed;
+  bottom: 4rem;
+  right: 4rem;
+  display: flex;
+  z-index: 9999;
+  justify-content: center;
+  align-items: center;
+  animation-name: fadeInRight;
+  animation-duration: 1s;
+
+  div {
+    display: flex;
+    align-items: center;
+    padding: 0 2rem;
+    box-sizing: border-box;
+    background: #fff;
+    border-radius: 0.5rem;
+    box-shadow: 0.2rem 0.2rem 1.5rem 0.5rem #7a7a7a3b;
+    height: 5rem;
+
+    img {
+      height: 2.4rem;
+      width: 2.4rem;
+      margin-right: 1.2rem;
+    }
+
+    p {
+      font-size: 1.6rem;
+      color: #3b3b3b;
+      line-height: 1.6rem;
+    }
+  }
+}
+
+.global-msg-top {
+  height: 6rem;
+  position: absolute;
+  top: 2rem;
+  left: 50%;
+  z-index: 9999;
+  transform: translate(-50%, 0);
+
+  div {
+    animation-name: fadeInDown;
+    animation-duration: 1s;
+    display: flex;
+    align-items: center;
+    padding: 0 1rem;
+    box-sizing: border-box;
+    background: #fff;
+    border-radius: 0.5rem;
+    box-shadow: 0.2rem 0.2rem 1.5rem 0.5rem #7a7a7a3b;
+    height: 3.5rem;
+
+    img {
+      height: 2.4rem;
+      width: 2.4rem;
+      margin-right: 1.2rem;
+    }
+
+    p {
+      font-size: 1.6rem;
+      color: #3b3b3b;
+      line-height: 1.6rem;
+    }
+  }
+}

@@ -26,13 +26,12 @@ export interface LoginData {
     /**
      * 图片验证码token
      */
-    vToken?: string;
+    verToken?: string;
 
     /**
      * 记住我
      */
-    rememberMe?: boolean;
-
+    rememberMe: boolean;
 
 }
 

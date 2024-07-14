@@ -1,5 +1,9 @@
-@import "@/assets/fonts/fonts.scss";
-
+@import "@/assets/fonts/fonts";
+@import "@/assets/css/common-color";
+/*导入动画*/
+@import "@/assets/css/animation/index";
+/*组件样式导入*/
+@import "@/components/message/style";
 /* 页面元素整体设置*/
 * {
   user-select: none;

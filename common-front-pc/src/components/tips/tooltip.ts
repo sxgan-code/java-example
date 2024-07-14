@@ -6,14 +6,14 @@ export default {
     }
 }
 
-export enum BackgroundType {
+export enum BackgroundTypeEnum {
     black = 'black',
     white = 'white'
 }
 
 export interface TooltipType {
     text: string;
-    bg: BackgroundType;
+    bg: BackgroundTypeEnum;
 }
 
 /**

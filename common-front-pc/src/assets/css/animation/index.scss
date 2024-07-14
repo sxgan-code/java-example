@@ -1,0 +1,32 @@
+@import 'fadeIn.scss';
+@import 'fadeOut.scss';
+@import 'scroll.scss';
+
+/* 持续360度旋转*/
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+  /* 这里可以根据需求调整旋转的角度 */
+}
+
+.globe-rotating-element {
+  animation: rotate 1s linear infinite; /* 这里的infinite表示无限次重复播放动画 */
+}
+
+/* 移入缩放*/
+.globe-hover-scale {
+  transition: transform 1s ease; /* 设置过渡时间和速度曲线 */
+}
+
+.globe-hover-scale:hover {
+  transform: scale(1.3); /* 鼠标悬停时将元素缩放到原始大小的1.5倍 */
+}
+
+
+
+
+

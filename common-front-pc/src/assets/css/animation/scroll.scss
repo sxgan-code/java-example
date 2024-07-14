@@ -1,0 +1,22 @@
+/* 文本超出左右滑动特效 */
+.scroll-x {
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.scroll-x span {
+  display: none;
+  animation: scroll 8s infinite ease-in;
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(5%);
+  }
+  50% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(5%);
+  }
+}

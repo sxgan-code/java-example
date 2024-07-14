@@ -1,0 +1,134 @@
+/* 按钮组件 */
+/* 按钮公共样式*/
+:root {
+
+}
+
+.btn-mini {
+  padding: 0 1rem;
+  height: 2rem;
+  border-radius: 0.2rem;
+  font-size: 1.2rem;
+}
+
+.btn-default {
+  padding: 0 1.5rem;
+  height: 2.5rem;
+  border-radius: 0.3rem;
+  font-size: 1.3rem;
+}
+
+.btn-max {
+  padding: 0 1.5rem;
+  height: 3rem;
+  border-radius: 0.4rem;
+  font-size: 1.4rem;
+}
+
+/* primary*/
+.btn-primary {
+  background: var(--btn-primary);
+  border: 0.1rem solid var(--btn-primary-border);
+  color: var(--btn-primary-text);
+
+
+  &:hover {
+    background: var(--btn-primary-hover);
+    color: var(--btn-primary-text-hover);
+  }
+}
+
+.btn-primary:focus {
+  background: var(--btn-primary-hover);
+  color: var(--btn-primary-text-hover);
+}
+
+/* info*/
+.btn-info {
+  background: var(--btn-info);
+  border: 0.1rem solid var(--btn-info-border);
+  color: var(--btn-info-text);
+
+  &:hover {
+    background: var(--btn-info-hover);
+    color: var(--btn-info-text-hover);
+  }
+}
+
+.btn-info:focus {
+  background: var(--btn-info-hover);
+  color: var(--btn-info-text-hover);
+}
+
+/* 确认按钮*/
+.btn-confirm {
+  background: var(--btn-primary-border);
+  border: 0.1rem solid var(--btn-primary-border);
+  color: var(--btn-primary);
+
+
+  &:hover {
+    background: var(--btn-primary-hover);
+    color: var(--btn-confirm-text-hover);
+  }
+}
+
+.btn-confirm:focus {
+  background: var(--btn-confirm-hover);
+  color: var(--btn-confirm-text-hover);
+}
+
+/* 取消按钮*/
+.btn-cancel {
+  background: var(--btn-info);
+  border: 1rem solid var(--btn-primary-border);
+  color: var(--btn-primary-border);
+
+
+  &:hover {
+    background: var(--btn-primary-border);
+    color: var(--btn-confirm-text-hover);
+  }
+}
+
+.btn-cancel:focus {
+  background: var(--btn-primary-border);
+  color: var(--btn-confirm-text-hover);
+}
+
+/* error*/
+.btn-error {
+  background: var(--btn-error);
+  border: 0.1rem solid var(--btn-error-border);
+  color: var(--btn-error-text);
+
+
+  &:hover {
+    background: var(--btn-error-hover);
+    color: var(--btn-error-text-hover);
+  }
+}
+
+.btn-error:focus {
+  background: var(--btn-error-hover);
+  color: var(--btn-error-text-hover);
+}
+
+
+/* warning*/
+.btn-warning {
+  background: var(--btn-warning);
+  border: 0.1rem solid var(--btn-warning-border);
+  color: var(--btn-warning-text);
+
+
+  &:hover {
+    background: var(--btn-warning-hover);
+    color: var(--btn-warning-text-hover);
+  }
+}
+
+.btn-warning:focus {
+  background: var(--btn-warning-hover);
+  color: var(--btn-warning-text-hover);
+}

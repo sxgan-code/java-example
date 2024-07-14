@@ -1,24 +1,34 @@
-<script setup>
+<script setup lang="ts">
 import {Lock, User} from '@element-plus/icons-vue'
 import {onMounted, ref} from 'vue'
-import {signinApi, signupApi, verifyCodeImgApi} from "@/api/auth/index.ts"
-import {BackgroundType} from "@/components/tips/tooltip";
+import {sendMailVerifyCode, signinApi, signupApi, verifyCodeImgApi} from "@/api/auth/index"
+import {BackgroundTypeEnum} from "@/components/tips/tooltip";
+import type {LoginData} from "@/api/auth/types";
+import message, {PositionTypeEnum} from "@/components/message";
+import {goToHref, HrefTypeEnum} from "@/utils/common-utils";
 //控制注册与登录表单的显示， 默认显示注册
 const isRegister = ref(false)
 const loading = ref(false)
 
-// 定义注册数据模型
-const registerData = ref({
+/**
+ * 定义注册数据模型
+ */
+const registerData = ref<LoginData>({
   email: '',
   password: '',
   rePassword: '',
   verifyCode: '',
   imgVerifyCode: '',
   verToken: '',
-  rememberMe: ''
+  rememberMe: false
 })
-// 校验注册数据
-const checkRePassword = (rule, value, callback) => {
+/**
+ * 校验注册数据
+ * @param rule
+ * @param value
+ * @param callback
+ */
+const checkRePassword = (rule: any, value: any, callback: any) => {
   console.log(value)
   console.log(registerData.value.rePassword)
   if (value === '') {
@@ -54,18 +64,22 @@ const rules = {
 // 登录注册相关逻辑
 
 // 获取form表单引用
-const form = ref(null)
-const verifyCode = ref(null)
-const verifyImg = ref(null)
-// 当点击登录按钮时的函数
+const form = ref()
+const verifyImg = ref()
+/**
+ * 当点击登录验证码图片
+ * */
 const getVerifyCodeImg = () => {
   verifyCodeImgApi().then(res => {
     verifyImg.value.src = res.data.base64Img
     registerData.value.verToken = res.data.verToken;
   })
 }
+/**
+ * 登录
+ */
 const signinSys = () => {
-  form.value.validate((isValid, invalidFields) => {
+  form.value.validate((isValid: any, invalidFields: any) => {
     if (isValid) {
       // 表单所有元素验证通过，可以提交了
       console.log('登录', registerData.value)
@@ -73,18 +87,24 @@ const signinSys = () => {
       signinApi(registerData.value).then(res => {
         console.log(res)
         loading.value = false
+        goToHref(HrefTypeEnum.LOCAL_HREF, '/main')
+        message.success('登录成功', PositionTypeEnum.TOP)
       }).catch(err => {
         console.log(err)
+        message.error('系统错误', PositionTypeEnum.TOP)
       })
     }
-
+    
   })
 }
 
 const isDisabled = ref(false)
 const verMsg = ref('获取验证码')
+/**
+ * 发送邮箱验证码
+ */
 const sendVerify = async () => {
-  form.value.validateField(['email'], isValid => {
+  form.value.validateField(['email'], (isValid: any) => {
     if (isValid) {
       // 设置倒计时
       isDisabled.value = true
@@ -104,36 +124,44 @@ const sendVerify = async () => {
           verMsg.value = '获取验证码';
         }
       }, 1000)
-      // sendMailVerifyCode(registerData.value).then(res => {
-      //   console.log(res)
-      // }).catch(err => {
-      //   console.log(err)
-      // })
+      sendMailVerifyCode(registerData.value).then(res => {
+        console.log(res)
+      }).catch(err => {
+        console.log(err)
+      })
     } else {
       console.log('formError表单填写有误，请核对！')
       return false
     }
   })
-
+  
 }
-
+/**
+ * 注册
+ */
 const signupSys = async () => {
-  form.value.validate((isValid, invalidFields) => {
+  form.value.validate((isValid: any, invalidFields: any) => {
     if (isValid) {
       // 表单所有元素验证通过，可以提交了
       loading.value = true
       signupApi(registerData.value).then(res => {
         console.log(res)
         loading.value = false
+        message.success('注册成功，请登录', PositionTypeEnum.TOP)
+        isRegister.value = false
       }).catch(err => {
         console.log(err)
+        loading.value = false
+        message.error('系统错误', PositionTypeEnum.TOP)
       })
     } else {
-
+    
     }
   })
 }
-
+/**
+ * 清空数据
+ */
 const cleanCacheData = () => {
   registerData.value = {
     email: '',
@@ -141,12 +169,14 @@ const cleanCacheData = () => {
     rePassword: '',
     verifyCode: '',
     imgVerifyCode: '',
-    vToken: '',
-    rememberMe: ''
+    verToken: '',
+    rememberMe: false
   }
 }
+/*
+ * 页面加载时预处理
+ */
 onMounted(() => {
-  console.log('挂载')
   getVerifyCodeImg()
 })
 </script>
@@ -206,7 +236,8 @@ onMounted(() => {
         <el-form-item prop="imgVerifyCode">
           <el-input style="width: 250px; margin-right: 10px;" v-model="registerData.imgVerifyCode"
                     placeholder="请输入图片验证码"/>
-          <img v-tip="{text:'点击刷新',bg:BackgroundType.black}" width="100" style="margin-left: 2.5rem;" height="30"
+          <img v-tip="{text:'点击刷新',bg:BackgroundTypeEnum.black}" width="100" style="margin-left: 2.5rem;"
+               height="30"
                ref="verifyImg"
                src="" @click="getVerifyCodeImg"
                alt="">
@@ -236,32 +267,32 @@ onMounted(() => {
 .login-page {
   height: 100vh;
   background-color: #fff;
-
+  
   .bg {
     background: //url('@/assets/images/logo2.png') no-repeat 40% 10% / 240px auto,
         url('@/assets/images/sys/bg.jpg') no-repeat 10% / cover;
     border-radius: 0 20px 20px 0;
   }
-
+  
   .verify {
     display: flex;
     flex-direction: row;
   }
-
+  
   .form {
     display: flex;
     flex-direction: column;
     justify-content: center;
     user-select: none;
-
+    
     .title {
       margin: 0 auto;
     }
-
+    
     .button {
       width: 100%;
     }
-
+    
     .flex {
       width: 100%;
       display: flex;

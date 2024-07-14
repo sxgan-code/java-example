@@ -8,9 +8,9 @@ const router: Router = createRouter({
         ...mainRouters
     ],
     /* 禁用鼠标侧键回退功能 */
-    scrollBehavior: () => {
-        history.pushState(null, '', document.URL)
-    }
+    // scrollBehavior: () => {
+    //     history.pushState(null, '', document.URL)
+    // }
 })
 
 export default router

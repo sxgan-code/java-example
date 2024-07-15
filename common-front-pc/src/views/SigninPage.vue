@@ -93,7 +93,6 @@ const signinSys = () => {
         console.log(err)
         message.error('系统错误', PositionTypeEnum.TOP)
       })
-      goToHref(HrefTypeEnum.LOCAL_HREF, '/main')
     }
     
   })

@@ -24,13 +24,12 @@ const handleClose = (key: string, keyPath: string[]) => {
       <div class="content-left">
         <el-menu
             default-active="2"
-            m
             class="el-menu-vertical-demo"
             :collapse="isCollapse"
             @open="handleOpen"
             @close="handleClose"
             text-color="#fff"
-            background-color="#2275A1"
+            background-color="#304156"
         >
           <el-sub-menu index="1">
             <template #title>
@@ -39,12 +38,12 @@ const handleClose = (key: string, keyPath: string[]) => {
               </el-icon>
               <span>自定义组件</span>
             </template>
-            <el-sub-menu index="1-1">
+            <el-sub-menu class="two-title" index="1-1">
               <template #title><span>Overview 组件总览</span></template>
             </el-sub-menu>
-            <el-sub-menu index="1-2">
+            <el-sub-menu class="two-title" index="1-2">
               <template #title><span>Basic 基础组件</span></template>
-              <el-menu-item index="1-2-1">Button 按钮</el-menu-item>
+              <el-menu-item class="two-title" index="1-2-1">Button 按钮</el-menu-item>
             </el-sub-menu>
           </el-sub-menu>
           <el-sub-menu index="5">
@@ -92,12 +91,12 @@ const handleClose = (key: string, keyPath: string[]) => {
   display: flex;
   flex-direction: column;
   width: 100vw;
-  
+  font-family: "造字工坊纤细", sans-serif;
   .main-head {
     height: 7rem;
     line-height: 7rem;
     width: 100%;
-    background: rgba(222, 236, 236);
+    background: #304156;
     
     .head-logo {
       display: flex;
@@ -121,9 +120,20 @@ const handleClose = (key: string, keyPath: string[]) => {
     width: 100%;
     display: flex;
     
+    
     .content-left {
-      background: #2275A1;
+      font-family: "造字工坊纤细", sans-serif;
+      font-weight: bold;
+      background: #304156;
       height: 100vh;
+      
+      .el-menu-vertical-demo:not(.el-menu--collapse) {
+        width: 12vw;
+        
+        .two-title, .three-title {
+          background: #1F2D3D;
+        }
+      }
     }
     
     .content-right {

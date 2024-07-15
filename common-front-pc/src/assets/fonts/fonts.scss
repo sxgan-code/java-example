@@ -14,3 +14,17 @@ $fontsDir: "@/assets/fonts/";
   src: url('#{$fontsDir}/JetBrainsMono-Bold.ttf'), /* IE9*/
   url('#{$fontsDir}/JetBrainsMono-Bold.ttf') format('truetype'), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
 }
+
+/*  配置JetBrainsMono*/
+@font-face {
+  font-family: '造字工坊纤细';
+  src: url('#{$fontsDir}/造字工房悦黑 G0v1 纤细体.ttf'), /* IE9*/
+  url('#{$fontsDir}/造字工房悦黑 G0v1 纤细体.ttf') format('truetype'), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
+}
+
+/*  配置JetBrainsMono*/
+@font-face {
+  font-family: '造字工坊特细';
+  src: url('#{$fontsDir}/造字工房悦黑 G0v1 特细体.ttf'), /* IE9*/
+  url('#{$fontsDir}/造字工房悦黑 G0v1 特细体.ttf') format('truetype'), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
+}

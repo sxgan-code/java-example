@@ -1,6 +1,15 @@
 <script setup lang="ts">
-
+import {ref} from "vue";
 import IconLogo from "@/components/icons/IconLogo.vue";
+import {Expand, Fold, Grid, Location} from "@element-plus/icons-vue";
+
+const isCollapse = ref(false)
+const handleOpen = (key: string, keyPath: string[]) => {
+  console.log(key, keyPath)
+}
+const handleClose = (key: string, keyPath: string[]) => {
+  console.log(key, keyPath)
+}
 </script>
 
 <template>
@@ -12,8 +21,68 @@ import IconLogo from "@/components/icons/IconLogo.vue";
       </div>
     </div>
     <div class="content-box">
-      <div class="content-left"></div>
-      <div class="content-right"></div>
+      <div class="content-left">
+        <el-menu
+            default-active="2"
+            m
+            class="el-menu-vertical-demo"
+            :collapse="isCollapse"
+            @open="handleOpen"
+            @close="handleClose"
+            text-color="#fff"
+            background-color="#2275A1"
+        >
+          <el-sub-menu index="1">
+            <template #title>
+              <el-icon>
+                <Grid/>
+              </el-icon>
+              <span>自定义组件</span>
+            </template>
+            <el-sub-menu index="1-1">
+              <template #title><span>Overview 组件总览</span></template>
+            </el-sub-menu>
+            <el-sub-menu index="1-2">
+              <template #title><span>Basic 基础组件</span></template>
+              <el-menu-item index="1-2-1">Button 按钮</el-menu-item>
+            </el-sub-menu>
+          </el-sub-menu>
+          <el-sub-menu index="5">
+            <template #title>
+              <el-icon>
+                <location/>
+              </el-icon>
+              <span>测试菜单</span>
+            </template>
+            <el-menu-item-group>
+              <template #title><span>分组1</span></template>
+              <el-menu-item index="5-1">元素1</el-menu-item>
+              <el-menu-item index="5-2">元素2</el-menu-item>
+            </el-menu-item-group>
+            <el-menu-item-group title="分组2">
+              <el-menu-item index="5-3">元素3</el-menu-item>
+            </el-menu-item-group>
+            <el-sub-menu index="5-4">
+              <template #title><span>元素4</span></template>
+              <el-menu-item index="5-4-1">元素4的子元素</el-menu-item>
+            </el-sub-menu>
+          </el-sub-menu>
+        </el-menu>
+      </div>
+      <div class="content-right">
+        <el-radio-group v-model="isCollapse" style="margin-bottom: 20px">
+          <el-radio-button v-if="isCollapse" :value="false">
+            <el-icon>
+              <Expand/>
+            </el-icon>
+          </el-radio-button>
+          <el-radio-button v-if="!isCollapse" :value="true">
+            <el-icon>
+              <Fold/>
+            </el-icon>
+          </el-radio-button>
+        </el-radio-group>
+      </div>
     </div>
   </div>
 </template>
@@ -21,11 +90,14 @@ import IconLogo from "@/components/icons/IconLogo.vue";
 <style scoped>
 .main-root {
   display: flex;
+  flex-direction: column;
   width: 100vw;
   
   .main-head {
     height: 7rem;
     line-height: 7rem;
+    width: 100%;
+    background: rgba(222, 236, 236);
     
     .head-logo {
       display: flex;
@@ -42,6 +114,20 @@ import IconLogo from "@/components/icons/IconLogo.vue";
         color: var(--theme-color);
         margin-left: 2rem;
       }
+    }
+  }
+  
+  .content-box {
+    width: 100%;
+    display: flex;
+    
+    .content-left {
+      background: #2275A1;
+      height: 100vh;
+    }
+    
+    .content-right {
+    
     }
   }
 }

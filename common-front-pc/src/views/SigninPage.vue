@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import {Lock, User} from '@element-plus/icons-vue'
 import {onMounted, ref} from 'vue'
-import {sendMailVerifyCode, signinApi, signupApi, verifyCodeImgApi} from "@/api/auth/index"
+import {sendMailVerifyCode, signinApi, signupApi, verifyCodeImgApi} from "@/api/auth"
 import {BackgroundTypeEnum} from "@/components/tips/tooltip";
 import type {LoginData} from "@/api/auth/types";
 import message, {PositionTypeEnum} from "@/components/message";
@@ -14,13 +14,13 @@ const loading = ref(false)
  * 定义注册数据模型
  */
 const registerData = ref<LoginData>({
-  email: '',
-  password: '',
+  email: 'sxgan@foxmail.com',
+  password: '123456',
   rePassword: '',
   verifyCode: '',
-  imgVerifyCode: '',
+  imgVerifyCode: '1234',
   verToken: '',
-  rememberMe: false
+  rememberMe: true
 })
 /**
  * 校验注册数据
@@ -93,6 +93,7 @@ const signinSys = () => {
         console.log(err)
         message.error('系统错误', PositionTypeEnum.TOP)
       })
+      goToHref(HrefTypeEnum.LOCAL_HREF, '/main')
     }
     
   })

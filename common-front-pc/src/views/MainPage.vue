@@ -1,8 +1,11 @@
 <script setup lang="ts">
-import {ref} from "vue";
+import {onMounted, ref} from "vue";
 import IconLogo from "@/components/icons/IconLogo.vue";
 import {Expand, Fold, Grid, Location} from "@element-plus/icons-vue";
+import {useRouter} from 'vue-router';
+import {goToHref, HrefTypeEnum} from "@/utils/common-utils.ts";
 
+const router = useRouter()
 const isCollapse = ref(false)
 const handleOpen = (key: string, keyPath: string[]) => {
   console.log(key, keyPath)
@@ -10,6 +13,9 @@ const handleOpen = (key: string, keyPath: string[]) => {
 const handleClose = (key: string, keyPath: string[]) => {
   console.log(key, keyPath)
 }
+onMounted(() => {
+  console.log('router', router.currentRoute.value.path);
+})
 </script>
 
 <template>
@@ -39,11 +45,26 @@ const handleClose = (key: string, keyPath: string[]) => {
               <span>自定义组件</span>
             </template>
             <el-sub-menu class="two-title" index="1-1">
-              <template #title><span>Overview 组件总览</span></template>
+              <template #title>
+                <el-icon>
+                  <Grid/>
+                </el-icon>
+                <span>组件总览</span></template>
             </el-sub-menu>
             <el-sub-menu class="two-title" index="1-2">
               <template #title><span>Basic 基础组件</span></template>
-              <el-menu-item class="two-title" index="1-2-1">Button 按钮</el-menu-item>
+              <el-menu-item class="two-title" @click="goToHref(HrefTypeEnum.LOCAL_HREF,'/main/btn')" index="1-2-1">
+                Button 按钮
+              </el-menu-item>
+              <el-menu-item class="two-title" @click="goToHref(HrefTypeEnum.LOCAL_HREF,'/main/btn')" index="1-2-1">
+                Button 按钮
+              </el-menu-item>
+              <el-menu-item class="two-title" @click="goToHref(HrefTypeEnum.LOCAL_HREF,'/main/btn')" index="1-2-1">
+                Button 按钮
+              </el-menu-item>
+              <el-menu-item class="two-title" @click="goToHref(HrefTypeEnum.LOCAL_HREF,'/main/btn')" index="1-2-1">
+                Button 按钮
+              </el-menu-item>
             </el-sub-menu>
           </el-sub-menu>
           <el-sub-menu index="5">
@@ -69,6 +90,7 @@ const handleClose = (key: string, keyPath: string[]) => {
         </el-menu>
       </div>
       <div class="content-right">
+        <div class=""></div>
         <el-radio-group v-model="isCollapse" style="margin-bottom: 20px">
           <el-radio-button v-if="isCollapse" :value="false">
             <el-icon>
@@ -81,6 +103,7 @@ const handleClose = (key: string, keyPath: string[]) => {
             </el-icon>
           </el-radio-button>
         </el-radio-group>
+        <router-view/>
       </div>
     </div>
   </div>
@@ -92,6 +115,7 @@ const handleClose = (key: string, keyPath: string[]) => {
   flex-direction: column;
   width: 100vw;
   font-family: "造字工坊纤细", sans-serif;
+  
   .main-head {
     height: 7rem;
     line-height: 7rem;

@@ -15,13 +15,22 @@ const mainRouters: RouteRecordRaw[] = [
         path: '/main',
         name: 'main',
         component: () => import("@/views/MainPage.vue"),
-        // children: [
-        //     {
-        //         path: 'overview',
-        //         name: 'overview',
-        //         component: () => import("@/components/OverView.vue"),
-        //     }
-        // ]
+        children: [
+            {
+                path: '',
+                redirect: '/main/overview',
+            },
+            {
+                path: 'overview',
+                name: 'overview',
+                component: () => import("@/views/overview/OverviewPage.vue"),
+            },
+            {
+                path: 'but',
+                name: 'but',
+                component: () => import("@/views/basic/btn/ButtonPage.vue"),
+            }
+        ]
 
     },
 ]

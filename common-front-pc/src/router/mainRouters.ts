@@ -26,8 +26,8 @@ const mainRouters: RouteRecordRaw[] = [
                 component: () => import("@/views/overview/OverviewPage.vue"),
             },
             {
-                path: 'but',
-                name: 'but',
+                path: 'btn',
+                name: 'btn',
                 component: () => import("@/views/basic/btn/ButtonPage.vue"),
             }
         ]

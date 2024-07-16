@@ -35,7 +35,7 @@ onMounted(() => {
             @open="handleOpen"
             @close="handleClose"
             text-color="#fff"
-            background-color="#304156"
+            background-color="var(--grey-color-5)"
         >
           <el-sub-menu index="1">
             <template #title>
@@ -44,8 +44,8 @@ onMounted(() => {
               </el-icon>
               <span>自定义组件</span>
             </template>
-            <el-sub-menu class="two-title" index="1-1">
-              <template #title>
+            <el-sub-menu class="" index="1-1">
+              <template #title class="two-title">
                 <el-icon>
                   <Grid/>
                 </el-icon>
@@ -120,7 +120,7 @@ onMounted(() => {
     height: 7rem;
     line-height: 7rem;
     width: 100%;
-    background: #304156;
+    background: var(--softness-group-4);
     
     .head-logo {
       display: flex;
@@ -134,7 +134,7 @@ onMounted(() => {
       
       h1 {
         font-size: 3rem;
-        color: var(--theme-color);
+        color: var(--geek-blue-color-5);
         margin-left: 2rem;
       }
     }
@@ -148,20 +148,24 @@ onMounted(() => {
     .content-left {
       font-family: "造字工坊纤细", sans-serif;
       font-weight: bold;
-      background: #304156;
+      background: var(--grey-color-5);
       height: 100vh;
       
       .el-menu-vertical-demo:not(.el-menu--collapse) {
         width: 12vw;
         
         .two-title, .three-title {
-          background: #1F2D3D;
+          background: var(--grey-color-6);
+        }
+        
+        .two-title:hover, .three-title:hover {
+          background: var(--dark-color-9);
         }
       }
     }
     
     .content-right {
-    
+      width: 100%;
     }
   }
 }

@@ -5,11 +5,14 @@ import cn.sxgan.common.consts.FilePath;
 import cn.sxgan.common.entity.UserMockdataPO;
 import cn.sxgan.common.mappers.BdExpUserMockdataMapper;
 import cn.sxgan.common.response.ResponseResult;
+import cn.sxgan.common.utils.JsonUtils;
 import com.alibaba.excel.EasyExcel;
 import com.alibaba.excel.write.builder.ExcelWriterBuilder;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import jakarta.annotation.Resource;
 import jakarta.servlet.http.HttpServletResponse;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
@@ -30,6 +33,7 @@ import java.util.Map;
 
 public class EasyExportFileService {
     
+    private static final Logger log = LoggerFactory.getLogger(EasyExportFileService.class);
     @Resource
     BdExpUserMockdataMapper bdExpUserMockdataMapper;
     
@@ -98,6 +102,8 @@ public class EasyExportFileService {
     
     private List<DownloadData> data() {
         List<UserMockdataPO> userMockdataPOS = bdExpUserMockdataMapper.selectList(new QueryWrapper<>());
+        String jsonString = JsonUtils.toJsonString(userMockdataPOS);
+        log.info("jsonString:{}", jsonString);
         List<DownloadData> data = new ArrayList<>();
         for (UserMockdataPO userMockdataPO : userMockdataPOS) {
             DownloadData downloadData = new DownloadData();

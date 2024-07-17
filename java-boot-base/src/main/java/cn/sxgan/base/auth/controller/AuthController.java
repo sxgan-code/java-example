@@ -1,6 +1,5 @@
 package cn.sxgan.base.auth.controller;
 
-import cn.hutool.core.util.StrUtil;
 import cn.sxgan.base.auth.api.IAuthControllerApi;
 import cn.sxgan.base.auth.entity.RequestHolder;
 import cn.sxgan.base.auth.entity.UserSessionInfo;
@@ -15,6 +14,7 @@ import cn.sxgan.common.response.ResponseResult;
 import jakarta.annotation.Resource;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -46,7 +46,7 @@ public class AuthController implements IAuthControllerApi {
     @PostMapping("/mailVerifyCode")
     public ResponseResult<String> sendVerifyCode(@RequestBody UserSessionInfo userSessionInfo) {
         String email = userSessionInfo.getEmail();
-        if (StrUtil.isBlankIfStr(email)) {
+        if (StringUtils.isBlank(email)) {
             return ResponseResult.fail(ResponseStatus.EXCEPTION_STATUS_900.getMsg());
         }
         return mailSendService.sendVerifyCodeToSpecifiedEmail(email);

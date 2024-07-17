@@ -1,17 +1,19 @@
 package cn.sxgan.base.auth.interceptor;
 
-import cn.hutool.core.util.StrUtil;
-import cn.hutool.json.JSONUtil;
+
 import cn.sxgan.base.auth.entity.RequestHolder;
 import cn.sxgan.base.auth.entity.UserSessionInfo;
 import cn.sxgan.common.cache.redis.RedisUtil;
 import cn.sxgan.common.consts.RedisConst;
 import cn.sxgan.common.enums.ResponseStatus;
 import cn.sxgan.common.response.ResponseResult;
+import cn.sxgan.common.utils.JsonUtils;
+import cn.sxgan.common.utils.JwtUtils;
 import jakarta.annotation.Resource;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.context.support.WebApplicationContextUtils;
@@ -37,7 +39,7 @@ public class AuthInterceptor implements HandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         String token = request.getHeader("Authorization");
-        if (StrUtil.isBlank(token)) {
+        if (StringUtils.isBlank(token) || !JwtUtils.checkToken(token)) {
             returnLogin(response);
             return false;
         }
@@ -49,7 +51,7 @@ public class AuthInterceptor implements HandlerInterceptor {
         // 鉴权Token
         UserSessionInfo user = redisUtil.get(RedisConst.LOGIN_TOKEN_PREFIX + token, UserSessionInfo.class);
         log.info("current user = {}", user);
-        if (StrUtil.isBlankIfStr(user)) {
+        if (user == null) {
             log.info("user is blank");
             returnLogin(response);
             return false;
@@ -71,7 +73,7 @@ public class AuthInterceptor implements HandlerInterceptor {
         response.setContentType("application/json; charset=utf-8");
         PrintWriter writer = response.getWriter();
         response.setStatus(200); // 权限不足
-        writer.write(JSONUtil.toJsonStr(ResponseResult.fail(null,
+        writer.write(JsonUtils.toJsonString(ResponseResult.fail(null,
                 ResponseStatus.EXCEPTION_STATUS_700.getCode(),
                 ResponseStatus.EXCEPTION_STATUS_700.getMsg())));
     }

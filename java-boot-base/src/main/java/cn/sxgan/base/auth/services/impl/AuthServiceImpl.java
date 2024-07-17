@@ -1,7 +1,5 @@
 package cn.sxgan.base.auth.services.impl;
 
-import cn.hutool.core.util.RandomUtil;
-import cn.hutool.jwt.JWTUtil;
 import cn.sxgan.base.auth.entity.UserSessionInfo;
 import cn.sxgan.base.auth.services.IAuthService;
 import cn.sxgan.common.cache.redis.RedisUtil;
@@ -12,6 +10,8 @@ import cn.sxgan.common.enums.ResponseStatus;
 import cn.sxgan.common.exception.AuthorityException;
 import cn.sxgan.common.mappers.SysUserMapper;
 import cn.sxgan.common.response.ResponseResult;
+import cn.sxgan.common.utils.CommonUtils;
+import cn.sxgan.common.utils.JwtUtils;
 import cn.sxgan.common.utils.PasswordEncoderUtils;
 import com.google.common.collect.Maps;
 import jakarta.annotation.Resource;
@@ -64,7 +64,7 @@ public class AuthServiceImpl implements IAuthService {
                 HashMap<String, Object> tokenMap = new HashMap<>();
                 tokenMap.put("email", user.getEmail());
                 tokenMap.put("id", user.getUserId());
-                String token = JWTUtil.createToken(tokenMap, tokenKey.getBytes());
+                String token = JwtUtils.createToken(tokenMap, tokenKey);
                 userSessionInfo.setId(user.getUserId());
                 userSessionInfo.setUserName(user.getUserName());
                 redisUtil.set(RedisConst.LOGIN_TOKEN_PREFIX + token, userSessionInfo, RedisConst.LOGIN_TIME_1,
@@ -137,12 +137,12 @@ public class AuthServiceImpl implements IAuthService {
         }
         // 注册账号
         SysUser user = new SysUser();
-        user.setUserName(RandomUtil.randomString(12).toUpperCase(Locale.ROOT));
+        user.setUserName(CommonUtils.generateRandomCode(12).toUpperCase(Locale.ROOT));
         user.setEmail(email);
         // 加密
         
         // 生成盐
-        String salt = RandomUtil.randomString(20);
+        String salt = CommonUtils.generateRandomCode(20);
         String slatPass = PasswordEncoderUtils.encode(userSessionInfo.getPassword(), salt);
         user.setSalt(salt);
         user.setPassword(slatPass);

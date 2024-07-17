@@ -1,6 +1,8 @@
 package cn.sxgan.common.aspect;
 
-import cn.hutool.json.JSONUtil;
+import cn.sxgan.common.utils.JsonUtils;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.extern.slf4j.Slf4j;
@@ -76,7 +78,8 @@ public class RequestLogAspect {
             result = joinPoint.proceed(args);
             long endTime = System.currentTimeMillis();
             long time = endTime - startTime;
-            addLog(joinPoint, JSONUtil.toJsonStr(result), time);
+            // 将对象转换为JSON字符串
+            addLog(joinPoint, JsonUtils.toJsonString(result), time);
         } catch (Exception e) {
             log.error("doAround日志记录异常，异常信息为:", e);
             throw e;
@@ -87,9 +90,11 @@ public class RequestLogAspect {
     /**
      * 日志记录入库操作
      */
-    public void addLog(JoinPoint joinPoint, String outParams, long time) {
+    public void addLog(JoinPoint joinPoint, String outParams, long time) throws JsonProcessingException {
         HttpServletRequest request = ((ServletRequestAttributes)
                 Objects.requireNonNull(RequestContextHolder.getRequestAttributes())).getRequest();
+        ObjectMapper om = new ObjectMapper();
+        String json = om.writeValueAsString(filterArgs(joinPoint.getArgs()));
         log.info("\n\r=======================================\n\r" +
                         "请求地址:{} \n\r" +
                         "请求方式:{} \n\r" +
@@ -101,7 +106,7 @@ public class RequestLogAspect {
                 request.getRequestURI(),
                 request.getMethod(),
                 joinPoint.getSignature(),
-                JSONUtil.toJsonStr(filterArgs(joinPoint.getArgs())),
+                JsonUtils.toJsonString(filterArgs(joinPoint.getArgs())),
                 outParams,
                 time
         );

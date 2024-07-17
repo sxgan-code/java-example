@@ -1,9 +1,9 @@
 package cn.sxgan.common.exception;
 
-import cn.hutool.core.exceptions.ExceptionUtil;
 import cn.sxgan.common.enums.ResponseStatus;
 import cn.sxgan.common.response.ResponseResult;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.exception.ExceptionUtils;
 import org.springframework.http.converter.HttpMessageNotWritableException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -25,7 +25,7 @@ public class GlobalExceptionHandler {
     @ResponseBody // 为了返回数据
     public ResponseResult<String> error(Exception e) {
         e.printStackTrace();
-        log.error("GlobalExceptionHandler Exception e {}", ExceptionUtil.getMessage(e));
+        log.error("GlobalExceptionHandler Exception e {}", ExceptionUtils.getMessage(e));
         return ResponseResult.fail(ResponseStatus.HTTP_STATUS_500.getMsg());
     }
     
@@ -33,8 +33,9 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(AuthorityException.class)
     @ResponseBody
     public ResponseResult<String> error(AuthorityException e) {
-        log.error(ExceptionUtil.getMessage(e));
+        log.error(ExceptionUtils.getMessage(e));
         e.printStackTrace();
+        log.error("AuthorityException Exception e {}", ExceptionUtils.getMessage(e));
         return ResponseResult.fail(e.getMsg());
     }
     
@@ -43,6 +44,7 @@ public class GlobalExceptionHandler {
     @ResponseBody // 为了返回数据
     public ResponseResult<String> error(ArithmeticException e) {
         e.printStackTrace();
+        log.error("ArithmeticException Exception e {}", ExceptionUtils.getMessage(e));
         return ResponseResult.fail("执行了ArithmeticException异常处理..");
     }
     
@@ -51,7 +53,8 @@ public class GlobalExceptionHandler {
     @ResponseBody // 为了返回数据
     public ResponseResult<String> error(IOException e) {
         // e.printStackTrace();
-        log.error("IO连接中断异常的特殊处理");
+        
+        log.error("IOException Exception e {}", ExceptionUtils.getMessage(e));
         return ResponseResult.fail("执行了IOException异常处理..");
     }
     

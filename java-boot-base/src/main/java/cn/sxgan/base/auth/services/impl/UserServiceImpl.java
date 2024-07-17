@@ -1,6 +1,5 @@
 package cn.sxgan.base.auth.services.impl;
 
-import cn.hutool.core.util.StrUtil;
 import cn.sxgan.base.auth.entity.UserSessionInfo;
 import cn.sxgan.base.auth.services.ISysUserService;
 import cn.sxgan.common.entity.SysUser;
@@ -11,6 +10,7 @@ import cn.sxgan.common.mappers.SysUserMapper;
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import jakarta.annotation.Resource;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -31,7 +31,7 @@ public class UserServiceImpl implements ISysUserService {
     @Override
     public SysUserVO selectSysUserInfo(UserSessionInfo currentUser) {
         SysUserVO sysUserVO = new SysUserVO();
-        if (currentUser == null || StrUtil.isBlank(currentUser.getEmail())) {
+        if (currentUser == null || StringUtils.isBlank(currentUser.getEmail())) {
             return sysUserVO;
         }
         SysUserQuery sysUserQuery = new SysUserQuery();
@@ -47,7 +47,7 @@ public class UserServiceImpl implements ISysUserService {
     
     @Override
     public String updateSysUserInfo(SysUserVO sysUserVO) {
-        if (sysUserVO == null || StrUtil.isBlank(sysUserVO.getEmail())) {
+        if (sysUserVO == null || StringUtils.isBlank(sysUserVO.getEmail())) {
             return null;
         }
         SysUser sysUser = SysUserConvert.INSTANCE.sysUserVOToDAO(sysUserVO);

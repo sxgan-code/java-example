@@ -1,9 +1,19 @@
 <script setup lang="ts">
-const props = defineProps<{
-  type: 'primary' | 'error' | 'success' | 'warn' | 'info' | 'default',
-  size: 'small' | 'medium' | 'large',
-}>()
 
+import type {PropType} from "vue";
+
+const props = defineProps({
+  type: {
+    type: Object as PropType<'primary' | 'error' | 'success' | 'warn' | 'info' | 'default'>,
+    default: 'primary',
+    required: true
+  },
+  size: {
+    type: Object as PropType<'small' | 'medium' | 'large'>,
+    default: 'medium',
+    required: false
+  }
+})
 </script>
 
 <template>
@@ -14,11 +24,13 @@ const props = defineProps<{
 
 <style scoped lang="scss">
 .zoey-button {
+  line-height: 2rem;
   border: none;
   outline: none;
   cursor: pointer;
   transition: all 0.3s;
-  
+  padding: 1rem 1.6rem;
+  border-radius: 0.4rem;
 }
 
 .but-primary {
@@ -26,7 +38,7 @@ const props = defineProps<{
   color: #FFFFFF;
   
   &:hover {
-    background-color: #f5f5f5;
+    background-color: #3375B9;
   }
   
   &:disabled {
@@ -35,9 +47,73 @@ const props = defineProps<{
   }
 }
 
+.but-success {
+  background-color: #73d13d;
+  color: #FFFFFF;
+  
+  &:hover {
+    background-color: #389e0d;
+  }
+  
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+  }
+}
+
+.but-error {
+  background-color: #ff7875;
+  color: #FFFFFF;
+  
+  &:hover {
+    background-color: #f5222d;
+  }
+  
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+  }
+}
+
+.but-warn {
+  background-color: #E6A23C;
+  color: #FFFFFF;
+  
+  &:hover {
+    background-color: #A77730;
+  }
+  
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+  }
+}
+
+.but-default {
+  background-color: #FFF;
+  border: 0.1rem solid #cccccc;
+  color: #333333;
+  
+  &:hover {
+    background-color: #ECF5FF;
+  }
+  
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+  }
+}
+
+/*按钮大小*/
 .but-small {
-  border-radius: 4px;
-  padding: 8px 16px;
-  font-size: 14px;
+  font-size: 1.2rem;
+}
+
+.but-medium {
+  font-size: 1.4rem;
+}
+
+.but-large {
+  font-size: 1.8rem;
 }
 </style>

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import {onMounted, ref} from "vue";
 import IconLogo from "@/components/icons/IconLogo.vue";
-import {Expand, Fold, Grid, Location} from "@element-plus/icons-vue";
+import {Expand, Fold, Grid, Location, Open} from "@element-plus/icons-vue";
 import {useRouter} from 'vue-router';
 import {goToHref, HrefTypeEnum} from "@/utils/common-utils.ts";
 
@@ -46,14 +46,14 @@ onMounted(() => {
             </template>
             <el-sub-menu class="" index="1-1">
               <template #title class="two-title">
-                <el-icon>
-                  <Grid/>
-                </el-icon>
                 <span>组件总览</span></template>
             </el-sub-menu>
             <el-sub-menu class="two-title" index="1-2">
               <template #title><span>Basic 基础组件</span></template>
               <el-menu-item class="two-title" @click="goToHref(HrefTypeEnum.LOCAL_HREF,'/main/btn')" index="1-2-1">
+                <el-icon>
+                  <Open/>
+                </el-icon>
                 Button 按钮
               </el-menu-item>
               <el-menu-item class="two-title" @click="goToHref(HrefTypeEnum.LOCAL_HREF,'/main/btn')" index="1-2-1">
@@ -141,18 +141,17 @@ onMounted(() => {
   }
   
   .content-box {
-    width: 100%;
+    width: 100vw;
     display: flex;
-    
     
     .content-left {
       font-family: "造字工坊纤细", sans-serif;
       font-weight: bold;
       background: var(--grey-color-5);
       height: 100vh;
-      
+      //background: lavender;
       .el-menu-vertical-demo:not(.el-menu--collapse) {
-        width: 12vw;
+        width: 14vw;
         
         .two-title, .three-title {
           background: var(--grey-color-6);
@@ -165,7 +164,8 @@ onMounted(() => {
     }
     
     .content-right {
-      width: 100%;
+      //background: lawngreen;
+      width: 100vw;
     }
   }
 }

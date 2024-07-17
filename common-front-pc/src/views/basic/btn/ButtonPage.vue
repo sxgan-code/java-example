@@ -10,24 +10,24 @@ import ZoeyButton from "@/components/btn/ZoeyButton.vue";
     <zoey-title type="p">常用的操作按钮。</zoey-title>
     <zoey-title type="h2">基础用法</zoey-title>
     <div class="btn-list">
-      <zoey-button type="primary" size="medium">primary medium</zoey-button>
-      <zoey-button type="success" size="medium">success medium</zoey-button>
-      <zoey-button type="warn" size="medium">warn medium</zoey-button>
-      <zoey-button type="error" size="medium">error medium</zoey-button>
-      <zoey-button type="default" size="medium">default medium</zoey-button>
-      <zoey-button type="default" size="medium">default medium</zoey-button>
-      <zoey-button type="default" size="medium">default medium</zoey-button>
-      <zoey-button type="default" size="medium">default medium</zoey-button>
-      <zoey-button type="default" size="medium">default medium</zoey-button>
-      <zoey-button type="default" size="medium">default medium</zoey-button>
-      <zoey-button type="default" size="medium">default medium</zoey-button>
-      <zoey-button type="default" size="medium">default medium</zoey-button>
-      <zoey-button type="default" size="medium">default medium</zoey-button>
-      <zoey-button type="default" size="medium">default medium</zoey-button>
-      <zoey-button type="default" size="medium">default medium</zoey-button>
-      <zoey-button type="default" size="medium">default medium</zoey-button>
-      <zoey-button type="default" size="medium">default medium</zoey-button>
-      <zoey-button type="default" size="medium">default medium</zoey-button>
+      <zoey-button class="btn-item" type="primary" size="medium">primary medium</zoey-button>
+      <zoey-button class="btn-item" type="success" size="medium">success medium</zoey-button>
+      <zoey-button class="btn-item" type="warn" size="medium">warn medium</zoey-button>
+      <zoey-button class="btn-item" type="error" size="medium">error medium</zoey-button>
+      <zoey-button class="btn-item" type="default" size="medium">default medium</zoey-button>
+      <zoey-button class="btn-item" type="default" size="medium">default medium</zoey-button>
+      <zoey-button class="btn-item" type="default" size="medium">default medium</zoey-button>
+      <zoey-button class="btn-item" type="default" size="medium">default medium</zoey-button>
+      <zoey-button class="btn-item" type="default" size="medium">default medium</zoey-button>
+      <zoey-button class="btn-item" type="default" size="medium">default medium</zoey-button>
+      <zoey-button class="btn-item" type="default" size="medium">default medium</zoey-button>
+      <zoey-button class="btn-item" type="default" size="medium">default medium</zoey-button>
+      <zoey-button class="btn-item" type="default" size="medium">default medium</zoey-button>
+      <zoey-button class="btn-item" type="default" size="medium">default medium</zoey-button>
+      <zoey-button class="btn-item" type="default" size="medium">default medium</zoey-button>
+      <zoey-button class="btn-item" type="default" size="medium">default medium</zoey-button>
+      <zoey-button class="btn-item" type="default" size="medium">default medium</zoey-button>
+      <zoey-button class="btn-item" type="default" size="medium">default medium</zoey-button>
     </div>
   </div>
 </template>
@@ -46,8 +46,8 @@ import ZoeyButton from "@/components/btn/ZoeyButton.vue";
   padding: 2rem;
   margin: 0 auto;
   //background: lightcyan;
-/deep/ button: {
-  margin: 2rem, 2rem;
-}
+  .btn-item {
+    margin: 2rem 1rem;
+  }
 }
 </style>

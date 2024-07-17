@@ -42,7 +42,7 @@ export interface LoginResult {
     /**
      * 访问token
      */
-    token?: string;
+    token: string;
 
     /* 图片验证vToken */
     verToken: string;

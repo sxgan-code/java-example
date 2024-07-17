@@ -85,10 +85,16 @@ const signinSys = () => {
       console.log('登录', registerData.value)
       loading.value = true
       signinApi(registerData.value).then(res => {
-        console.log(res)
-        loading.value = false
-        goToHref(HrefTypeEnum.LOCAL_HREF, '/main')
-        message.success('登录成功', PositionTypeEnum.TOP)
+        if (res.status === 200) {
+          console.log(res.data.token)
+          loading.value = false
+          localStorage.setItem('token', res.data.token);
+          goToHref(HrefTypeEnum.LOCAL_HREF, '/main')
+          message.success('登录成功', PositionTypeEnum.TOP)
+        } else {
+          loading.value = false
+          message.error(res.message, PositionTypeEnum.TOP)
+        }
       }).catch(err => {
         console.log(err)
         message.error('系统错误', PositionTypeEnum.TOP)

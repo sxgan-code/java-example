@@ -4,12 +4,12 @@ import type {PropType} from "vue";
 
 const props = defineProps({
   type: {
-    type: Object as PropType<'primary' | 'error' | 'success' | 'warn' | 'info' | 'default'>,
+    type: String as PropType<'primary' | 'error' | 'success' | 'warn' | 'info' | 'default'>,
     default: 'primary',
     required: true
   },
   size: {
-    type: Object as PropType<'small' | 'medium' | 'large'>,
+    type: String as PropType<'small' | 'medium' | 'large'>,
     default: 'medium',
     required: false
   }

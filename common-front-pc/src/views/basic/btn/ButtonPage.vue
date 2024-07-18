@@ -29,7 +29,7 @@ import ZoeyButton from "@/components/btn/ZoeyButton.vue";
 
 <style scoped lang="scss">
 .title {
-  width: 75vw;
+  width: 83vw;
   margin: 0 auto;
 }
 

@@ -27,7 +27,7 @@ hr {
   color: #606266;
   border: 0;
   height: 1px;
-  background-image: linear-gradient(to right, rgba(33, 33, 33, 1), rgba(33, 33, 33, 0.1), rgba(33, 33, 33, 1));
+  background-image: linear-gradient(to right, rgba(#FFCCCC, 0.4), rgba(#FF99CC, 0.7), rgba(#CCCCFF, 0.4));
   margin: 1rem auto 2rem;
   width: 98%;
 }

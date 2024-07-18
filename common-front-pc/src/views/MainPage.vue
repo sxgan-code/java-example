@@ -28,7 +28,8 @@ onMounted(() => {
     </div>
     <div class="content-box">
       <div class="content-left">
-        <el-menu
+      
+      <el-menu
             default-active="2"
             class="el-menu-vertical-demo"
             :collapse="isCollapse"
@@ -104,20 +105,26 @@ onMounted(() => {
         </el-menu>
       </div>
       <div class="content-right">
-        <div class=""></div>
-        <el-radio-group v-model="isCollapse" style="margin-bottom: 20px">
-          <el-radio-button v-if="isCollapse" :value="false">
-            <el-icon>
-              <Expand/>
-            </el-icon>
-          </el-radio-button>
-          <el-radio-button v-if="!isCollapse" :value="true">
-            <el-icon>
-              <Fold/>
-            </el-icon>
-          </el-radio-button>
-        </el-radio-group>
-        <router-view/>
+        <div class="menu-tabs">
+          <el-radio-group class="telescopic-button" v-model="isCollapse" style="margin-bottom: 20px">
+            <el-radio-button v-if="isCollapse" :value="false">
+              <el-icon>
+                <Expand/>
+              </el-icon>
+              展开
+            </el-radio-button>
+            <el-radio-button v-if="!isCollapse" :value="true">
+              <el-icon>
+                <Fold/>
+              </el-icon>
+              收缩
+            </el-radio-button>
+          </el-radio-group>
+        </div>
+        <div class="main-content">
+          <router-view/>
+        </div>
+      
       </div>
     </div>
   </div>
@@ -134,8 +141,9 @@ onMounted(() => {
     height: 7rem;
     line-height: 7rem;
     width: 100%;
-    background: var(--softness-group-4);
-    
+    //background: var(--softness-group-4);
+    background: #CC99CC;
+    box-shadow: 0.1rem 0.1rem 0.3rem #ccc;
     .head-logo {
       display: flex;
       align-items: center;
@@ -148,7 +156,8 @@ onMounted(() => {
       
       h1 {
         font-size: 3rem;
-        color: var(--geek-blue-color-5);
+        //color: var(--geek-blue-color-5);
+        color: #FFFFFF;
         margin-left: 2rem;
       }
     }
@@ -163,7 +172,6 @@ onMounted(() => {
       font-weight: bold;
       background: var(--grey-color-5);
       height: 100vh;
-      //background: lavender;
       
       .el-menu-vertical-demo:not(.el-menu--collapse) {
         width: 14vw;
@@ -179,8 +187,23 @@ onMounted(() => {
     }
     
     .content-right {
-      overflow-y: auto;
       width: 100vw;
+      height: calc(100vh - 7rem);
+      
+      .menu-tabs {
+        height: 4rem;
+        box-shadow: 1rem 1rem 1rem #0000001a;
+        
+        .telescopic-button {
+          line-height: 4rem;
+          margin-left: 1rem;
+        }
+      }
+      
+      .main-content {
+        height: calc(100vh - 11rem);
+        overflow-y: auto;
+      }
     }
   }
 }

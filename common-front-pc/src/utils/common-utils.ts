@@ -1,5 +1,6 @@
 /// @filename: CommonUtils.ts
 import router from "@/router/index"
+import message, {PositionTypeEnum} from "@/components/message";
 
 const sourceDir = import.meta.env.VITE_APP_ENV === 'development' ? 'public' : 'dist'
 
@@ -19,6 +20,15 @@ export function goToHref(type: HrefTypeEnum, address: string) {
     } else {
         window.open(address)
     }
+}
+
+/* 系统复制命令-clipboard api方式 */
+export async function copyToClipboard(text: string): Promise<void> {
+    await navigator.clipboard.writeText(text).then(() => {
+        message.success('成功复制到剪贴板！', PositionTypeEnum.TOP)
+    }).catch(() => {
+        message.error('无法复制到剪贴板！', PositionTypeEnum.TOP)
+    })
 }
 
 /**

@@ -10,24 +10,19 @@ import ZoeyButton from "@/components/btn/ZoeyButton.vue";
     <zoey-title type="p">常用的操作按钮。</zoey-title>
     <zoey-title type="h2">基础用法</zoey-title>
     <div class="btn-list">
-      <zoey-button class="btn-item" type="primary" size="medium">primary medium</zoey-button>
-      <zoey-button class="btn-item" type="success" size="medium">success medium</zoey-button>
-      <zoey-button class="btn-item" type="warn" size="medium">warn medium</zoey-button>
-      <zoey-button class="btn-item" type="error" size="medium">error medium</zoey-button>
-      <zoey-button class="btn-item" type="default" size="medium">default medium</zoey-button>
-      <zoey-button class="btn-item" type="default" size="medium">default medium</zoey-button>
-      <zoey-button class="btn-item" type="default" size="medium">default medium</zoey-button>
-      <zoey-button class="btn-item" type="default" size="medium">default medium</zoey-button>
-      <zoey-button class="btn-item" type="default" size="medium">default medium</zoey-button>
-      <zoey-button class="btn-item" type="default" size="medium">default medium</zoey-button>
-      <zoey-button class="btn-item" type="default" size="medium">default medium</zoey-button>
-      <zoey-button class="btn-item" type="default" size="medium">default medium</zoey-button>
-      <zoey-button class="btn-item" type="default" size="medium">default medium</zoey-button>
-      <zoey-button class="btn-item" type="default" size="medium">default medium</zoey-button>
-      <zoey-button class="btn-item" type="default" size="medium">default medium</zoey-button>
-      <zoey-button class="btn-item" type="default" size="medium">default medium</zoey-button>
-      <zoey-button class="btn-item" type="default" size="medium">default medium</zoey-button>
-      <zoey-button class="btn-item" type="default" size="medium">default medium</zoey-button>
+      <zoey-title type="h4">按钮大小</zoey-title>
+      <zoey-button class="btn-item" type="primary" size="small">按钮</zoey-button>
+      <zoey-button class="btn-item" type="primary">按钮</zoey-button>
+      <zoey-button class="btn-item" type="primary" size="large">按钮</zoey-button>
+    </div>
+    <div class="btn-list">
+      <zoey-title type="h4">按钮类型-普通</zoey-title>
+      <zoey-button class="btn-item" type="primary">primary</zoey-button>
+      <zoey-button class="btn-item" type="success">success</zoey-button>
+      <zoey-button class="btn-item" type="warn">warn</zoey-button>
+      <zoey-button class="btn-item" type="error">error</zoey-button>
+      <zoey-button class="btn-item" type="default">default</zoey-button>
+      <zoey-button class="btn-item" type="default" disabled>disabled default</zoey-button>
     </div>
   </div>
 </template>

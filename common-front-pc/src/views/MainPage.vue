@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import {onMounted, ref} from "vue";
 import IconLogo from "@/components/icons/IconLogo.vue";
-import {Expand, Fold, Grid, Location, Open} from "@element-plus/icons-vue";
+import {Expand, Fold, Grid, Location, Medal, Menu, Open} from "@element-plus/icons-vue";
 import {useRouter} from 'vue-router';
 import {goToHref, HrefTypeEnum} from "@/utils/common-utils.ts";
 
@@ -50,20 +50,34 @@ onMounted(() => {
             </el-sub-menu>
             <el-sub-menu class="two-title" index="1-2">
               <template #title><span>Basic 基础组件</span></template>
-              <el-menu-item class="two-title" @click="goToHref(HrefTypeEnum.LOCAL_HREF,'/main/btn')" index="1-2-1">
+              <el-menu-item class="two-title" @click="goToHref(HrefTypeEnum.LOCAL_HREF,'/main/basic/btn')"
+                            index="1-2-1">
                 <el-icon>
                   <Open/>
                 </el-icon>
                 Button 按钮
               </el-menu-item>
-              <el-menu-item class="two-title" @click="goToHref(HrefTypeEnum.LOCAL_HREF,'/main/btn')" index="1-2-1">
-                Button 按钮
+              <el-menu-item class="two-title" @click="goToHref(HrefTypeEnum.LOCAL_HREF,'/main/basic/layout')"
+                            index="1-2-2">
+                <el-icon>
+                  <Menu/>
+                </el-icon>
+                layout 布局
               </el-menu-item>
-              <el-menu-item class="two-title" @click="goToHref(HrefTypeEnum.LOCAL_HREF,'/main/btn')" index="1-2-1">
-                Button 按钮
-              </el-menu-item>
-              <el-menu-item class="two-title" @click="goToHref(HrefTypeEnum.LOCAL_HREF,'/main/btn')" index="1-2-1">
-                Button 按钮
+            </el-sub-menu>
+          </el-sub-menu>
+          <el-sub-menu index="2">
+            <template #title>
+              <el-icon>
+                <Medal/>
+              </el-icon>
+              <span>CSS案例</span>
+            </template>
+            <el-sub-menu class="two-title" index="2-1">
+              <template #title><span><el-icon><Menu/></el-icon>布局案例</span></template>
+              <el-menu-item class="two-title" @click="goToHref(HrefTypeEnum.LOCAL_HREF,'/main/basic/layout')"
+                            index="2-1-1">
+                布局1
               </el-menu-item>
             </el-sub-menu>
           </el-sub-menu>
@@ -109,7 +123,7 @@ onMounted(() => {
   </div>
 </template>
 
-<style scoped>
+<style scoped lang="scss">
 .main-root {
   display: flex;
   flex-direction: column;
@@ -150,6 +164,7 @@ onMounted(() => {
       background: var(--grey-color-5);
       height: 100vh;
       //background: lavender;
+      
       .el-menu-vertical-demo:not(.el-menu--collapse) {
         width: 14vw;
         
@@ -164,7 +179,7 @@ onMounted(() => {
     }
     
     .content-right {
-      //background: lawngreen;
+      overflow-y: auto;
       width: 100vw;
     }
   }

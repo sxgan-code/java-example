@@ -19,9 +19,7 @@ const props = defineProps<{
 }
 
 .title-common {
-  //font-family: 'HarmonyOS Sans', sans-serif;
   font-weight: 700;
-  margin-left: 2rem;
   color: #606266;
 }
 
@@ -30,7 +28,7 @@ hr {
   border: 0;
   height: 1px;
   background-image: linear-gradient(to right, rgba(33, 33, 33, 1), rgba(33, 33, 33, 0.1), rgba(33, 33, 33, 1));
-  margin: 0 auto;
+  margin: 1rem auto 2rem;
   width: 98%;
 }
 
@@ -52,6 +50,7 @@ hr {
 .size-h4 {
   font-size: 1.8rem;
   line-height: 6rem;
+  color: #cccccc;
 }
 
 .size-h5 {

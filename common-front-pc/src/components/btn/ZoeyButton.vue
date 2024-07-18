@@ -9,27 +9,26 @@ const props = defineProps({
     required: true
   },
   size: {
-    type: String as PropType<'small' | 'medium' | 'large'>,
-    default: 'medium',
+    type: String as PropType<'small' | 'default' | 'large'>,
+    default: 'default',
     required: false
-  }
+  },
 })
 </script>
 
 <template>
-  <button :class="'zoey-button but-'+props.size+' but-'+props.type">
+  <button :class="'zoey-button but-size-'+props.size+' but-'+props.type">
     <slot></slot>
   </button>
 </template>
 
 <style scoped lang="scss">
 .zoey-button {
-  line-height: 2rem;
   border: none;
   outline: none;
   cursor: pointer;
   transition: all 0.3s;
-  padding: 1rem 1.6rem;
+  padding: 0 1.5rem;
   border-radius: 0.4rem;
 }
 
@@ -105,15 +104,19 @@ const props = defineProps({
 }
 
 /*按钮大小*/
-.but-small {
+.but-size-small {
+  height: 2.2rem;
   font-size: 1.2rem;
+  
 }
 
-.but-medium {
+.but-size-default {
+  height: 3.2rem;
   font-size: 1.4rem;
 }
 
-.but-large {
-  font-size: 1.8rem;
+.but-size-large {
+  height: 4rem;
+  font-size: 1.4rem;
 }
 </style>

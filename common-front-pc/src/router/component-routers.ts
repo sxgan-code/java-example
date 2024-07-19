@@ -3,7 +3,6 @@ import type {RouteRecordRaw} from "vue-router";
 const mainRouters: RouteRecordRaw[] = [
     {
         path: '/main',
-        name: 'main',
         component: () => import("@/views/MainPage.vue"),
         children: [
             {
@@ -22,8 +21,13 @@ const mainRouters: RouteRecordRaw[] = [
             },
             {
                 path: 'basic/layout',
-                name: 'layout',
+                name: 'flex',
                 component: () => import("@/views/basic/layout/FlexLayoutPage.vue"),
+            },
+            {
+                path: 'feedback/message',
+                name: 'message',
+                component: () => import("@/views/feedback/message/MessagePage.vue"),
             }
         ]
 

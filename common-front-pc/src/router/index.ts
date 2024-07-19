@@ -1,5 +1,4 @@
 import {createRouter, createWebHashHistory, type Router} from "vue-router";
-import mainRouters from "@/router/main-routers";
 import componentRouters from "@/router/component-routers.ts";
 import exampleRouters from "@/router/example-routers.ts";
 
@@ -7,7 +6,16 @@ const router: Router = createRouter({
     // Electron中路由方式必须使用Hash方式
     history: createWebHashHistory(),
     routes: [
-        ...mainRouters,
+        {
+            path: '/',
+            name: 'root',
+            redirect: '/signin',
+        },
+        {
+            path: '/signin',
+            name: 'signin',
+            component: () => import("@/views/SigninPage.vue"),
+        },
         ...componentRouters,
         ...exampleRouters
     ],

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import {onMounted, ref} from "vue";
 import IconLogo from "@/components/icons/IconLogo.vue";
-import {Expand, Fold, Grid, Location, Medal, Menu, Open} from "@element-plus/icons-vue";
+import {Bell, Expand, Fold, Grid, Location, Medal, Menu, Open} from "@element-plus/icons-vue";
 import {useRouter} from 'vue-router';
 import {goToHref, HrefTypeEnum} from "@/utils/common-utils.ts";
 
@@ -28,8 +28,8 @@ onMounted(() => {
     </div>
     <div class="content-box">
       <div class="content-left">
-      
-      <el-menu
+        
+        <el-menu
             default-active="2"
             class="el-menu-vertical-demo"
             :collapse="isCollapse"
@@ -64,6 +64,16 @@ onMounted(() => {
                   <Menu/>
                 </el-icon>
                 layout 布局
+              </el-menu-item>
+            </el-sub-menu>
+            <el-sub-menu class="two-title" index="1-3">
+              <template #title><span>Feedback 反馈组件</span></template>
+              <el-menu-item class="two-title" @click="goToHref(HrefTypeEnum.LOCAL_HREF,'/main/feedback/message')"
+                            index="1-3-1">
+                <el-icon>
+                  <Bell/>
+                </el-icon>
+                Message 消息提示
               </el-menu-item>
             </el-sub-menu>
           </el-sub-menu>
@@ -144,6 +154,7 @@ onMounted(() => {
     //background: var(--softness-group-4);
     background: #CC99CC;
     box-shadow: 0.1rem 0.1rem 0.3rem #ccc;
+    
     .head-logo {
       display: flex;
       align-items: center;

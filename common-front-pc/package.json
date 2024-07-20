@@ -19,6 +19,7 @@
     "highlight.js": "^11.10.0",
     "pinia": "^2.1.7",
     "vue": "^3.4.29",
+    "vue-cropper": "next",
     "vue-router": "^4.3.3"
   },
   "devDependencies": {

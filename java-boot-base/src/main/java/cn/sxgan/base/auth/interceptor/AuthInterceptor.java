@@ -1,6 +1,7 @@
 package cn.sxgan.base.auth.interceptor;
 
 
+import cn.sxgan.base.auth.config.ZoeyConfig;
 import cn.sxgan.base.auth.entity.RequestHolder;
 import cn.sxgan.base.auth.entity.UserSessionInfo;
 import cn.sxgan.common.cache.redis.RedisUtil;
@@ -36,9 +37,21 @@ public class AuthInterceptor implements HandlerInterceptor {
     @Resource
     RedisUtil redisUtil;
     
+    @Resource
+    ZoeyConfig zoeyConfig ;
+    
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         String token = request.getHeader("Authorization");
+        String adminToken = request.getHeader("AdminToken");
+        // 拦截器在bean初始化前执行的，这时候zoeyConfig是null，需要通过下面这个方式去获取
+        if (zoeyConfig == null) {
+            WebApplicationContext wac = WebApplicationContextUtils.getRequiredWebApplicationContext(request.getServletContext());
+            zoeyConfig = wac.getBean(ZoeyConfig.class);
+        }
+        if (zoeyConfig.getSecretKey().equals(adminToken)) {
+            return true;
+        }
         if (StringUtils.isBlank(token) || !JwtUtils.checkToken(token)) {
             returnLogin(response);
             return false;

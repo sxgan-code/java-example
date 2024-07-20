@@ -9,6 +9,8 @@ spring:
 # tokenKey
 token:
   key: zoey2024
+  admin:
+    secretKey: ZOEY_ENC(my3gQn6puBYGtC4r0T8F/A==)
 jasypt:
   encryptor:
     # 加密算法

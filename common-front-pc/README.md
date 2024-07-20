@@ -17,22 +17,26 @@ github仓库地址: [java-example](https://github.com/sxgan-code/java-example)
 
 # 目录
 
-## 自定义组件相关
+# 自定义组件相关
 
-### Basic 基础组件
+## Basic 基础组件
 
-### Form 表单组件
+- [01-基础组件-按钮](src%2Fcomponents%2Fbtn)
+- [02-基础组件-Flex布局](src%2Fcomponents%2Finput)
 
-### Data 数据展示
+## Form 表单组件
 
-### Navigation 导航
+## Data 数据展示
 
-### Feedback 反馈组件
+## Navigation 导航
+
+## Feedback 反馈组件
 
 - [01.反馈组件-鼠标悬浮提示指令](src%2Fcomponents%2Ftips)
 
-### Others 其他
+## Others 其他
 
-## 前端小案例
+# Java配套案例
 
 - [01.认证模块-登录注册功能页](src%2Fviews%2FSigninPage.vue)
+- [02.工具案例-二维码生成](src%2Fviews%2Fjava%2Futils%2FQrCodePage.vue)

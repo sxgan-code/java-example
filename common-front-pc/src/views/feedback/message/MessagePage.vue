@@ -15,7 +15,7 @@ const msgCode =
 
 <template>
   <div class="message-root">
-    <zoey-title type="h1">弹框提示组件</zoey-title>
+    <zoey-title type="h1" hr>弹框提示组件</zoey-title>
     <zoey-title type="h3">该组件提供顶部或右下角弹出框提示按钮，用法如下：</zoey-title>
     <hg-code :code="msgCode" lang="html"/>
     <zoey-title type="h4">示例：</zoey-title>
@@ -41,8 +41,7 @@ const msgCode =
 <style scoped lang="scss">
 .message-root {
   width: 83vw;
-  margin: 0 auto;
-  
+  margin: 5rem auto;
   .btn {
     margin: 0 2rem;
   }

@@ -1,8 +1,14 @@
 <script setup lang="ts">
 
-const props = defineProps<{
-  type: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p',
-}>()
+import type {PropType} from "vue";
+
+const props = defineProps({
+  type: {
+    type: String as PropType<'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p'>,
+    default: 'h1'
+  },
+  hr: Boolean,
+})
 
 </script>
 
@@ -10,7 +16,7 @@ const props = defineProps<{
   <div class="zoey-title-root">
     <span :class="'size-'+props.type+' title-common'"><slot></slot></span>
   </div>
-  <hr v-if="props.type==='h1'">
+  <hr v-if="hr">
 </template>
 
 <style scoped lang="scss">

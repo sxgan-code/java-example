@@ -6,7 +6,7 @@ import HgCode from "@/components/codelight/HgCode.vue";
 
 <template>
   <div class="flex-root">
-    <zoey-title type="h1">Flex 布局</zoey-title>
+    <zoey-title type="h1" hr>Flex 布局</zoey-title>
     
     <zoey-title type="h3">父元素设置子元素布局</zoey-title>
     <hg-code code="

@@ -1,9 +1,14 @@
 <script setup lang="ts">
 import {onMounted, ref} from "vue";
 import IconLogo from "@/components/icons/IconLogo.vue";
-import {Bell, Expand, Fold, Grid, Location, Medal, Menu, Open} from "@element-plus/icons-vue";
+import {Expand, Fold, Grid, Location, Medal, Menu} from "@element-plus/icons-vue";
 import {useRouter} from 'vue-router';
 import {goToHref, HrefTypeEnum} from "@/utils/common-utils.ts";
+import IconQr from "@/components/icons/IconQr.vue";
+import IconButton from "@/components/icons/IconButton.vue";
+import IconLayout from "@/components/icons/IconLayout.vue";
+import IconImgCut from "@/components/icons/IconImgCut.vue";
+import IconTips from "@/components/icons/IconTips.vue";
 
 const router = useRouter()
 const isCollapse = ref(false)
@@ -43,41 +48,55 @@ onMounted(() => {
               <el-icon>
                 <Grid/>
               </el-icon>
+              <span>Java案例</span>
+            </template>
+            <el-sub-menu class="two-title" index="1-1">
+              <template #title><span>工具类案例</span></template>
+              <el-menu-item class="two-title" @click="goToHref(HrefTypeEnum.LOCAL_HREF,'/java/utils/qr')"
+                            index="1-1-1">
+                <IconQr style="margin-right: 1rem;"/>
+                QR 二维码生成
+              </el-menu-item>
+            </el-sub-menu>
+          </el-sub-menu>
+          <el-sub-menu index="2">
+            <template #title>
+              <el-icon>
+                <Grid/>
+              </el-icon>
               <span>自定义组件</span>
             </template>
-            <el-sub-menu class="" index="1-1">
-              <template #title class="two-title">
-                <span>组件总览</span></template>
-            </el-sub-menu>
             <el-sub-menu class="two-title" index="1-2">
               <template #title><span>Basic 基础组件</span></template>
-              <el-menu-item class="two-title" @click="goToHref(HrefTypeEnum.LOCAL_HREF,'/main/basic/btn')"
+              <el-menu-item class="two-title" @click="goToHref(HrefTypeEnum.LOCAL_HREF,'/component/basic/btn')"
                             index="1-2-1">
-                <el-icon>
-                  <Open/>
-                </el-icon>
+                <icon-button style="margin-right: 1rem;"/>
                 Button 按钮
               </el-menu-item>
-              <el-menu-item class="two-title" @click="goToHref(HrefTypeEnum.LOCAL_HREF,'/main/basic/layout')"
+              <el-menu-item class="two-title" @click="goToHref(HrefTypeEnum.LOCAL_HREF,'/component/basic/layout')"
                             index="1-2-2">
-                <el-icon>
-                  <Menu/>
-                </el-icon>
+                <icon-layout style="margin-right: 1rem"/>
                 layout 布局
               </el-menu-item>
             </el-sub-menu>
             <el-sub-menu class="two-title" index="1-3">
               <template #title><span>Feedback 反馈组件</span></template>
-              <el-menu-item class="two-title" @click="goToHref(HrefTypeEnum.LOCAL_HREF,'/main/feedback/message')"
+              <el-menu-item class="two-title" @click="goToHref(HrefTypeEnum.LOCAL_HREF,'/component/feedback/message')"
                             index="1-3-1">
-                <el-icon>
-                  <Bell/>
-                </el-icon>
+                <icon-tips style="margin-right: 1rem;"/>
                 Message 消息提示
               </el-menu-item>
             </el-sub-menu>
+            <el-sub-menu class="two-title" index="1-4">
+              <template #title><span>Data 数据展示</span></template>
+              <el-menu-item class="two-title" @click="goToHref(HrefTypeEnum.LOCAL_HREF,'/component/data/avatar')"
+                            index="1-4-1">
+                <icon-img-cut style="margin-right: 1rem;"/>
+                用户头像截取
+              </el-menu-item>
+            </el-sub-menu>
           </el-sub-menu>
-          <el-sub-menu index="2">
+          <el-sub-menu index="3">
             <template #title>
               <el-icon>
                 <Medal/>
@@ -86,7 +105,7 @@ onMounted(() => {
             </template>
             <el-sub-menu class="two-title" index="2-1">
               <template #title><span><el-icon><Menu/></el-icon>布局案例</span></template>
-              <el-menu-item class="two-title" @click="goToHref(HrefTypeEnum.LOCAL_HREF,'/main/basic/layout')"
+              <el-menu-item class="two-title" @click="goToHref(HrefTypeEnum.LOCAL_HREF,'/component/basic/layout')"
                             index="2-1-1">
                 布局1
               </el-menu-item>

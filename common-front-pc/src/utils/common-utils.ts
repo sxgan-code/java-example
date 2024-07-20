@@ -31,6 +31,21 @@ export async function copyToClipboard(text: string): Promise<void> {
     })
 }
 
+/* 将对象转换为FormData */
+export function toFormData(params: any): FormData {
+    const formData = new FormData()
+    Object.keys(params).forEach(key => {
+        formData.append(key, params[key])
+    })
+    return formData
+}
+
+/* 获取时间 */
+export function getNowTimeOfFormData() {
+    let dataTime = new Date().getTime();
+    return toFormData({time: dataTime})
+}
+
 /**
  * 这是一个睡眠方法
  * @param ms

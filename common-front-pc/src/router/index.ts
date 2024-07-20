@@ -16,6 +16,17 @@ const router: Router = createRouter({
             name: 'signin',
             component: () => import("@/views/SigninPage.vue"),
         },
+        {
+            path: '/main',
+            component: () => import("@/views/MainPage.vue"),
+            children: [
+                {
+                    path: '',
+                    redirect: '/component/overview',
+                },
+            ]
+
+        },
         ...componentRouters,
         ...exampleRouters
     ],

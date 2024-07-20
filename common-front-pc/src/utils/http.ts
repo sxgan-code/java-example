@@ -21,8 +21,8 @@ service.interceptors.request.use(
         if (token != null && token != '') {
             config.headers.Authorization = token;
         }
-        if (config.headers.get('Use-Timestamp')) {
-            config.url = config.url + '?timestamp=' + new Date().getTime();
+        if (import.meta.env.VITE_ENV_URL === '/dev/') {
+            config.headers['AdminToken'] = 'zoey';
         }
         console.log("当前请求路径", config.url);
         // console.log(import.meta.env.VITE_BASE_URL)
@@ -46,9 +46,9 @@ service.interceptors.response.use(
         if (response.data instanceof ArrayBuffer) {
             return response;
         }
-
+        return response;
         // ElMessage.error(msg || '系统出错');
-        return Promise.reject(new Error(msg || 'Error'));
+        // return Promise.reject(new Error(msg || 'Error'));
     },
     (error: any) => {
         if (error.response.data) {

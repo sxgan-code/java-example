@@ -1,13 +1,13 @@
 import type {RouteRecordRaw} from "vue-router";
 
-const mainRouters: RouteRecordRaw[] = [
+const componentRouters: RouteRecordRaw[] = [
     {
-        path: '/main',
+        path: '/component',
         component: () => import("@/views/MainPage.vue"),
         children: [
             {
                 path: '',
-                redirect: '/main/overview',
+                redirect: '/component/overview',
             },
             {
                 path: 'overview',
@@ -28,9 +28,14 @@ const mainRouters: RouteRecordRaw[] = [
                 path: 'feedback/message',
                 name: 'message',
                 component: () => import("@/views/feedback/message/MessagePage.vue"),
+            },
+            {
+                path: 'data/avatar',
+                name: 'avatar',
+                component: () => import("@/views/data/avatar/AvatarPage.vue"),
             }
         ]
 
     },
 ]
-export default mainRouters
+export default componentRouters

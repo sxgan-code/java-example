@@ -2,10 +2,16 @@ import type {RouteRecordRaw} from "vue-router";
 
 const mainRouters: RouteRecordRaw[] = [
     {
-        path: '/example',
-        name: 'example',
+        path: '/java',
+        name: 'java',
         component: () => import("@/views/MainPage.vue"),
-        children: []
+        children: [
+            {
+                path: 'utils/qr',
+                name: 'qr',
+                component: () => import("@/views/java/utils/QrCodePage.vue"),
+            }
+        ]
 
     },
 ]

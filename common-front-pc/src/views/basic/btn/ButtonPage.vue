@@ -23,7 +23,7 @@ const btnTypeCode = `
 
 <template>
   <div class="title">
-    <zoey-title type="h1">Button 按钮</zoey-title>
+    <zoey-title type="h1" hr>Button 按钮</zoey-title>
     <zoey-title type="p">常用的操作按钮。</zoey-title>
     <zoey-title type="h2">基础用法</zoey-title>
     <zoey-title type="h4">按钮大小</zoey-title>
@@ -49,7 +49,7 @@ const btnTypeCode = `
 <style scoped lang="scss">
 .title {
   width: 83vw;
-  margin: 0 auto;
+  margin: 5rem auto;
 }
 
 .btn-list {

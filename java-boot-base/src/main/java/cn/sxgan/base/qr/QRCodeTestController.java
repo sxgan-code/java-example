@@ -1,17 +1,27 @@
 package cn.sxgan.base.qr;
 
+import cn.sxgan.base.auth.entity.UserSessionInfo;
 import cn.sxgan.common.anno.RequestAroundLog;
+import cn.sxgan.common.anno.RequestBeforeLog;
+import cn.sxgan.common.anno.WorkTime;
 import cn.sxgan.common.consts.FilePath;
+import cn.sxgan.common.utils.file.FileUtils;
 import cn.sxgan.common.utils.qrcode.QRCodeUtils;
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.qrcode.decoder.ErrorCorrectionLevel;
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.servlet.ServletOutputStream;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
@@ -86,6 +96,38 @@ public class QRCodeTestController {
         }
     }
     
+    /**
+     * qr生成带logo黑白二维码
+     */
+    @Operation(
+            summary = "qr生成上传logo黑白二维码",
+            description = "qr生成上传logo黑白二维码",
+            parameters = {
+                    @Parameter(name = "logoFile", description = "Logo文件", content = @Content(mediaType = "application/octet-stream", schema = @Schema(contentSchema = MultipartFile.class)))
+            }
+    )
+    @PostMapping("/loadlogo/qrcode")
+    @WorkTime("qr生成上传logo黑白二维码")
+    public void getUploadLogoQR(@RequestParam("logoFile") MultipartFile logoFile, HttpServletResponse response) {
+        ServletOutputStream outputStream = null;
+        // 设置响应头
+        // response.setContentType("image/png");
+        try {
+            File file = FileUtils.convertToFile(logoFile.getBytes());
+            BufferedImage bufferedImage = QRCodeUtils.getInstance()
+                    .setBaseConfig("https://gitee.com/sxgan?time=" +
+                            new Date().getTime(), 1, 300, 300, ErrorCorrectionLevel.H)
+                    .setLogo(file)
+                    .setBarcodeFormat(BarcodeFormat.QR_CODE)
+                    .build();
+            outputStream = response.getOutputStream();
+            ImageIO.write(bufferedImage, "png", outputStream);
+            outputStream.flush();
+            outputStream.close();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
     
 }
 

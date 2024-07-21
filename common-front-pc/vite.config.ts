@@ -42,11 +42,41 @@ export default defineConfig(({command, mode}) => {
             host: '0.0.0.0',
             port: 9999,
             proxy: {
+                '/local': {
+                    target: 'http://localhost:9999/src/assets/images',
+                    changeOrigin: true, // 表示开启代理, 允许跨域请求数据
+                    secure: false,  // 如果是https接口，需要配置这个参数
+                    rewrite: (path) => path.replace(/^\/local/, ''),
+                },
                 '/dev': {
                     target: env.VUE_APP_PROXY_URL,
                     changeOrigin: true, // 表示开启代理, 允许跨域请求数据
                     secure: false,  // 如果是https接口，需要配置这个参数
                     rewrite: (path) => path.replace(/^\/dev/, ''),
+                },
+                '/oss': {
+                    target: 'https://zoey-open-image.oss-cn-beijing.aliyuncs.com/',
+                    changeOrigin: true, // 表示开启代理, 允许跨域请求数据
+                    secure: false,  // 如果是https接口，需要配置这个参数
+                    rewrite: (path) => path.replace(/^\/oss/, ''),
+                },
+                '/gitee': {
+                    target: 'https://gitee.com/sxgan/zoey-open-images/raw/master/',
+                    changeOrigin: true, // 表示开启代理, 允许跨域请求数据
+                    secure: false,  // 如果是https接口，需要配置这个参数
+                    rewrite: (path) => path.replace(/^\/gitee/, ''),
+                },
+                '/picgo': {
+                    target: 'https://img.picgo.net/',
+                    changeOrigin: true, // 表示开启代理, 允许跨域请求数据
+                    secure: false,  // 如果是https接口，需要配置这个参数
+                    rewrite: (path) => path.replace(/^\/picgo/, ''),
+                },
+                '/github': {
+                    target: 'https://raw.githubusercontent.com/sxgan-code/zoey-open-images/main',
+                    changeOrigin: true, // 表示开启代理, 允许跨域请求数据
+                    secure: false,  // 如果是https接口，需要配置这个参数
+                    rewrite: (path) => path.replace(/^\/github/, ''),
                 },
             }
         }

@@ -1,4 +1,4 @@
-package cn.sxgan.common.utils;
+package cn.sxgan.common.utils.file;
 
 import lombok.extern.slf4j.Slf4j;
 

@@ -1,7 +1,6 @@
 <script setup lang="ts">
 
 import type {PropType} from "vue";
-import IconAvator from "@/components/icons/IconAvator.vue";
 
 const props = defineProps({
   type: {
@@ -19,7 +18,7 @@ const props = defineProps({
 
 <template>
   <button :class="'zoey-button but-size-'+props.size+' but-'+props.type" style="display: flex;align-items: center">
-    <IconAvator style="width: 1.6rem;height: 1.6rem;margin: 0.5rem;"/>
+    <!--<IconAvator style="width: 1.6rem;height: 1.6rem;margin: 0.5rem;"/>-->
     <slot></slot>
   </button>
 </template>

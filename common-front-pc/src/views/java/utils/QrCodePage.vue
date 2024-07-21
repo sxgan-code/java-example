@@ -5,6 +5,7 @@ import {getDefaultQrCodeApi, getLogoQrCodeApi} from "@/api/java/qr.ts";
 import {onMounted, ref} from "vue";
 import message, {PositionTypeEnum} from "@/components/message";
 import ZoeyCropper from "@/components/cropper/ZoeyCropper.vue";
+import {uploadFileGenQRApi} from "@/api/file/file.ts";
 
 const imgStream = ref()
 const imgLogoStream = ref()
@@ -35,17 +36,17 @@ const getLogoQrCode = (isFirst: boolean) => {
     console.log(err)
   })
 }
-const imageSrc = ref('')
+const getUploadLogoQR = async () => {
 
-const handleImageChange = async (e) => {
-  const file = e.target.files[0]
-  imageSrc.value = file
 }
-
-const handleCrop = async () => {
-  console.log('裁剪完成')
+const getImgData = (data: Blob) => {
+  
+  uploadFileGenQRApi(data).then(res => {
+    var blob = new Blob([res.data], {type: 'image/png'});
+    imgLogoStream.value = window.URL.createObjectURL(blob)
+    message.success('二维码生成成功', PositionTypeEnum.TOP)
+  })
 }
-
 
 onMounted(() => getDefaultQr(true))
 </script>
@@ -61,16 +62,14 @@ onMounted(() => getDefaultQr(true))
       </div>
       <img :src="imgStream" alt="">
     </div>
-    <zoey-title type="h2">截取图片上传生成二维码：</zoey-title>
+    <zoey-title type="h2">上传Logo生成二维码：</zoey-title>
     <div class="default-qr">
       <div class="qr-btn">
-        <zoey-cropper/>
-        <input type="file" @change="handleImageChange"/>
-        <!--<button @click="submitCroppedImage">上传裁剪图片</button>-->
-        <zoey-button type="primary" size="default" @click="getDefaultQr(false)">生成二维码</zoey-button>
+        <zoey-cropper @upload:logofile="getImgData"/>
       </div>
       <img :src="imgLogoStream" alt="">
     </div>
+  
   </div>
 
 </template>

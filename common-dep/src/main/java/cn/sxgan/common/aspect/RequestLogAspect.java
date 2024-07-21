@@ -93,8 +93,6 @@ public class RequestLogAspect {
     public void addLog(JoinPoint joinPoint, String outParams, long time) throws JsonProcessingException {
         HttpServletRequest request = ((ServletRequestAttributes)
                 Objects.requireNonNull(RequestContextHolder.getRequestAttributes())).getRequest();
-        ObjectMapper om = new ObjectMapper();
-        String json = om.writeValueAsString(filterArgs(joinPoint.getArgs()));
         log.info("\n\r=======================================\n\r" +
                         "请求地址:{} \n\r" +
                         "请求方式:{} \n\r" +

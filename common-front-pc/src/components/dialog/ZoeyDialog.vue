@@ -34,7 +34,6 @@ const closeDialog = () => emit("update:modelValue", visible)
       </div>
     </div>
   </div>
-  <!--    </Teleport>-->
 </template>
 
 
@@ -113,11 +112,8 @@ const closeDialog = () => emit("update:modelValue", visible)
     }
     
     &-content {
-      display: flex;
-      width: 50rem;
-      height: 50rem;
-      background: #000;
-      //padding: 20px;
+      width: v-bind(width);
+      margin: 0 auto;
     }
     
     &-footer {

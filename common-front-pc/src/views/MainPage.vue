@@ -9,6 +9,7 @@ import IconButton from "@/components/icons/IconButton.vue";
 import IconLayout from "@/components/icons/IconLayout.vue";
 import IconImgCut from "@/components/icons/IconImgCut.vue";
 import IconTips from "@/components/icons/IconTips.vue";
+import IconDialog from "@/components/icons/IconDialog.vue";
 
 const router = useRouter()
 const isCollapse = ref(false)
@@ -88,7 +89,7 @@ onMounted(() => {
               </el-menu-item>
               <el-menu-item class="two-title" @click="goToHref(HrefTypeEnum.LOCAL_HREF,'/component/feedback/dialog')"
                             index="1-3-2">
-                <icon-tips style="margin-right: 1rem;"/>
+                <icon-dialog style="margin-right: 1rem;"/>
                 Dialog 对话框
               </el-menu-item>
             </el-sub-menu>

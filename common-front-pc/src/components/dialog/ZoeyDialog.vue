@@ -63,7 +63,6 @@ const closeDialog = () => emit("update:modelValue", visible)
     height: v-bind(height);
     width: v-bind(width);
     position: fixed;
-    color: #fff;
     top: v-bind(top);
     left: v-bind(left);
     transform: translate(-50%, -50%);

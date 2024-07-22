@@ -86,6 +86,11 @@ onMounted(() => {
                 <icon-tips style="margin-right: 1rem;"/>
                 Message 消息提示
               </el-menu-item>
+              <el-menu-item class="two-title" @click="goToHref(HrefTypeEnum.LOCAL_HREF,'/component/feedback/dialog')"
+                            index="1-3-2">
+                <icon-tips style="margin-right: 1rem;"/>
+                Dialog 对话框
+              </el-menu-item>
             </el-sub-menu>
             <el-sub-menu class="two-title" index="1-4">
               <template #title><span>Data 数据展示</span></template>

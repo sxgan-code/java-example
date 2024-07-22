@@ -30,6 +30,11 @@ const componentRouters: RouteRecordRaw[] = [
                 component: () => import("@/views/feedback/message/MessagePage.vue"),
             },
             {
+                path: 'feedback/dialog',
+                name: 'dialog',
+                component: () => import("@/views/feedback/dialog/DialogPage.vue"),
+            },
+            {
                 path: 'data/avatar',
                 name: 'avatar',
                 component: () => import("@/views/data/avatar/AvatarPage.vue"),

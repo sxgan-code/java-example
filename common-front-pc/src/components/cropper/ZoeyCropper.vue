@@ -85,10 +85,15 @@ const uploadImg = (e: any) => {
  * 实时预览
  * @param data
  */
+const previewData = ref()
 const realTime = (data: any) => {
-  console.log(data)
-  previews.value = data;
-  console.log('实时预览')
+  console.log('上面是', data);
+  cropper.value.getCropBlob((data: Blob) => {
+    console.log('这里是', data);
+    var img = window.URL.createObjectURL(data);
+    // this.model = true;
+    previewData.value = img;
+  });
 }
 /**
  * 更改大小
@@ -164,9 +169,9 @@ const getCropper = (type: string): any => {
           @img-load="imgLoad"
           @crop-moving="cropMoving"
       ></z-cropper>
-      <div class="show-preview" :style="{'overflow': 'hidden', 'margin': '5px','border-radius': previews.w/2+'rem'}">
+      <div class="show-preview" :style="{'overflow': 'hidden', 'margin': '5px','border-radius':'10rem'}">
         <div style="width: 20rem;height: 20rem">
-          <img :src="previews.url" :style="previews.img">
+          <img :src="previewData">
         </div>
       </div>
     </div>
@@ -200,9 +205,9 @@ const getCropper = (type: string): any => {
     display: flex;
     
     .cropper-root-cut-cropper {
-      width: 40rem;
-      height: 40rem;
-      margin-right: 20rem;
+      width: 25rem;
+      height: 25rem;
+      margin-right: 10rem;
     }
     
     .show-preview {

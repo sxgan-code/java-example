@@ -7,7 +7,7 @@ const props = defineProps({
     type: String as PropType<'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p'>,
     default: 'h1'
   },
-  hr: Boolean,
+  hr: Boolean, // 是否显示分割线
 })
 
 </script>

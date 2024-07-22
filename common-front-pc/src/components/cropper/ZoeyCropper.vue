@@ -7,6 +7,10 @@ import ZCropper from "@/components/cropper/z-cropper.vue";
 import message from "@/components/message";
 import ZoeyButton from "@/components/btn/ZoeyButton.vue";
 import ZoeyInput from "@/components/form/ZoeyInput.vue";
+import IconAdd from "@/components/icons/IconAdd.vue";
+import IconSub from "@/components/icons/IconSub.vue";
+import IconRotateLeft from "@/components/icons/IconRotateLeft.vue";
+import IconRotateRight from "@/components/icons/IconRotateRight.vue";
 
 const cropper: any = ref(null);
 const show = ref(true);
@@ -170,12 +174,20 @@ const getCropper = (type: string): any => {
       <zoey-input class="zoey-input" type="file" @handleFileChange="uploadImg">
         更换图片
       </zoey-input>
-      <zoey-button type="primary" @click="changeScale(1)">加</zoey-button>
-      <zoey-button type="primary" @click="changeScale(-1)">减</zoey-button>
-      <zoey-button type="primary" @click="rotateImg(true)">向左旋转</zoey-button>
-      <zoey-button type="primary" @click="rotateImg(false)">向右旋转</zoey-button>
-      <zoey-button type="primary" @click="refreshCrop()">重置</zoey-button>
-      <zoey-button type="primary" @click="getCropper('blob')">确定</zoey-button>
+      <zoey-button logo type="default" @click="changeScale(1)">
+        <icon-add fill="#7DAAFF"/>
+      </zoey-button>
+      <zoey-button logo type="default" @click="changeScale(-1)">
+        <icon-sub fill="#7DAAFF"/>
+      </zoey-button>
+      <zoey-button logo type="default" @click="rotateImg(true)">
+        <icon-rotate-left fill="#f759ab"/>
+      </zoey-button>
+      <zoey-button logo type="default" @click="rotateImg(false)">
+        <icon-rotate-right fill="#f759ab"/>
+      </zoey-button>
+      <zoey-button type="warn" @click="refreshCrop()">重置</zoey-button>
+      <zoey-button type="success" @click="getCropper('blob')">确定</zoey-button>
     </div>
   
   </div>

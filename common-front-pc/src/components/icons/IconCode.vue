@@ -1,5 +1,9 @@
 <script setup lang="ts">
-
+const props = defineProps({
+  fill: {type: String, default: '#FFFFFF', required: false},
+  width: {type: String, default: '2rem', required: false},
+  height: {type: String, default: '2rem', required: false},
+})
 </script>
 
 <template>
@@ -13,7 +17,7 @@
 
 <style scoped lang="scss">
 svg {
-  width: 100%;
-  height: 100%;
+  width: v-bind(width);
+  height: v-bind(height);
 }
 </style>

@@ -18,7 +18,7 @@ const registerData = ref<LoginData>({
   password: '123456',
   rePassword: '',
   verifyCode: '',
-  imgVerifyCode: '1234',
+  imgVerifyCode: '',
   verToken: '',
   rememberMe: true
 })

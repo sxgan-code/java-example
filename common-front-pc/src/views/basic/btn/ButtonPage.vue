@@ -3,6 +3,8 @@
 import ZoeyTitle from "@/components/titles/ZoeyTitle.vue";
 import ZoeyButton from "@/components/btn/ZoeyButton.vue";
 import HgCode from "@/components/codelight/HgCode.vue";
+import IconButton from "@/components/icons/IconButton.vue";
+import IconSuccess from "@/components/icons/IconSuccess.vue";
 /* 按钮大小模版 */
 const sizeCode = `
 <zoey-button class="btn-item" type="primary" size="small">按钮</zoey-button>
@@ -17,8 +19,19 @@ const btnTypeCode = `
 <zoey-button class="btn-item" type="error">error</zoey-button>
 <zoey-button class="btn-item" type="default">default</zoey-button>
 <zoey-button class="btn-item" type="default" disabled>disabled default</zoey-button>`
-
-
+/* 带图标类型 */
+const btnIconTypeCode = `
+<zoey-button class="btn-item" type="primary">
+  <icon-button style="margin-right: 1rem;"></icon-button>
+  开关
+</zoey-button>
+<zoey-button class="btn-item" type="success">
+  <icon-success style="margin-right: 1rem;"></icon-success>
+  success
+</zoey-button>
+<zoey-button type="default" class="btn-item">
+  <icon-success fill="#5B8FF9"></icon-success>
+</zoey-button>`
 </script>
 
 <template>
@@ -43,6 +56,21 @@ const btnTypeCode = `
       <zoey-button class="btn-item" type="default">default</zoey-button>
       <zoey-button class="btn-item" type="default" disabled>disabled default</zoey-button>
     </div>
+    <zoey-title type="h4">按钮类型-带图标</zoey-title>
+    <hg-code :code="btnIconTypeCode" lang="html"/>
+    <div class="btn-list">
+      <zoey-button class="btn-item" type="primary">
+        <icon-button style="margin-right: 1rem;"></icon-button>
+        开关
+      </zoey-button>
+      <zoey-button class="btn-item" type="success">
+        <icon-success style="margin-right: 1rem;"></icon-success>
+        success
+      </zoey-button>
+      <zoey-button logo type="success" size="default" class="btn-item">
+        <icon-success fill="#FFF"></icon-success>
+      </zoey-button>
+    </div>
   </div>
 </template>
 
@@ -61,7 +89,7 @@ const btnTypeCode = `
   margin: 0 auto;
   //background: lightcyan;
   .btn-item {
-    margin: 2rem 1rem;
+    margin: 4rem 1rem;
   }
 }
 </style>

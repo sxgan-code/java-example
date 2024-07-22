@@ -1,4 +1,6 @@
 <script lang="ts" setup>
+import ZoeyButton from "@/components/btn/ZoeyButton.vue";
+
 let props = defineProps({
   top: {type: String, default: "50%"},//位置(中心位置)
   mask: {type: Boolean, default: true},//遮罩层(默认开启)
@@ -29,7 +31,8 @@ const closeDialog = () => emit("update:modelValue", visible)
           <slot name="content"></slot>
         </div>
         <div class="modal-dialog-footer">
-          <slot name="footer"></slot>
+          <zoey-button class="btn" @click="closeDialog" type="primary">确定</zoey-button>
+          <zoey-button class="btn" @click="closeDialog" type="default">取消</zoey-button>
         </div>
       </div>
     </div>
@@ -112,15 +115,22 @@ const closeDialog = () => emit("update:modelValue", visible)
     }
     
     &-content {
-      width: v-bind(width);
+      width: calc(100vw - 50rem);
+      height: calc(100vh - 20rem);
+      overflow-y: auto;
       margin: 0 auto;
     }
     
     &-footer {
       //border-top: 1px solid rgba(255, 255, 255, 0.2);
+      margin: 2rem;
       display: flex;
-      justify-content: space-around;
+      justify-content: end;
       align-items: center;
+      
+      .btn {
+        margin: 0 2rem;
+      }
       //padding: 20px;
     }
   }

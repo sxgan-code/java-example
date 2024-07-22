@@ -20,19 +20,12 @@ const isShowDialog = (value: boolean) => {
       <zoey-title type="h4">使用方法</zoey-title>
       <zoey-button @click="show = true" type="primary">点击弹出截图组件</zoey-button>
       <zoey-dialog :show="show"
-                   height="60vh"
-                   width="40vw"
                    @update:modelValue="isShowDialog(show)">
         <template #title>
           <zoey-title type="h3" hr>截图</zoey-title>
         </template>
         <template #content>
           <zoey-cropper/>
-        </template>
-        
-        <template #footer>
-          <zoey-button @click="show = false" type="primary">确定</zoey-button>
-          <zoey-button @click="show = false" type="default">取消</zoey-button>
         </template>
       </zoey-dialog>
     

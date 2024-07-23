@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import {onMounted, ref} from "vue";
-import IconLogo from "@/components/icons/IconLogo.vue";
-import {Expand, Fold, Grid, Location, Medal, Menu} from "@element-plus/icons-vue";
+import {Expand, Fold, Location, Menu} from "@element-plus/icons-vue";
 import {useRouter} from 'vue-router';
 import {goToHref, HrefTypeEnum} from "@/utils/common-utils.ts";
 import IconQr from "@/components/icons/IconQr.vue";
@@ -10,6 +9,10 @@ import IconLayout from "@/components/icons/IconLayout.vue";
 import IconImgCut from "@/components/icons/IconImgCut.vue";
 import IconTips from "@/components/icons/IconTips.vue";
 import IconDialog from "@/components/icons/IconDialog.vue";
+import IconJava from "@/components/icons/IconJava.vue";
+import IconJavaLogo from "@/components/icons/IconJavaLogo.vue";
+import IconComponent from "@/components/icons/IconComponent.vue";
+import IconCss from "@/components/icons/IconCss.vue";
 
 const router = useRouter()
 const isCollapse = ref(false)
@@ -28,13 +31,12 @@ onMounted(() => {
   <div class="main-root">
     <div class="main-head">
       <div class="head-logo">
-        <IconLogo class="logo"/>
+        <icon-java-logo width="4rem" height="4rem" style="margin-left: 3rem"/>
         <h1>JavaExample</h1>
       </div>
     </div>
     <div class="content-box">
       <div class="content-left">
-        
         <el-menu
             default-active="2"
             class="el-menu-vertical-demo"
@@ -46,9 +48,7 @@ onMounted(() => {
         >
           <el-sub-menu index="1">
             <template #title>
-              <el-icon>
-                <Grid/>
-              </el-icon>
+              <icon-java style="margin-right: 1rem;"/>
               <span>Java案例</span>
             </template>
             <el-sub-menu class="two-title" index="1-1">
@@ -62,9 +62,7 @@ onMounted(() => {
           </el-sub-menu>
           <el-sub-menu index="2">
             <template #title>
-              <el-icon>
-                <Grid/>
-              </el-icon>
+              <icon-component style="margin-right: 1rem;"/>
               <span>自定义组件</span>
             </template>
             <el-sub-menu class="two-title" index="1-2">
@@ -104,9 +102,7 @@ onMounted(() => {
           </el-sub-menu>
           <el-sub-menu index="3">
             <template #title>
-              <el-icon>
-                <Medal/>
-              </el-icon>
+              <icon-css style="margin-right: 1rem;"/>
               <span>CSS案例</span>
             </template>
             <el-sub-menu class="two-title" index="2-1">
@@ -208,9 +204,11 @@ onMounted(() => {
       font-weight: bold;
       background: var(--grey-color-5);
       height: 100vh;
+      overflow-y: auto;
       
       .el-menu-vertical-demo:not(.el-menu--collapse) {
-        width: 14vw;
+        width: 17vw;
+        overflow-x: auto;
         
         .two-title, .three-title {
           background: var(--grey-color-6);

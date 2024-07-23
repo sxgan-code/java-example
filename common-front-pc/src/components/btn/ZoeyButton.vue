@@ -20,9 +20,9 @@ const props = defineProps({
 const classVal = ref<string>('')
 onMounted(() => {
   if (props.logo) {
-    classVal.value = 'icon-button icon-type-' + props.type + ' but-icon-' + props.size
+    classVal.value = 'icon-button icon-type-' + props.type + ' btn-icon-' + props.size
   } else {
-    classVal.value = 'zoey-button but-size-' + props.size + ' but-' + props.type
+    classVal.value = 'zoey-button btn-size-' + props.size + ' btn-' + props.type
   }
 })
 </script>
@@ -46,7 +46,7 @@ onMounted(() => {
   align-items: center
 }
 
-.but-primary {
+.btn-primary {
   background-color: #5B8FF9;
   color: #FFFFFF;
   
@@ -60,7 +60,7 @@ onMounted(() => {
   }
 }
 
-.but-success {
+.btn-success {
   background-color: #73d13d;
   color: #FFFFFF;
   
@@ -74,7 +74,7 @@ onMounted(() => {
   }
 }
 
-.but-error {
+.btn-error {
   background-color: #ff7875;
   color: #FFFFFF;
   
@@ -88,7 +88,7 @@ onMounted(() => {
   }
 }
 
-.but-warn {
+.btn-warn {
   background-color: #E6A23C;
   color: #FFFFFF;
   
@@ -102,7 +102,21 @@ onMounted(() => {
   }
 }
 
-.but-default {
+.btn-info {
+  background-color: #909399;
+  color: #FFFFFF;
+  
+  &:hover {
+    background-color: #B1B3B8;
+  }
+  
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+  }
+}
+
+.btn-default {
   background-color: #FFF;
   border: 0.1rem solid #cccccc;
   color: #333333;
@@ -118,17 +132,17 @@ onMounted(() => {
 }
 
 /*按钮大小*/
-.but-size-small {
+.btn-size-small {
   height: 2.2rem;
   font-size: 1.2rem;
 }
 
-.but-size-default {
+.btn-size-default {
   height: 3.2rem;
   font-size: 1.4rem;
 }
 
-.but-size-large {
+.btn-size-large {
   height: 4rem;
   font-size: 1.4rem;
 }
@@ -197,6 +211,20 @@ onMounted(() => {
   }
 }
 
+.icon-type-info {
+  background-color: #909399;
+  color: #FFFFFF;
+  
+  &:hover {
+    background-color: #B1B3B8;
+  }
+  
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+  }
+}
+
 .icon-type-default {
   background-color: #FFF;
   border: 0.1rem solid #cccccc;
@@ -213,19 +241,19 @@ onMounted(() => {
 }
 
 /*图标按钮大小*/
-.but-icon-small {
+.btn-icon-small {
   width: 2.2rem;
   height: 2.2rem;
   border-radius: 1.1rem;
 }
 
-.but-icon-default {
+.btn-icon-default {
   width: 3.2rem;
   height: 3.2rem;
   border-radius: 1.8rem;
 }
 
-.but-icon-large {
+.btn-icon-large {
   width: 4rem;
   height: 4rem;
   border-radius: 2rem;

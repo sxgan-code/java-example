@@ -35,24 +35,33 @@ const btnIconTypeCode = `
   <icon-success style="margin-right: 1rem;"></icon-success>
   success
 </zoey-button>
-<zoey-button logo type="success" class="btn-item">
+<zoey-button icon type="success" class="btn-item">
   <icon-success fill="#FFF"></icon-success>
 </zoey-button>
-<zoey-button logo type="primary" class="btn-item">
+<zoey-button icon type="primary" class="btn-item">
   <icon-edit fill="#FFF"></icon-edit>
 </zoey-button>
-<zoey-button logo type="info" class="btn-item">
+<zoey-button icon type="info" class="btn-item">
   <icon-email fill="#FFF"></icon-email>
 </zoey-button>
-<zoey-button logo type="warn" class="btn-item">
+<zoey-button icon type="warn" class="btn-item">
   <icon-collect fill="#FFF"></icon-collect>
 </zoey-button>
-<zoey-button logo type="error" class="btn-item">
+<zoey-button icon type="error" class="btn-item">
   <icon-delete fill="#FFF"></icon-delete>
 </zoey-button>
-<zoey-button logo type="default" class="btn-item">
+<zoey-button icon type="default" class="btn-item">
   <icon-search fill="#CCC"></icon-search>
 </zoey-button>`
+/* 浅色按钮 */
+const btnPlainTypeCode = `
+<zoey-button class="btn-item" plain type="primary">primary</zoey-button>
+<zoey-button class="btn-item" plain type="success">success</zoey-button>
+<zoey-button class="btn-item" plain type="warn">warn</zoey-button>
+<zoey-button class="btn-item" plain type="error">error</zoey-button>
+<zoey-button class="btn-item" plain type="info">info</zoey-button>
+<zoey-button class="btn-item" plain type="default">default</zoey-button>
+<zoey-button class="btn-item" plain type="default" disabled>disabled default</zoey-button>`
 </script>
 
 <template>
@@ -80,9 +89,26 @@ const btnIconTypeCode = `
     </div>
     <hg-code :code="btnTypeCode" lang="html"/>
     
+    <zoey-title type="h4">按钮类型-浅色图标</zoey-title>
+    <zoey-title type="h5">当使用浅色按钮时只需选择普通按钮并在按钮组件添加
+      <zcode>plain</zcode>
+      属性即可
+    </zoey-title>
+    <div class="btn-list">
+      <zoey-button class="btn-item" plain type="primary">primary</zoey-button>
+      <zoey-button class="btn-item" plain type="success">success</zoey-button>
+      <zoey-button class="btn-item" plain type="warn">warn</zoey-button>
+      <zoey-button class="btn-item" plain type="error">error</zoey-button>
+      <zoey-button class="btn-item" plain type="info">info</zoey-button>
+      <zoey-button class="btn-item" plain type="default">default</zoey-button>
+      <zoey-button class="btn-item" plain type="default" disabled>disabled default</zoey-button>
+    </div>
+    <hg-code :code="btnPlainTypeCode" lang="html"/>
+    
+    
     <zoey-title type="h4">按钮类型-带图标</zoey-title>
     <zoey-title type="h5">可内嵌图标，当使用纯图标按钮时只需导入图标并在按钮组件添加
-      <zcode>logo</zcode>
+      <zcode>icon</zcode>
       属性即可
     </zoey-title>
     <div class="btn-list">
@@ -94,22 +120,22 @@ const btnIconTypeCode = `
         <icon-success style="margin-right: 1rem;"></icon-success>
         success
       </zoey-button>
-      <zoey-button logo type="success" class="btn-item">
+      <zoey-button icon type="success" class="btn-item">
         <icon-success fill="#FFF"></icon-success>
       </zoey-button>
-      <zoey-button logo type="primary" class="btn-item">
+      <zoey-button icon type="primary" class="btn-item">
         <icon-edit fill="#FFF"></icon-edit>
       </zoey-button>
-      <zoey-button logo type="info" class="btn-item">
+      <zoey-button icon type="info" class="btn-item">
         <icon-email fill="#FFF"></icon-email>
       </zoey-button>
-      <zoey-button logo type="warn" class="btn-item">
+      <zoey-button icon type="warn" class="btn-item">
         <icon-collect fill="#FFF"></icon-collect>
       </zoey-button>
-      <zoey-button logo type="error" class="btn-item">
+      <zoey-button icon type="error" class="btn-item">
         <icon-delete fill="#FFF"></icon-delete>
       </zoey-button>
-      <zoey-button logo type="default" class="btn-item">
+      <zoey-button icon type="default" class="btn-item">
         <icon-search fill="#CCC"></icon-search>
       </zoey-button>
     </div>

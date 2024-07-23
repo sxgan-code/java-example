@@ -13,14 +13,17 @@ const props = defineProps({
     default: 'default',
     required: false
   },
-  logo: {type: Boolean, default: false, required: false},
+  icon: {type: Boolean, default: false, required: false},
+  plain: {type: Boolean, default: false, required: false},
   bgColor: {type: String, default: '#FFFFFF', required: false},
   h: {type: String, default: '3rem', required: false}
 })
 const classVal = ref<string>('')
 onMounted(() => {
-  if (props.logo) {
+  if (props.icon) {
     classVal.value = 'icon-button icon-type-' + props.type + ' btn-icon-' + props.size
+  } else if (props.plain) {
+    classVal.value = 'zoey-button btn-size-' + props.size + ' btn-plain-' + props.type
   } else {
     classVal.value = 'zoey-button btn-size-' + props.size + ' btn-' + props.type
   }
@@ -131,6 +134,104 @@ onMounted(() => {
   }
 }
 
+/* 浅色主题*/
+.btn-plain-primary {
+  background-color: #ECF5FF;
+  border: 0.1rem solid #5B8FF9;
+  color: #5B8FF9;
+  
+  &:hover {
+    color: #FFFFFF;
+    background-color: #5B8FF9;
+  }
+  
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+  }
+}
+
+.btn-plain-success {
+  background-color: #F0F9EB;
+  border: 0.1rem solid #67C23A;
+  color: #67C23A;
+  
+  &:hover {
+    color: #FFFFFF;
+    background-color: #67C23A;
+  }
+  
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+  }
+}
+
+.btn-plain-error {
+  background-color: #FEF0F0;
+  border: 0.1rem solid #F5222D;
+  color: #F5222D;
+  
+  &:hover {
+    color: #FFFFFF;;
+    background-color: #F5222D;
+  }
+  
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+  }
+}
+
+.btn-plain-warn {
+  background-color: #FDF6EC;
+  border: 0.1rem solid #E6A23C;
+  color: #E6A23C;
+  
+  &:hover {
+    color: #FFFFFF;
+    background-color: #E6A23C;
+  }
+  
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+  }
+}
+
+.btn-plain-info {
+  background-color: #F4F4F5;
+  color: #909399;
+  border: 0.1rem solid #909399;
+  
+  &:hover {
+    color: #FFFFFF;
+    background-color: #909399;
+  }
+  
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+  }
+}
+
+.btn-plain-default {
+  background-color: #FFF;
+  border: 0.1rem solid #DCDFE6;
+  color: #606266;
+  
+  &:hover {
+    color: #5B8FF9;
+    background-color: #ECF5FF;
+  }
+  
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+  }
+}
+
+
 /*按钮大小*/
 .btn-size-small {
   height: 2.2rem;
@@ -153,9 +254,12 @@ onMounted(() => {
   align-items: center;
   border: none;
   justify-content: space-around;
+  outline: none;
+  cursor: pointer;
+  transition: all 0.3s;
 }
 
-/*logo样式*/
+/*icon样式*/
 .icon-type-primary {
   background-color: #5B8FF9;
   

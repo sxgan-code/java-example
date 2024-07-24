@@ -115,7 +115,7 @@ const closeDialog = () => emit("update:modelValue", visible)
     
     &-content {
       width: 50vw;
-      height: 70vh;
+      height: 50vh;
       overflow-y: auto;
       margin: 0 auto;
     }

@@ -176,7 +176,7 @@ const getCropper = (type: string): any => {
       </div>
     </div>
     <div class="cropper-root-ctrl">
-      <zoey-input class="zoey-input" type="file" @handleFileChange="uploadImg">
+      <zoey-input class="zoey-input" type="file" @input-change="uploadImg">
         更换图片
       </zoey-input>
       <zoey-button logo type="default" @click="changeScale(1)">

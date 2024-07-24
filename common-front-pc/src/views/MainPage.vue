@@ -99,6 +99,14 @@ onMounted(() => {
                 用户头像截取
               </el-menu-item>
             </el-sub-menu>
+            <el-sub-menu class="two-title" index="1-5">
+              <template #title><span>Form 表单组件</span></template>
+              <el-menu-item class="two-title" @click="goToHref(HrefTypeEnum.LOCAL_HREF,'/component/form/formtable')"
+                            index="1-5-1">
+                <icon-img-cut style="margin-right: 1rem;"/>
+                Form 表单
+              </el-menu-item>
+            </el-sub-menu>
           </el-sub-menu>
           <el-sub-menu index="3">
             <template #title>

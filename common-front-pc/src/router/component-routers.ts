@@ -38,6 +38,11 @@ const componentRouters: RouteRecordRaw[] = [
                 path: 'data/avatar',
                 name: 'avatar',
                 component: () => import("@/views/data/avatar/AvatarPage.vue"),
+            },
+            {
+                path: 'form/formtable',
+                name: 'formtable',
+                component: () => import("@/views/form/ZoeyInputPage.vue"),
             }
         ]
 

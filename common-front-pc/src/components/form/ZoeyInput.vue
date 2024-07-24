@@ -1,6 +1,6 @@
 <script setup lang="ts">
 
-import type {PropType} from "vue";
+import {type PropType, ref} from "vue";
 
 let props = defineProps({
   type: {
@@ -9,16 +9,19 @@ let props = defineProps({
     required: true
   },//类型
   label: {type: String, default: "", required: false},
+  labelWidth: {type: String, default: "12rem", required: false},
   tips: {type: String, default: "选择您的头像图片进行上传"},//提示
   accept: {type: String, default: "image/png, image/jpeg, image/gif, image/jpg"},//文件限制类型
-  width: {type: String, default: '20rem'},//宽度
-  height: {type: String, default: '3rem'},//高度
+  width: {type: String, default: '25rem'},//宽度
+  height: {type: String, default: '2.6rem'},//高度
   bgColor: {type: String, default: "#5B8FF9"},//背景颜色
   bgActiveColor: {type: String, default: "#3aa9fb"},//背景活动颜色
   textColor: {type: String, default: "#FFFFFF"},//字体颜色
 })
 
 const emit = defineEmits<{ (event: "inputChange", e: any): void }>()
+
+const labelW = ref(props.labelWidth)
 </script>
 
 <template>
@@ -31,7 +34,6 @@ const emit = defineEmits<{ (event: "inputChange", e: any): void }>()
 
 <style scoped lang="scss">
 .input-text-box {
-  //float: left;
   margin: 0.8rem 1rem;
   display: flex;
   flex-direction: row;
@@ -39,24 +41,33 @@ const emit = defineEmits<{ (event: "inputChange", e: any): void }>()
   
   .input-text-label {
     font-family: "HarmonyOS Sans", sans-serif;
-    font-size: 1.8rem;
-    margin: 0 1rem 0 2rem;
-    color: #6D6F73;
+    font-weight: bold;
+    font-size: 1.4rem;
+    text-align: right;
+    width: v-bind(labelWidth);
+    margin-right: 1rem;
+    color: #606266;
     line-height: v-bind(height);
   }
   
   .input-text {
+    border: 0.15rem solid #C0C4CC;
+    border-radius: 0.3rem;
     width: v-bind(width);
     height: v-bind(height);
+    
+    &:focus {
+      border: 0.15rem solid #409EFF;
+    }
   }
 }
 
 /* 文件类型改为按钮 */
 .input-file-box {
+  margin: 0.8rem 1rem;
   transition: all 0.3s;
   float: left;
   width: max-content;
-  margin: 1rem;
   padding: 0 1.5rem;
   border-radius: 0.4rem;
   font-family: "HarmonyOS Sans", sans-serif;

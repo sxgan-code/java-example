@@ -57,7 +57,7 @@ onMounted(() => getDefaultQr(true))
     <zoey-title type="h2">点击按钮生成不同类型的黑白二维码：</zoey-title>
     <div class="default-qr">
       <div class="qr-btn">
-        <zoey-button type="primary" size="default" @click="getDefaultQr(false)">生成二维码</zoey-button>
+        <zoey-button type="primary" @click="getDefaultQr(false)">生成二维码</zoey-button>
         <zoey-button type="primary" size="default" @click="getLogoQrCode(false)">生成Logo二维码</zoey-button>
       </div>
       <img :src="imgStream" alt="">

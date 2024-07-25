@@ -40,6 +40,11 @@ const componentRouters: RouteRecordRaw[] = [
                 component: () => import("@/views/data/avatar/AvatarPage.vue"),
             },
             {
+                path: 'data/card',
+                name: 'card',
+                component: () => import("@/views/data/CardPage.vue"),
+            },
+            {
                 path: 'form/formtable',
                 name: 'formtable',
                 component: () => import("@/views/form/ZoeyInputPage.vue"),

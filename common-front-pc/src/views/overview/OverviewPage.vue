@@ -2,6 +2,7 @@
 import * as echarts from 'echarts';
 import ZoeyTitle from "@/components/titles/ZoeyTitle.vue";
 import {onMounted, ref} from "vue";
+import ZoeyCard from "@/components/data/ZoeyCard.vue";
 
 const itemOneRef = ref(null)
 const itemOneData = {
@@ -39,11 +40,17 @@ onMounted(() => {
     <zoey-title type="h1" hr>Overview 预览</zoey-title>
     <zoey-title type="h3">该系统案例统计</zoey-title>
     <div class="overview-root-box">
-      <div ref="itemOneRef" class="overview-root-box-item"></div>
-      <div class="overview-root-box-item"></div>
-      <div class="overview-root-box-item"></div>
-      <div class="overview-root-box-item"></div>
-      <div class="overview-root-box-item"></div>
+      <zoey-card>
+        <div ref="itemOneRef" class="overview-root-box-item"></div>
+      </zoey-card>
+      <zoey-card></zoey-card>
+      <zoey-card></zoey-card>
+      <zoey-card></zoey-card>
+      <zoey-card></zoey-card>
+      <zoey-card></zoey-card>
+      <zoey-card></zoey-card>
+      <zoey-card></zoey-card>
+    
     </div>
   </div>
 </template>
@@ -58,18 +65,6 @@ onMounted(() => {
     display: flex;
     flex-wrap: wrap;
     
-    &-item {
-      width: 50rem;
-      height: 20rem;
-      margin: 2rem;
-      display: flex;
-      justify-content: center;
-      box-shadow: 0.2rem 0.2rem 0.8rem #cccccc, -0.2rem -0.2rem 0.8rem #cccccc;
-      
-      &:hover {
-        box-shadow: 0.4rem 0.4rem 0.8rem #cccccc, -0.4rem -0.4rem 0.8rem #cccccc;
-      }
-    }
   }
 }
 </style>

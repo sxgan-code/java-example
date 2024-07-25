@@ -14,6 +14,8 @@ import IconJavaLogo from "@/components/icons/IconJavaLogo.vue";
 import IconComponent from "@/components/icons/IconComponent.vue";
 import IconCss from "@/components/icons/IconCss.vue";
 import IconHome from "@/components/icons/IconHome.vue";
+import IconCard from "@/components/icons/IconCard.vue";
+import IconForm from "@/components/icons/IconForm.vue";
 
 const router = useRouter()
 const isCollapse = ref(false)
@@ -46,7 +48,6 @@ onMounted(() => {
             @close="handleClose"
             text-color="#fff"
             background-color="var(--grey-color-5)"
-            :collapse-transition="true"
         >
           <el-sub-menu index="0" @click="goToHref(HrefTypeEnum.LOCAL_HREF,'/main/overview/')">
             <template #title>
@@ -104,14 +105,19 @@ onMounted(() => {
               <el-menu-item class="two-title" @click="goToHref(HrefTypeEnum.LOCAL_HREF,'/component/data/avatar')"
                             index="1-4-1">
                 <icon-img-cut style="margin-right: 1rem;"/>
-                用户头像截取
+                Copper 截取
+              </el-menu-item>
+              <el-menu-item class="two-title" @click="goToHref(HrefTypeEnum.LOCAL_HREF,'/component/data/card')"
+                            index="1-4-2">
+                <icon-card style="margin-right: 1rem;"/>
+                Card 卡片
               </el-menu-item>
             </el-sub-menu>
             <el-sub-menu class="two-title" index="1-5">
               <template #title><span>Form 表单组件</span></template>
               <el-menu-item class="two-title" @click="goToHref(HrefTypeEnum.LOCAL_HREF,'/component/form/formtable')"
                             index="1-5-1">
-                <icon-img-cut style="margin-right: 1rem;"/>
+                <icon-form style="margin-right: 1rem;"/>
                 Form 表单
               </el-menu-item>
             </el-sub-menu>

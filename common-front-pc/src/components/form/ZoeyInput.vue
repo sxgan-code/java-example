@@ -192,8 +192,10 @@ const emit = defineEmits<{
     border-radius: 0.3rem;
     width: v-bind(width);
     height: v-bind(height);
-    padding: 0 1rem;
-    background-color: #ECF5FF;
+    min-width: v-bind(width);
+    min-height: v-bind(height);
+    padding: 1rem;
+    background-color: #FFFFFF;
     border: 0.15rem solid #5B8FF9;
     font-size: 1.6rem;
     color: #68696D;

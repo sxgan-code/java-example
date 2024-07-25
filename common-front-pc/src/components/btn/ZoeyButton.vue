@@ -44,6 +44,8 @@ onMounted(() => {
   cursor: pointer;
   transition: all 0.3s;
   padding: 0 1.5rem;
+  width: max-content;
+  width: max-content;
   border-radius: 0.4rem;
   display: flex;
   align-items: center

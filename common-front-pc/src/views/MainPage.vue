@@ -13,6 +13,7 @@ import IconJava from "@/components/icons/IconJava.vue";
 import IconJavaLogo from "@/components/icons/IconJavaLogo.vue";
 import IconComponent from "@/components/icons/IconComponent.vue";
 import IconCss from "@/components/icons/IconCss.vue";
+import IconHome from "@/components/icons/IconHome.vue";
 
 const router = useRouter()
 const isCollapse = ref(false)
@@ -45,7 +46,14 @@ onMounted(() => {
             @close="handleClose"
             text-color="#fff"
             background-color="var(--grey-color-5)"
+            :collapse-transition="true"
         >
+          <el-sub-menu index="0" @click="goToHref(HrefTypeEnum.LOCAL_HREF,'/main/overview/')">
+            <template #title>
+              <icon-home style="margin-right: 1rem;"/>
+              <span>预览</span>
+            </template>
+          </el-sub-menu>
           <el-sub-menu index="1">
             <template #title>
               <icon-java style="margin-right: 1rem;"/>
@@ -163,7 +171,6 @@ onMounted(() => {
         <div class="main-content">
           <router-view/>
         </div>
-      
       </div>
     </div>
   </div>
@@ -213,9 +220,9 @@ onMounted(() => {
       background: var(--grey-color-5);
       height: 100vh;
       overflow-y: auto;
-      
+      width: 17vw;
       .el-menu-vertical-demo:not(.el-menu--collapse) {
-        width: 17vw;
+        
         overflow-x: auto;
         
         .two-title, .three-title {

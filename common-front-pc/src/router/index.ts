@@ -22,8 +22,13 @@ const router: Router = createRouter({
             children: [
                 {
                     path: '',
-                    redirect: '/component/overview',
+                    redirect: '/main/overview',
                 },
+                {
+                    path: 'overview',
+                    component: () => import("@/views/overview/OverviewPage.vue"),
+                },
+
             ]
 
         },

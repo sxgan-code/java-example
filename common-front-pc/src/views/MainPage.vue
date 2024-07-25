@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import {onMounted, ref} from "vue";
-import {Expand, Fold, Location, Menu} from "@element-plus/icons-vue";
+import {Expand, Fold, Location} from "@element-plus/icons-vue";
 import {useRouter} from 'vue-router';
 import {goToHref, HrefTypeEnum} from "@/utils/common-utils.ts";
 import IconQr from "@/components/icons/IconQr.vue";
@@ -16,6 +16,8 @@ import IconCss from "@/components/icons/IconCss.vue";
 import IconHome from "@/components/icons/IconHome.vue";
 import IconCard from "@/components/icons/IconCard.vue";
 import IconForm from "@/components/icons/IconForm.vue";
+import IconFrontEnd from "@/components/icons/IconFrontEnd.vue";
+import IconEchartsPie from "@/components/icons/IconEchartsPie.vue";
 
 const router = useRouter()
 const isCollapse = ref(false)
@@ -127,11 +129,30 @@ onMounted(() => {
               <icon-css style="margin-right: 1rem;"/>
               <span>CSS案例</span>
             </template>
-            <el-sub-menu class="two-title" index="2-1">
-              <template #title><span><el-icon><Menu/></el-icon>布局案例</span></template>
+            <el-sub-menu class="two-title" index="3-1">
+              <template #title>
+                <span>布局案例</span>
+              </template>
               <el-menu-item class="two-title" @click="goToHref(HrefTypeEnum.LOCAL_HREF,'/component/basic/layout')"
-                            index="2-1-1">
+                            index="3-1-1">
+                <icon-layout style="margin-right: 1rem;"/>
                 布局1
+              </el-menu-item>
+            </el-sub-menu>
+          </el-sub-menu>
+          <el-sub-menu index="4">
+            <template #title>
+              <icon-front-end style="margin-right: 1rem;"/>
+              <span>前端案例</span>
+            </template>
+            <el-sub-menu class="two-title" index="4-1">
+              <template #title>
+                <span>Echarts</span>
+              </template>
+              <el-menu-item class="two-title" @click="goToHref(HrefTypeEnum.LOCAL_HREF,'/front/echarts')"
+                            index="4-1-1">
+                <icon-echarts-pie style="margin-right: 1rem;"/>
+                Echarts 图表大全
               </el-menu-item>
             </el-sub-menu>
           </el-sub-menu>
@@ -227,6 +248,7 @@ onMounted(() => {
       height: 100vh;
       overflow-y: auto;
       width: 17vw;
+      
       .el-menu-vertical-demo:not(.el-menu--collapse) {
         
         overflow-x: auto;

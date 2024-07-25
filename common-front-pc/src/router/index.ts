@@ -1,6 +1,7 @@
 import {createRouter, createWebHashHistory, type Router} from "vue-router";
 import componentRouters from "@/router/component-routers.ts";
 import exampleRouters from "@/router/example-routers.ts";
+import frontRouters from "@/router/front-routers.ts";
 
 const router: Router = createRouter({
     // Electron中路由方式必须使用Hash方式
@@ -33,7 +34,8 @@ const router: Router = createRouter({
 
         },
         ...componentRouters,
-        ...exampleRouters
+        ...exampleRouters,
+        ...frontRouters
     ],
     /* 禁用鼠标侧键回退功能 */
     // scrollBehavior: () => {

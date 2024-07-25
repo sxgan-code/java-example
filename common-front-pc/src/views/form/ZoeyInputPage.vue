@@ -12,6 +12,8 @@ import ZoeyInput from "@/components/form/ZoeyInput.vue";
       <div class="form-box-w">
         <zoey-input type="text" label="Activity name"/>
         <zoey-input type="password" label="Activity password"/>
+        <zoey-input type="button" label="Instant delivery" value="按钮"/>
+        <zoey-input type="textarea" label="Activity form" width="50rem" height="8rem"/>
         <zoey-input type="file">上传文件</zoey-input>
       </div>
     

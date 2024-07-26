@@ -88,39 +88,39 @@ onMounted(() => {
     <zoey-title type="h1" hr>Echarts 图表预览</zoey-title>
     <zoey-title type="h3">Echarts全案例预览</zoey-title>
     <div class="overview-root-box">
-      <zoey-card>
+      <zoey-card width="35vw" height="20rem" class="item">
         <span style="float: left">饼图：</span>
         <div ref="pieRef"></div>
       </zoey-card>
-      <zoey-card>
+      <zoey-card width="35vw" height="20rem" class="item">
         <span style="float: left">柱状图：</span>
         <div ref="histogramRef"/>
       </zoey-card>
-      <zoey-card>
+      <zoey-card width="35vw" height="20rem" class="item">
         <span style="float: left">多列柱状图：</span>
         <div ref="multiColumnHistogramRef"/>
       </zoey-card>
-      <zoey-card>
+      <zoey-card width="35vw" height="20rem" class="item">
         <span style="float: left">折线图：</span>
         <div ref="polylineRef"/>
       </zoey-card>
-      <zoey-card>
+      <zoey-card width="35vw" height="20rem" class="item">
         <span style="float: left">圆环图：</span>
         <div ref="ringRef"/>
       </zoey-card>
-      <zoey-card>
+      <zoey-card width="35vw" height="20rem" class="item">
         <span style="float: left">南丁格尔图：</span>
         <div ref="nightingaleRef"/>
       </zoey-card>
-      <zoey-card>
+      <zoey-card width="35vw" height="20rem" class="item">
         <span style="float: left">散点图：</span>
         <div ref="scatterPointRef"/>
       </zoey-card>
-      <zoey-card>
+      <zoey-card width="35vw" height="20rem" class="item">
         <span style="float: left">区域面积图：</span>
         <div ref="regionAreaRef"/>
       </zoey-card>
-      <zoey-card>
+      <zoey-card width="35vw" height="20rem" class="item">
         <span style="float: left">堆叠折线图：</span>
         <div ref="stackedPolylineRef"/>
       </zoey-card>
@@ -138,6 +138,9 @@ onMounted(() => {
     display: flex;
     flex-wrap: wrap;
     
+    .item {
+      display: flex;
+    }
   }
 }
 </style>

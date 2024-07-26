@@ -10,6 +10,10 @@ const mainRouters: RouteRecordRaw[] = [
                 path: 'echarts',
                 name: 'echarts',
                 component: () => import("@/views/front/echarts/EchartsPage.vue"),
+            }, {
+                path: 'editor',
+                name: 'editor',
+                component: () => import("@/views/front/editor/WangEditorPage.vue"),
             }
         ]
 

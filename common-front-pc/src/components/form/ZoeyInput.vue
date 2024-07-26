@@ -196,7 +196,7 @@ const emit = defineEmits<{
     min-height: v-bind(height);
     padding: 1rem;
     background-color: #FFFFFF;
-    border: 0.15rem solid #5B8FF9;
+    border: 0.15rem solid #C0C4CC;
     font-size: 1.6rem;
     color: #68696D;
     

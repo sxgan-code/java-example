@@ -155,6 +155,16 @@ onMounted(() => {
                 Echarts 图表大全
               </el-menu-item>
             </el-sub-menu>
+            <el-sub-menu class="two-title" index="4-2">
+              <template #title>
+                <span>富文本</span>
+              </template>
+              <el-menu-item class="two-title" @click="goToHref(HrefTypeEnum.LOCAL_HREF,'/front/editor')"
+                            index="4-2-1">
+                <icon-echarts-pie style="margin-right: 1rem;"/>
+                Editor 富文本
+              </el-menu-item>
+            </el-sub-menu>
           </el-sub-menu>
           <el-sub-menu index="5">
             <template #title>
@@ -247,10 +257,9 @@ onMounted(() => {
       background: var(--grey-color-5);
       height: 100vh;
       overflow-y: auto;
-      width: 17vw;
       
       .el-menu-vertical-demo:not(.el-menu--collapse) {
-        
+        width: 17vw;
         overflow-x: auto;
         
         .two-title, .three-title {

@@ -40,10 +40,10 @@ onMounted(() => {
     <zoey-title type="h1" hr>Overview 预览</zoey-title>
     <zoey-title type="h3">该系统案例统计</zoey-title>
     <div class="overview-root-box">
-      <zoey-card>
+      <zoey-card width="35vw" height="20rem">
         <div ref="itemOneRef" class="overview-root-box-item"></div>
       </zoey-card>
-      <zoey-card></zoey-card>
+      <zoey-card width="35vw" height="20rem"></zoey-card>
       <zoey-card></zoey-card>
       <zoey-card></zoey-card>
       <zoey-card></zoey-card>

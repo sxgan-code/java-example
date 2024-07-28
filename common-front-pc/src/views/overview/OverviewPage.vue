@@ -44,12 +44,6 @@ onMounted(() => {
         <div ref="itemOneRef" class="overview-root-box-item"></div>
       </zoey-card>
       <zoey-card width="35vw" height="20rem"></zoey-card>
-      <zoey-card></zoey-card>
-      <zoey-card></zoey-card>
-      <zoey-card></zoey-card>
-      <zoey-card></zoey-card>
-      <zoey-card></zoey-card>
-      <zoey-card></zoey-card>
     
     </div>
   </div>

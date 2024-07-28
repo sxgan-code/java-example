@@ -21,8 +21,13 @@ const componentRouters: RouteRecordRaw[] = [
             },
             {
                 path: 'basic/layout',
-                name: 'flex',
+                name: 'layout',
                 component: () => import("@/views/basic/layout/FlexLayoutPage.vue"),
+            },
+            {
+                path: 'basic/icons',
+                name: 'icons',
+                component: () => import("@/views/basic/icons/IconsPage.vue"),
             },
             {
                 path: 'feedback/message',

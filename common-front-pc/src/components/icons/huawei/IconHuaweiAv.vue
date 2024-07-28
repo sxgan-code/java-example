@@ -1,0 +1,19 @@
+<script setup lang="ts">
+const props = defineProps({
+  fill: {type: String, default: '#FFFFFF', required: false},
+  width: {type: String, default: '2rem', required: false},
+  height: {type: String, default: '2rem', required: false},
+})</script>
+<template>
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="60" version="1.1" viewBox="0 0 24 60">
+    <polygon fill="#000" fill-rule="nonzero" stroke="none" stroke-width="1"
+             points="0 50 19 27.4 11.8 27.4 19 15.9 11.8 15.9 19 0 0 22.5 7.8 22.5 0 33.6 7.8 33.6"
+             transform="translate(2.5 5)"/>
+  </svg>
+</template>
+<style scoped lang="scss">
+svg {
+  width: v-bind(width);
+  height: v-bind(height);
+}
+</style>

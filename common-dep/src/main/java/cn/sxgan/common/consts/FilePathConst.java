@@ -7,7 +7,7 @@ package cn.sxgan.common.consts;
  * @Version: 1.0
  **/
 
-public class FilePath {
+public class FilePathConst {
     final public static String ROOT_DIR = System.getProperty("user.dir");
     final public static String USER_EXCEL_TEMP_FILE_DIR = ROOT_DIR + "/a-doc/test/easyexcel/";
 }

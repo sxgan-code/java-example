@@ -52,6 +52,7 @@
         <easyexcel.version>4.0.1</easyexcel.version>
         <jasypt.version>3.0.5</jasypt.version>
         <zxing.version>3.5.3</zxing.version>
+        <commons.io.version>2.16.1</commons.io.version>
 
         <!-- 阿里云存储服务 -->
         <aliyun.sdk.oss.version>3.17.4</aliyun.sdk.oss.version>
@@ -238,6 +239,14 @@
                 <artifactId>javase</artifactId>
                 <version>${zxing.version}</version>
             </dependency>
+            <!-- io工具 -->
+            <!-- https://mvnrepository.com/artifact/commons-io/commons-io -->
+            <dependency>
+                <groupId>commons-io</groupId>
+                <artifactId>commons-io</artifactId>
+                <version>${commons.io.version}</version>
+            </dependency>
+
         </dependencies>
     </dependencyManagement>
 

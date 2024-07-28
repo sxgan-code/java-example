@@ -1,0 +1,29 @@
+<script setup lang="ts">
+const props = defineProps({
+  fill: {type: String, default: '#FFFFFF', required: false},
+  width: {type: String, default: '2rem', required: false},
+  height: {type: String, default: '2rem', required: false},
+})</script>
+<template>
+  <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px"
+       viewBox="0 0 24 24" version="1.1">
+    <title>Public/ic_public_appstore</title>
+    <defs>
+      <path
+          d="M18,2 C20.209139,2 22,3.790861 22,6 L22,18 C22,20.209139 20.209139,22 18,22 L6,22 C3.790861,22 2,20.209139 2,18 L2,6 C2,3.790861 3.790861,2 6,2 L18,2 Z M18,3.5 L6,3.5 C4.6745166,3.5 3.58996133,4.53153594 3.50531768,5.83562431 L3.5,6 L3.5,18 C3.5,19.3254834 4.53153594,20.4100387 5.83562431,20.4946823 L6,20.5 L18,20.5 C19.3254834,20.5 20.4100387,19.4684641 20.4946823,18.1643757 L20.5,18 L20.5,6 C20.5,4.6745166 19.4684641,3.58996133 18.1643757,3.50531768 L18,3.5 Z M16.5,6 C16.9142136,6 17.25,6.33578644 17.25,6.75 C17.25,9.64949494 14.8994949,12 12,12 C9.10050506,12 6.75,9.64949494 6.75,6.75 C6.75,6.33578644 7.08578644,6 7.5,6 C7.91421356,6 8.25,6.33578644 8.25,6.75 C8.25,8.82106781 9.92893219,10.5 12,10.5 C14.0710678,10.5 15.75,8.82106781 15.75,6.75 C15.75,6.33578644 16.0857864,6 16.5,6 Z"
+          id="path-1"/>
+    </defs>
+    <g id="Public/ic_public_appstore" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+      <mask id="mask-2" fill="white">
+        <use xlink:href="#path-1"/>
+      </mask>
+      <use id="形状结合" fill="#000000" fill-rule="nonzero" xlink:href="#path-1"/>
+    </g>
+  </svg>
+</template>
+<style scoped lang="scss">
+svg {
+  width: v-bind(width);
+  height: v-bind(height);
+}
+</style>

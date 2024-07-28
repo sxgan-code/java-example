@@ -88,6 +88,11 @@ onMounted(() => {
                 <icon-layout style="margin-right: 1rem"/>
                 layout 布局
               </el-menu-item>
+              <el-menu-item class="two-title" @click="goToHref(HrefTypeEnum.LOCAL_HREF,'/component/basic/icons')"
+                            index="1-2-3">
+                <icon-layout style="margin-right: 1rem"/>
+                Icons 图标
+              </el-menu-item>
             </el-sub-menu>
             <el-sub-menu class="two-title" index="1-3">
               <template #title><span>Feedback 反馈组件</span></template>

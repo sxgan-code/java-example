@@ -1,7 +1,7 @@
 package cn.sxgan.base.excel.easyexcel;
 
 import cn.sxgan.base.excel.controller.DownloadData;
-import cn.sxgan.common.consts.FilePath;
+import cn.sxgan.common.consts.FilePathConst;
 import cn.sxgan.common.entity.UserMockdataPO;
 import cn.sxgan.common.mappers.BdExpUserMockdataMapper;
 import cn.sxgan.common.response.ResponseResult;
@@ -85,7 +85,7 @@ public class EasyExportFileService {
     
     public void exportUserByTemp(HttpServletResponse response) {
         try {
-            String tempFile = FilePath.USER_EXCEL_TEMP_FILE_DIR + "用户清单模版.xlsx";
+            String tempFile = FilePathConst.USER_EXCEL_TEMP_FILE_DIR + "用户清单模版.xlsx";
             response.setContentType("application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
             response.setCharacterEncoding("utf-8");
             // 这里URLEncoder.encode可以防止中文乱码 当然和easyexcel没有关系

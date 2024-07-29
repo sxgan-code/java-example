@@ -1,6 +1,6 @@
 package cn.sxgan.base.excel.poi;
 
-import cn.sxgan.common.consts.FilePath;
+import cn.sxgan.common.consts.FilePathConst;
 import cn.sxgan.common.entity.UserMockdataPO;
 import cn.sxgan.common.mappers.BdExpUserMockdataMapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
@@ -34,7 +34,7 @@ public class PoiExportExcelService {
     
     public void exportExcel(HttpServletResponse response) {
         try {
-            String tempFile = FilePath.USER_EXCEL_TEMP_FILE_DIR + "用户清单模版.xlsx";
+            String tempFile = FilePathConst.USER_EXCEL_TEMP_FILE_DIR + "用户清单模版.xlsx";
             // 制作数据
             Workbook wb = WorkbookFactory.create(new FileInputStream(tempFile));
             List<UserMockdataPO> userMockdataPOS = bdExpUserMockdataMapper.selectList(new QueryWrapper<>());

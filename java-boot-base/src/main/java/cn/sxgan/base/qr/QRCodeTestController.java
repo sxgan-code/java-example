@@ -1,10 +1,8 @@
 package cn.sxgan.base.qr;
 
-import cn.sxgan.base.auth.entity.UserSessionInfo;
 import cn.sxgan.common.anno.RequestAroundLog;
-import cn.sxgan.common.anno.RequestBeforeLog;
 import cn.sxgan.common.anno.WorkTime;
-import cn.sxgan.common.consts.FilePath;
+import cn.sxgan.common.consts.FilePathConst;
 import cn.sxgan.common.utils.file.FileUtils;
 import cn.sxgan.common.utils.qrcode.QRCodeUtils;
 import com.google.zxing.BarcodeFormat;
@@ -76,7 +74,7 @@ public class QRCodeTestController {
     @GetMapping("/logo/qrcode")
     @RequestAroundLog
     public void getLogoQR(HttpServletResponse response) {
-        String logoFile = FilePath.ROOT_DIR + "/a-doc/file/images/qrlogo.png";
+        String logoFile = FilePathConst.ROOT_DIR + "/a-doc/file/images/qrlogo.png";
         BufferedImage bufferedImage = QRCodeUtils.getInstance()
                 .setBaseConfig("https://gitee.com/sxgan?time=" +
                         new Date().getTime(), 1, 300, 300, ErrorCorrectionLevel.H)

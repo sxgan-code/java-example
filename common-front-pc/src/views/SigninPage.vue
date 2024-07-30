@@ -98,7 +98,10 @@ const signinSys = () => {
       }).catch(err => {
         console.log(err)
         message.error('系统错误', PositionTypeEnum.TOP)
+        loading.value = false
+        goToHref(HrefTypeEnum.LOCAL_HREF, '/main')
       })
+      
     }
     
   })

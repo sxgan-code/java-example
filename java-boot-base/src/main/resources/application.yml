@@ -2,10 +2,10 @@ spring:
   application:
     name: java-boot-base
   profiles:
-    #    active: pro
-    #    include: prodb
-    active: dev
-    include: devdb
+    active: pro
+    include: prodb
+  #    active: dev
+  #    include: devdb
   servlet:
     multipart:
       max-file-size: 100MB

@@ -6,7 +6,17 @@ declare module '*.vue' {
     const component: DefineComponent<{}, {}, any>;
     export default component;
 }
+declare module 'virtual:svg-icons-register' {
+    // eslint-disable-next-line
+    const component: any
+    export default component
+}
 
+declare module 'virtual:svg-icons-names' {
+    // eslint-disable-next-line
+    const iconsNames: string[]
+    export default iconsNames
+}
 interface ImportMetaEnv {
     /** 应用名称 */
     readonly VITE_APP_NAME: string

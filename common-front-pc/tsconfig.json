@@ -1,6 +1,9 @@
 {
   "compilerOptions": {
-    "allowImportingTsExtensions": true
+    "allowImportingTsExtensions": true,
+    "types": [
+      "vite-plugin-svg-icons/client"
+    ]
   },
   "files": [],
   "references": [

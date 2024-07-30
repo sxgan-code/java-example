@@ -13,6 +13,7 @@ const copy = (name: string) => {
 <template>
   <div class="svg-root">
     <zoey-title type="h1" hr>图标</zoey-title>
+    <zoey-icon width="12rem" height="12rem" color="#ccc" name="ali_a-success-outline5"/>
     <zoey-title type="h3">点击以下图标即可复制</zoey-title>
     <div v-for="name in ids" class="icon-item" :key="name" @click="copy(name.substring(5))">
       <zoey-icon :name="name.substring(5)" color="#000"/>
@@ -33,6 +34,7 @@ const copy = (name: string) => {
   .icon-item {
     width: 15rem;
     height: 15rem;
+    background: #eeeeee;
     margin: 1rem;
     display: flex;
     flex-direction: column;
@@ -54,6 +56,7 @@ const copy = (name: string) => {
     span {
       color: #9c9c9c;
       font-size: 1.4rem;
+      text-align: center;
       width: 12rem;
       margin: 0 auto;
       overflow: hidden;

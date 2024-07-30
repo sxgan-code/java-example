@@ -49,13 +49,13 @@ onMounted(() => {
         >
           <el-sub-menu index="0" @click="goToHref(HrefTypeEnum.LOCAL_HREF,'/main/overview/')">
             <template #title>
-              <zoey-icon style="margin-right: 1rem" name="taobao_home" color="#fff"/>
+              <zoey-icon style="margin-right: 1rem" width="2.5rem" height="2.5rem" name="yiqu_erweima"/>
               <span>预览</span>
             </template>
           </el-sub-menu>
           <el-sub-menu index="1">
             <template #title>
-              <zoey-icon style="margin-right: 1rem" name="taobao_selection"/>
+              <zoey-icon style="margin-right: 1rem" width="2.5rem" height="2.5rem" name="erp_kefuchajianguanliduan"/>
               <span>Java案例</span>
             </template>
             <el-sub-menu class="two-title" index="1-1">
@@ -69,7 +69,7 @@ onMounted(() => {
           </el-sub-menu>
           <el-sub-menu index="2">
             <template #title>
-              <zoey-icon style="margin-right: 1rem" name="taobao_cascades"/>
+              <zoey-icon style="margin-right: 1rem" width="2.5rem" height="2.5rem" name="erp_liuzhuan"/>
               <span>自定义组件</span>
             </template>
             <el-sub-menu class="two-title" index="1-2">
@@ -127,7 +127,7 @@ onMounted(() => {
           </el-sub-menu>
           <el-sub-menu index="3">
             <template #title>
-              <zoey-icon style="margin-right: 1rem" name="taobao_skin_light"/>
+              <zoey-icon style="margin-right: 1rem" width="2.5rem" height="2.5rem" name="color_manage_xiaoshoutongji"/>
               <span>CSS案例</span>
             </template>
             <el-sub-menu class="two-title" index="3-1">
@@ -143,7 +143,7 @@ onMounted(() => {
           </el-sub-menu>
           <el-sub-menu index="4">
             <template #title>
-              <zoey-icon style="margin-right: 1rem" name="taobao_news"/>
+              <zoey-icon style="margin-right: 1rem" width="2.5rem" height="2.5rem" name="erp_yanfarenwu"/>
               <span>前端案例</span>
             </template>
             <el-sub-menu class="two-title" index="4-1">
@@ -169,7 +169,7 @@ onMounted(() => {
           </el-sub-menu>
           <el-sub-menu index="5">
             <template #title>
-              <zoey-icon style="margin-right: 1rem" name="taobao_sort"/>
+              <zoey-icon style="margin-right: 1rem" width="2.5rem" height="2.5rem" name="yiqu_biaoqian"/>
               <span>测试菜单</span>
             </template>
             <el-menu-item-group>

@@ -44,12 +44,16 @@ onMounted(() => {
         <div ref="itemOneRef" class="overview-root-box-item"></div>
       </zoey-card>
       <zoey-card width="35vw" height="20rem"></zoey-card>
-    
+      <div class="img" style="width: 20rem;height: 20rem">
+      
+      </div>
     </div>
   </div>
 </template>
 
 <style scoped lang="scss">
+.img {
+}
 .overview-root {
   width: 83vw;
   margin: 5rem auto;

@@ -53,6 +53,10 @@ const copy = (name: string) => {
     
     span {
       color: #9c9c9c;
+      font-size: 1.4rem;
+      width: 12rem;
+      margin: 0 auto;
+      overflow: hidden;
     }
   }
 }

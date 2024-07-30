@@ -6,7 +6,7 @@ const props = defineProps({
   height: {type: String, default: '2rem', required: false},
   name: {type: String, default: '', required: true},
   prefix: {type: String, default: 'icon', required: false},
-  color: {type: String, default: '', required: false},
+  color: {type: String, default: '#FFFFFF', required: false},
 })
 
 const symbolId = computed(() => `#${props.prefix}-${props.name}`)

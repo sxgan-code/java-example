@@ -3,14 +3,19 @@ import ZoeyIcon from "@/components/icons/ZoeyIcon.vue";
 import ids from 'virtual:svg-icons-names'
 import {copyToClipboard} from "@/utils/common-utils.ts";
 import ZoeyTitle from "@/components/titles/ZoeyTitle.vue";
+
+const copy = (name: string) => {
+  var text = `<zoey-icon name="` + name + `"/>`;
+  copyToClipboard(text)
+}
 </script>
 
 <template>
   <div class="svg-root">
     <zoey-title type="h1" hr>图标</zoey-title>
     <zoey-title type="h3">点击以下图标即可复制</zoey-title>
-    <div v-for="name in ids" class="icon-item" :key="name" @click="copyToClipboard(name)">
-      <zoey-icon :name="name.substring(5)"></zoey-icon>
+    <div v-for="name in ids" class="icon-item" :key="name" @click="copy(name.substring(5))">
+      <zoey-icon :name="name.substring(5)" color="#000"/>
       <span>{{ name.substring(5) }}</span>
     </div>
   </div>
@@ -34,15 +39,20 @@ import ZoeyTitle from "@/components/titles/ZoeyTitle.vue";
     justify-content: center;
     box-shadow: 0.2rem 0.2rem 0.2rem #cccccc, -0.2rem -0.2rem 0.2rem #cccccc;
     
-    svg {
-      width: 5rem;
-      height: 5rem;
-    }
     
     span, svg {
       overflow: hidden;
       font-family: "HarmonyOS Sans", sans-serif;
       margin: 0.4rem auto;
+    }
+    
+    svg {
+      width: 5rem;
+      height: 5rem;
+    }
+    
+    span {
+      color: #9c9c9c;
     }
   }
 }

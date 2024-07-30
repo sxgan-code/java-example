@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import {onMounted, ref} from "vue";
-import {Expand, Fold, Location} from "@element-plus/icons-vue";
+import {Expand, Fold} from "@element-plus/icons-vue";
 import {useRouter} from 'vue-router';
 import {goToHref, HrefTypeEnum} from "@/utils/common-utils.ts";
 import IconQr from "@/components/icons/IconQr.vue";
@@ -9,15 +9,11 @@ import IconLayout from "@/components/icons/IconLayout.vue";
 import IconImgCut from "@/components/icons/IconImgCut.vue";
 import IconTips from "@/components/icons/IconTips.vue";
 import IconDialog from "@/components/icons/IconDialog.vue";
-import IconJava from "@/components/icons/IconJava.vue";
 import IconJavaLogo from "@/components/icons/IconJavaLogo.vue";
-import IconComponent from "@/components/icons/IconComponent.vue";
-import IconCss from "@/components/icons/IconCss.vue";
-import IconHome from "@/components/icons/IconHome.vue";
 import IconCard from "@/components/icons/IconCard.vue";
 import IconForm from "@/components/icons/IconForm.vue";
-import IconFrontEnd from "@/components/icons/IconFrontEnd.vue";
 import IconEchartsPie from "@/components/icons/IconEchartsPie.vue";
+import ZoeyIcon from "@/components/icons/ZoeyIcon.vue";
 
 const router = useRouter()
 const isCollapse = ref(false)
@@ -53,13 +49,13 @@ onMounted(() => {
         >
           <el-sub-menu index="0" @click="goToHref(HrefTypeEnum.LOCAL_HREF,'/main/overview/')">
             <template #title>
-              <icon-home style="margin-right: 1rem;"/>
+              <zoey-icon style="margin-right: 1rem" name="taobao_home" color="#fff"/>
               <span>预览</span>
             </template>
           </el-sub-menu>
           <el-sub-menu index="1">
             <template #title>
-              <icon-java style="margin-right: 1rem;"/>
+              <zoey-icon style="margin-right: 1rem" name="taobao_selection"/>
               <span>Java案例</span>
             </template>
             <el-sub-menu class="two-title" index="1-1">
@@ -73,7 +69,7 @@ onMounted(() => {
           </el-sub-menu>
           <el-sub-menu index="2">
             <template #title>
-              <icon-component style="margin-right: 1rem;"/>
+              <zoey-icon style="margin-right: 1rem" name="taobao_cascades"/>
               <span>自定义组件</span>
             </template>
             <el-sub-menu class="two-title" index="1-2">
@@ -131,7 +127,7 @@ onMounted(() => {
           </el-sub-menu>
           <el-sub-menu index="3">
             <template #title>
-              <icon-css style="margin-right: 1rem;"/>
+              <zoey-icon style="margin-right: 1rem" name="taobao_skin_light"/>
               <span>CSS案例</span>
             </template>
             <el-sub-menu class="two-title" index="3-1">
@@ -147,7 +143,7 @@ onMounted(() => {
           </el-sub-menu>
           <el-sub-menu index="4">
             <template #title>
-              <icon-front-end style="margin-right: 1rem;"/>
+              <zoey-icon style="margin-right: 1rem" name="taobao_news"/>
               <span>前端案例</span>
             </template>
             <el-sub-menu class="two-title" index="4-1">
@@ -173,9 +169,7 @@ onMounted(() => {
           </el-sub-menu>
           <el-sub-menu index="5">
             <template #title>
-              <el-icon>
-                <location/>
-              </el-icon>
+              <zoey-icon style="margin-right: 1rem" name="taobao_sort"/>
               <span>测试菜单</span>
             </template>
             <el-menu-item-group>

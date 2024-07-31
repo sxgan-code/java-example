@@ -51,14 +51,14 @@ export default defineConfig(({command, mode}) => {
                  */
                 customDomId: '__svg__icons__dom__',
                 // 移除填充
-                svgoOptions: {
-                    plugins: [{
-                        name: 'removeAttrs',
-                        params: {
-                            attrs: 'fill'
-                        }
-                    }]
-                }
+                // svgoOptions: {
+                //     plugins: [{
+                //         name: 'removeAttrs',
+                //         params: {
+                //             attrs: 'fill'
+                //         }
+                //     }]
+                // }
             }),
         ],
         resolve: {

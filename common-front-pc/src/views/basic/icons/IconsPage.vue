@@ -12,7 +12,6 @@ const copy = (name: string) => {
 
 <template>
   <div class="svg-root">
-    <zoey-title type="h1" hr>图标</zoey-title>
     <zoey-icon width="12rem" height="12rem" color="#ccc" name="ali_a-success-outline5"/>
     <zoey-title type="h3">点击以下图标即可复制</zoey-title>
     <div v-for="name in ids" class="icon-item" :key="name" @click="copy(name.substring(5))">

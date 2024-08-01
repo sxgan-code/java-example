@@ -22,6 +22,7 @@ const props = defineProps({
 <style scoped lang="scss">
 .zoey-title-root {
   width: 100%;
+  font-family: '造字工坊纤细', sans-serif;
 }
 
 .title-common {

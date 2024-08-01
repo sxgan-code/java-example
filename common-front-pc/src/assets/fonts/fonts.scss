@@ -8,6 +8,37 @@ $fontsDir: "@/assets/fonts/";
   url('#{$fontsDir}/HarmonyOS_Sans_Bold.ttf') format('truetype'), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
 }
 
+@font-face {
+  font-family: 'HarmonyOS Sans Black';
+  src: url('#{$fontsDir}/HarmonyOS_Sans_Black.ttf'), /* IE9*/
+  url('#{$fontsDir}/HarmonyOS_Sans_Black.ttf') format('truetype'), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
+}
+
+@font-face {
+  font-family: 'HarmonyOS Sans Light';
+  src: url('#{$fontsDir}/HarmonyOS_Sans_Light.ttf'), /* IE9*/
+  url('#{$fontsDir}/HarmonyOS_Sans_Light.ttf') format('truetype'), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
+}
+
+@font-face {
+  font-family: 'HarmonyOS Sans Medium';
+  src: url('#{$fontsDir}/HarmonyOS_Sans_Medium.ttf'), /* IE9*/
+  url('#{$fontsDir}/HarmonyOS_Sans_Medium.ttf') format('truetype'), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
+}
+
+@font-face {
+  font-family: 'HarmonyOS Sans Regular';
+  src: url('#{$fontsDir}/HarmonyOS_Sans_Regular.ttf'), /* IE9*/
+  url('#{$fontsDir}/HarmonyOS_Sans_Regular.ttf') format('truetype'), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
+}
+
+@font-face {
+  font-family: 'HarmonyOS Sans Thin';
+  src: url('#{$fontsDir}/HarmonyOS_Sans_Thin.ttf'), /* IE9*/
+  url('#{$fontsDir}/HarmonyOS_Sans_Thin.ttf') format('truetype'), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
+}
+
+
 /*  配置JetBrainsMono*/
 @font-face {
   font-family: 'JetBrainsMono Bold';

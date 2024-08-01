@@ -217,13 +217,12 @@ onMounted(() => {
   display: flex;
   flex-direction: column;
   width: 100vw;
-  font-family: "造字工坊纤细", sans-serif;
+  font-family: "HarmonyOS Sans Thin", sans-serif;
   
   .main-head {
     height: 7rem;
     line-height: 7rem;
     width: 100%;
-    //background: var(--softness-group-4);
     background: #CC99CC;
     box-shadow: 0.1rem 0.1rem 0.3rem #ccc;
     
@@ -239,7 +238,6 @@ onMounted(() => {
       
       h1 {
         font-size: 3rem;
-        //color: var(--geek-blue-color-5);
         color: #FFFFFF;
         margin-left: 2rem;
       }
@@ -251,7 +249,6 @@ onMounted(() => {
     display: flex;
     
     .content-left {
-      font-family: "造字工坊纤细", sans-serif;
       font-weight: bold;
       background: var(--grey-color-5);
       height: 100vh;
